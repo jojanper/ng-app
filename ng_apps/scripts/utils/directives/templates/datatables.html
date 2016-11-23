@@ -1,0 +1,18 @@
+<spinner ng-if="showLoader" visible type="default"></spinner>
+<div class="hidden dt-container-wrapper">
+  <div class="hidden">
+    <div ng-if="actionsMenu === true">
+      <actions-menu model="{{ model }}" actions-mode="{{ actionsMode }}" action="{{ action }}" title="{{ actionsTitle }}"></actions-menu>
+    </div>
+    <checkbox-menu-dropdown ng-if="checkboxMenuItems.length > 0"
+                            dropdown-element="button"
+                            title="Hide columns"
+                            on-change="checkboxOnChange"
+                            checkbox-items="checkboxMenuItems"></checkbox-menu-dropdown>
+    <div class="" ng-class="$$dtOptionsObj.themeCall('themeClass')">
+      <div ng-if="hideAllowed()" class="element-close" title="Minimize table" ng-click="hideElement()">X</div>
+      <table class="display"></table>
+      <div ng-transclude></div>
+    </div>
+  </div>
+</div>

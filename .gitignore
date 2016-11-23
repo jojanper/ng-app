@@ -1,0 +1,17 @@
+bb_apps/**/components
+ng_apps/components
+bb_apps/apps/*
+.sass-cache
+bb_apps/framework/app_framework.js
+bb_apps/media/media.js
+bb_apps/css/app/
+bb_apps/draal_apps/css/app/
+bb_apps/draal_apps/dist/
+ng_apps/css/app/
+test_reports
+ng_apps/jshint.xml
+ng_apps/ng-templates/ng-apps.html
+node_modules
+.vscode
+ng_apps/docs
+ng_apps/dist

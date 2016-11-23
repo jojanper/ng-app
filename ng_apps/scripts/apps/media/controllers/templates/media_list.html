@@ -1,0 +1,6 @@
+<app-table hide-title="Media folders" model="mediafolder" dt-server-side="true" theme="bootstrap"
+           dt-length-menu="[5,10,15]" dt-order="[[1, 'asc']]" actions-menu action="create"
+           actions-title="Media folder actions">
+  <app-column title="Name" data="name" render-app-link="name" link-name="mediafolder.edit" link-id="id"></app-column>
+  <app-column title="Last Modified" render-last-modified="true"></app-column>
+</app-table>

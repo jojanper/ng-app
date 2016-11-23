@@ -1,0 +1,15 @@
+<button ng-if="launchTitle" class="btn" ng-click="toggleModal()">{{ launchTitle }}</button>
+<div class="ng-modal" ng-show="show">
+  <div class="ng-modal-overlay" ng-click="hideModal()"></div>
+  <div class="ng-modal-dialog" ng-style="dialogStyle" key-esc="close()">
+    <div class="ng-modal-close" ng-click="hideModal()">X</div>
+    <div ng-if="title" class="modal-header">
+      <h3>{{ title }}</h3>
+    </div>
+    <div class="ng-modal-dialog-content" ng-transclude></div>
+    <div ng-if="okLabel || closeLabel" class="modal-footer">
+      <button ng-if="closeLabel" type="button" class="btn" ng-click="close()">{{ closeLabel }}</button>
+      <button ng-if="okLabel" class="btn btn-primary" ng-click="ok()">{{ okLabel }}</button>
+    </div>
+  </div>
+</div>

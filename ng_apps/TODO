@@ -1,0 +1,36 @@
+- global model validator (call if present)
+- modified + invalid form flags
+- dialog + template (own directive to hide showModal function)
+- form read only
+- directive file upload
+- multiselector - how many to select (generic error checking)
+- own module.js for directives, controllers, services, factories, etc
+- Directive definition to define also name {name: 'fileUpload', cls: 'cls'}
+- split grunt file
+
+sh ./scripts/run_draal.sh 'start' 'no'
+grunt --gruntfile Gruntfile-ng.js dist
+
+// Mocking angular services
+/*
+            beforeEach(function() {
+                module('utils.appUrlResolver', function($provide) {
+                    console.log('HEP');
+                    $provide.constant('executeUrlResolverRunMethod', false);
+                    console.log('HOP');
+                    //$provide.value('appUrlResolver', UrlResolveMock);
+                });
+*/
+
+/*
+                angular.module('utils.appUrlResolver', []).run(function() {
+                                             //if (!executeUrlResolverRunMethod) {
+                                             //return;
+                                             //}
+
+                                             console.log('IN RUN BLOCK2');
+                                             //appUrlResolver.loadData();
+                                         });
+*/
+
+//            });

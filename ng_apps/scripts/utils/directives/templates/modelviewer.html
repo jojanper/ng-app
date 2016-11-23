@@ -1,0 +1,19 @@
+<div class="model-data-container" ng-if="ready">
+  <uib-tabset style="color: #000">
+    <uib-tab heading="Details">
+      <div style="margin-top: 10px;">
+        <app-form read-only="true" submit-label="Send" clear-label="Clear" name="modelEdit" model="model" submit-fn="submit(data, url, success)"></app-form>
+      </div>
+    </uib-tab>
+    <uib-tab heading="Change history">
+      <div style="margin-top: 10px;">
+        <app-table no-column-hide no-visibility hide-title="Change history" model="{{ model.$name }}"
+                   model-id="{{ model.id }}" url-resolver="historyUrl" dt-server-side="true"
+                   theme="bootstrap-simple" dt-length-menu="[5,10]" dt-order="[[0, 'asc']]">
+          <app-column title="Modified By" data="modified_by"></app-column>
+          <app-column title="Last Modified" render-last-modified="true"></app-column>
+        </app-table>
+      </div>
+    </uib-tab>
+  </uib-tabset>
+</div>

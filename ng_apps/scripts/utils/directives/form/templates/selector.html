@@ -1,0 +1,10 @@
+<ui-select name="[[nameRef]]" ng-model="[[modelRef]]" theme="select2" ng-disabled="$form.readOnlyInput(this)"
+           sortable="true" style="min-width: 300px; display: block; clear: both;" [[directiveRef]]
+           on-select="onChange($item, $model)" ng-model-options="ngModelOptions">
+  <ui-select-match placeholder="{{ placeholder }}">
+    <div ng-bind-html="getViewValue($select.selected)"></div>
+  </ui-select-match>
+  <ui-select-choices repeat="item in getSelections() | filter: $select.search">
+    <div ng-bind-html="getViewValue(item) | highlight: $select.search"></div>
+  </ui-select-choices>
+</ui-select>

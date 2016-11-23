@@ -1,0 +1,8 @@
+<app-table hide-title="Uploaded media" model="upload" dt-server-side="true" theme="bootstrap"
+           dt-length-menu="[5,10,15]" dt-order="[[1, 'asc']]" actions-menu action="upload"
+           actions-title="Media actions">
+  <app-column title="Name" data="name" render-app-link="name" link-name="upload.edit" link-id="id"></app-column>
+  <app-column title="Created" data="created" render-last-modified="created"></app-column>
+  <app-column title="Last Modified" data="last_modified" render-last-modified="true"></app-column>
+  <app-column title="Actions" data="actions" render-actions></app-column>
+</app-table>

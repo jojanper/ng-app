@@ -1,0 +1,65 @@
+<div class="file-upload-container">
+  <div ng-if="layout === 'form'">
+    <app-form no-edit no-cancel no-status no-submit name="uploadform" model="fileModel">
+      <app-input ref="file"></app-input>
+    </app-form>
+  </div>
+  <div ng-if="layout === 'dropbox'">
+    <div class="drop-box" ngf-drop="" ngf-select="" ng-model="fileModel.file" ngf-change="fileChanged($files)"
+         ngf-multiple="true" ngf-drag-over-class="dragover">
+      <span>Click to select files or drop files here</span>
+    </div>
+  </div>
+
+  <button title="Start file uploding" class="btn btn-medium btn-primary" ng-click="upload()">
+    <i class="glyphicon glyphicon-upload"></i>
+    <span>Start upload</span>
+  </button>
+  <button title="Cancel all ongoing uploads" class="btn bbtn-medium btn-warning cancel" ng-click="cancelAll()">
+    <i class="glyphicon glyphicon-ban-circle"></i>
+    <span>Cancel all</span>
+  </button>
+  <button title="Deselect all uploads" class="btn btn-medium btn-danger delete" ng-click="removeAll()">
+    <i class="glyphicon glyphicon-trash"></i>
+    <span>Remove all</span>
+  </button>
+
+  <table ng-if="uploadFiles.length" class="table table-hover table-striped table-bordered">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Size</th>
+        <th>Progress</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in uploadFiles">
+        <td>
+          <span ng-if="item.delete" title="Remove file" class="active-red glyphicon glyphicon-trash"
+                ng-click="removeItem(item)"></span>
+          <span ng-if="item.uploading" title="Cancel upload" class="active-yellow glyphicon glyphicon-ban-circle"
+                ng-click="cancelUpload(item)"></span>
+          <img ng-if="item.uploaded" title="Upload succeeded" src="/static/img/checked.png" width="20px" height="20px">
+          <span ng-if="item.statusText" title="Failed" class="active-red glyphicon glyphicon-remove"></span>
+        </td>
+        <td>
+          <div ng-if="item.fileInfo.isImage === true">
+            <img uib-tooltip="{{ item.statusText }}" ng-src="{{ item.thumbSrc }}" width="50px" height="50px"> {{ item.fileInfo.name }}</img>
+          </div>
+          <div uib-tooltip="{{ item.statusText }}" ng-if="item.fileInfo.isImage === false">{{ item.file.name }}</div>
+        </td>
+        <td>{{ item.fileInfo.type }}</td>
+        <td>{{ item.fileInfo.size }}</td>
+        <td>
+          <uib-progressbar ng-if="item.uploading || item.uploaded" style="float left;" animate="false"
+                           value="item.uploadProgress" type="success">
+            <b>{{ item.uploadProgress }}%</b>
+          </uib-progressbar>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div ng-transclude></div>
+</div>

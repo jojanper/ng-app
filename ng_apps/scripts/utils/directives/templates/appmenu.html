@@ -1,0 +1,8 @@
+<div class="tabs">
+  <ul>
+    <li ng-if="menuItem.display" ng-repeat="menuItem in menuItems">
+      <a ui-sref="{{menuItem.link}}" active-tab="/{{menuItem.link}}">{{menuItem.display}}</a>
+    </li>
+  </ul>
+  <hr>
+</div>

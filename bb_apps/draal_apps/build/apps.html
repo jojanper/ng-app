@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>App collections</title>
+{% endblock %}
+
+{% load jsonify %}
+
+{% block requirejs-tag %}
+<style>
+  .tabs > ul {
+      padding: 0;
+      margin: 0;
+  }
+
+  #example22 tr.even {
+      background-color: #fff;
+  }
+</style>
+<link href="{{ STATIC_URL }}css/js_tabs.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/static/css/alert-boxes.css" />
+<link rel="stylesheet" type="text/css" href="{{ APP_PREFIX }}css/draal.min.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="{{ APP_PREFIX }}css/jquery-ui.min.css" media="screen" />
+
+<script>
+  var require = {
+    config: {
+      'app': {
+        'config': {{ apps_config|jsonify|safe }}
+      }
+    }
+  };
+</script>
+<script data-main="{{ STATIC_URL }}scripts/main" src="{{ APP_PREFIX }}scripts/app_bundle.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<div id="alert-messages-wrapper"></div>
+<div id="app-dialog"></div>
+
+<div id="tabContainer" class="">
+  <div class="tabs">
+    <ul>
+      <li id="tabHeader_1" title="View video thumbnails">
+        <a href="/apps/#!/video-thumbs/">Thumbnails</a>
+      </li>
+      <li id="tabHeader_2" title="Site messages">
+        <a href="/apps/#!/site-messages/">Site messages</a>
+      </li>
+      <li id="tabHeader_3" title="Extract images from video">
+        <a href="/apps/#!/media-tasks/">Video2Image</a>
+      </li>
+      <li id="tabHeader_4" title="Crop images">
+        <a href="/apps/#!/image-crop/">Image cropping</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="tabscontent">
+    <div class="tabpage" id="tabpage_1">
+      <div id="appview"></div>
+      <div id="newsview"></div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

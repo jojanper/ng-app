@@ -1,0 +1,21 @@
+{
+  "name": "thumbnails",
+  "version": "0.0.1",
+  "main": "thumbnails.js",
+  "ignore": [
+    "components",
+    "test",
+    "build"
+  ],
+  "dependencies": {
+    "jquery": "latest",
+    "backbone-amd": "latest",
+    "underscore-amd": "latest",
+    "backbone.localStorage": "latest",
+    "requirejs-text": "latest",
+    "framework": "../framework"
+  },
+  "devDependencies": {
+    "requirejs": "latest"
+  }
+}

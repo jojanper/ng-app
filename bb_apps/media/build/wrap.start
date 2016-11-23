@@ -1,0 +1,9 @@
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD.
+        define(['jquery', 'underscore', 'app_framework', 'backbone', 'backbone.localStorage', 'backbone.subroute'], factory);
+    } else {
+        // Browser globals
+        root.Media = factory(root.$, root._, root.Framework, root.Backbone, root.Backbone.LocalStorage, root.Backbone.Subroute);
+    }
+}(this, function ($, _, Framework, Backbone) {

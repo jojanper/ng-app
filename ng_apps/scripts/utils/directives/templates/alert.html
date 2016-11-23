@@ -1,0 +1,43 @@
+<div id="alert-messages-internal-wrapper" ng-switch="alertType">
+
+  <div class="apps-alert-box apps-error" ng-switch-when="error">
+    <div class="apps-alert-close-wrapper">
+      <remove-on-click close-id="#alert-messages-internal-wrapper"
+                       close-speed="{{ closeSpeed }}"
+                       class="apps-alert-close"
+                       title="Close message"></remove-on-click>
+    </div>
+    <div class="alert-message-body"><p><span>error: </span><read-more ng-bind-html="msgBody"></read-more></p></div>
+  </div>
+
+  <div class="apps-alert-box apps-success" ng-switch-when="success">
+    <div class="apps-alert-close-wrapper">
+      <remove-on-click close-id="#alert-messages-internal-wrapper"
+                       close-speed="{{ closeSpeed }}"
+                       class="apps-alert-close"
+                       title="Close message"></remove-on-click>
+    </div>
+    <div class="alert-message-body"><p><span>success: </span><read-more ng-bind-html="msgBody"></read-more></p></div>
+    <div data-dd-collapse-text="100">{{ msgBody }}</div>
+  </div>
+
+  <div class="apps-alert-box apps-warning" ng-switch-when="warning">
+    <div class="apps-alert-close-wrapper">
+      <remove-on-click close-id="#alert-messages-internal-wrapper"
+                       close-speed="{{ closeSpeed }}"
+                       class="apps-alert-close"
+                       title="Close message"></remove-on-click>
+    </div>
+    <div class="alert-message-body"><p><span>warning: </span><read-more ng-bind-html="msgBody"></read-more></p></div>
+  </div>
+
+  <div class="apps-alert-box apps-notice" ng-switch-when="notice">
+    <div class="apps-alert-close-wrapper">
+      <remove-on-click close-id="#alert-messages-internal-wrapper"
+                       close-speed="{{ closeSpeed }}"
+                       class="apps-alert-close"
+                       title="Close message"></remove-on-click>
+    </div>
+    <div class="alert-message-body"><p><span>notice: </span><read-more ng-bind-html="msgBody"></read-more></p></div>
+  </div>
+</div>

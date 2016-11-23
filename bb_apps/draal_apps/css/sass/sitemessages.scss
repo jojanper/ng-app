@@ -1,0 +1,9 @@
+a.expander {
+  font-size: 100%;
+  color: #666;
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
+    color: #333;
+  }
+}

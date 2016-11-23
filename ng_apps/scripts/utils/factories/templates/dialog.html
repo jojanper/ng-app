@@ -1,0 +1,15 @@
+<div ng-if="modalOptions.headerText" class="modal-header">
+  <h3>{{ modalOptions.headerText }}</h3>
+</div>
+<div class="modal-body">
+  <!-- Inline template for the dialog. -->
+  <p ng-if="modalOptions.inlineTemplate">[[TEMPLATE]]</p>
+  <!-- Bind simple HTML to dialog. -->
+  <p ng-if="!modalOptions.bodyTemplate && !modalOptions.inlineTemplate" ng-bind-html="modalOptions.bodyText"></p>
+  <!-- Include HTML as template URL to dialog. -->
+  <p ng-if="modalOptions.bodyTemplate && !modalOptions.inlineTemplate" ng-include src="templateUrl()"></p>
+</div>
+<div class="modal-footer">
+  <button type="button" ng-if="modalOptions.closeButtonText" class="btn" ng-click="close()">{{ modalOptions.closeButtonText }}</button>
+  <button class="btn btn-primary" ng-if="modalOptions.actionButtonText" ng-click="ok()">{{ modalOptions.actionButtonText }}</button>
+</div>

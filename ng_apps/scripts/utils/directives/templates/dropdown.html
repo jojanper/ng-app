@@ -1,0 +1,39 @@
+<div class="btn-group" uib-dropdown is-open="status.isopen" auto-close="{{ autoClose }}" on-toggle="toggled(open)">
+
+  <div ng-if="!noTitle">
+    <button uib-tooltip="{{ tooltipText }}" ng-if="dropdownElement === 'button'" type="button" class="btn btn-primary dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled">
+      {{ dynTitle || title }} <span class="caret"></span>
+    </button>
+    <div uib-tooltip="{{ tooltipText }}" ng-if="dropdownElement === 'transparent'" class="dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled">
+      {{ dynTitle || title }} <span class="caret"></span>
+    </div>
+  </div>
+  <div ng-if="noTitle">
+    <button uib-tooltip="{{ tooltipText }}" ng-if="dropdownElement === 'button'" type="button" class="btn btn-primary dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled">
+      <span class="caret"></span>
+    </button>
+    <div uib-tooltip="{{ tooltipText }}" ng-if="dropdownElement === 'transparent'" class="dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled">
+      <span class="caret"></span>
+    </div>
+  </div>
+
+  <ul ng-if="type === 'default'" class="dropdown-menu">
+    <li ng-repeat="item in menuItems" ng-class="{'divider': item.divider}">
+      <a ng-if="!item.link && (!item.$$checked || noCheckStatus === true)" ng-click="callback(item)">{{ item.text }}</a>
+      <a ng-if="!item.link && (item.$$checked && noCheckStatus !== true)" ng-click="callback(item)">&#10004; {{ item.text }}</a>
+      <a ng-if="item.link && !item.divider" href="{{ item.link }}">{{ item.text }}</a>
+    </li>
+  </ul>
+
+  <ul ng-if="type === 'checkbox'" class="dropdown-menu" ng-click="$event.stopPropagation()">
+    <li ng-repeat="item in menuItems">
+      <div class="checkbox dropdown-checkbox">
+        <label><input type="checkbox" checkbox-change="callback(item, checked)"> {{ item.text }}</label>
+      </div>
+    </li>
+    <li>
+      <button type="button" title="Close menu" class="btn btn-xs btn-link dropdown-checkbox" ng-click="closeMenu()">Done</button>
+    </li>
+  </ul>
+
+</div>

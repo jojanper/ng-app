@@ -1,0 +1,32 @@
+{
+    "name": "Angular.js Apps",
+    "version": "0.0.1",
+    "dependencies": {
+        "jquery": "2.1.4",
+        "jquery-ui": "1.11.4",
+        "DataTables": "1.10.9",
+        "jquery-timeago": "1.4.1",
+        "underscore-amd": "latest",
+        "angular": "1.4.0",
+        "angular-route": "1.4.0",
+        "angular-resource": "1.4.0",
+        "angular-ui-router": "0.2.15",
+        "angular-ui-select": "0.16.1",
+        "angular-loading-bar": "0.8.0",
+        "angular-sanitize": "1.4.0",
+        "angular-bootstrap": "0.14.3",
+        "ng-file-upload": "11.0.0",
+        "angular-specs": "0.0.1",
+        "angular-scenario": "1.4.0",
+        "jasmine": "2.3.4",
+        "jasmine-as-promised": "0.0.5",
+        "sinon": "1.17.0",
+        "requirejs": "2.1.20",
+        "requirejs-domready": "2.0.1",
+        "requirejs-text": "2.0.14",
+        "flowplayer-flash": "3.2.18"
+    },
+  "resolutions": {
+    "jasmine": "2.3.4"
+  }
+}

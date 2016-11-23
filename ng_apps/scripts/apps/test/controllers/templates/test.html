@@ -1,0 +1,59 @@
+<div ng-controller="TestController">
+
+  <uib-tabset style="margin-top: 10px;">
+    <uib-tab heading="Dropdowns and dialogs">
+      <div style="margin-top: 10px;">
+        <button class="btn" ng-click="addError()">Show error message</button>
+
+        <menu-dropdown title="Dropdown menu" auto-close="always" menu-items="menuItems"></menu-dropdown>
+
+        <checkbox-menu-dropdown dropdown-element="transparent"
+                                title="Show columns"
+                                on-change="checkboxOnChange"
+                                checkbox-items="checkboxMenuItems"></checkbox-menu-dropdown>
+
+        <button class="btn" ng-click="openDialog()">Launch dialog</button>
+
+        <button class="btn" ng-click="openTemplateDialog()">Launch dialog with template</button>
+
+        <app-dialog launch-title="Launch dialog with form">
+          <app-form submit-label="Send" clear-label="Reset" name="appFormObject" model="objectData"
+                    submit-fn="testSubmit(data)" in-dialog>
+            <!--app-input read-ref="objectData.$types.name" ref="objectData.name" object></app-input-->
+            <app-input ref="objectData"></app-input>
+          </app-form>
+        </app-dialog>
+
+        <app-dialog launch-title="Launch dialog with text">
+          Hello
+        </app-dialog>
+      </div>
+    </uib-tab>
+    <uib-tab heading="File upload (dropbox layout)">
+      <div style="margin-top: 10px;">
+        <file-upload layout="dropbox" upload-api="{{ uploadApi }}" file-form-data-name="file"></file-upload>
+      </div>
+    </uib-tab>
+    <uib-tab heading="File upload (form layout)">
+      <div style="margin-top: 10px;">
+        <file-upload layout="form" upload-api="{{ uploadApi }}" file-form-data-name="file"></file-upload>
+      </div>
+    </uib-tab>
+    <uib-tab heading="Partial form">
+      <div style="margin-top: 10px;">
+        <app-form submit-label="Send" clear-label="Reset" name="partialForm" model="partialData"
+                  submit-fn="testSubmit(data)">
+          <app-input ref="name"></app-input>
+        </app-form>
+        <pre>{{ partialData.name | json}}</pre>
+      </div>
+    </uib-tab>
+
+    <uib-tab heading="Datatables">
+      <div style="margin-top: 10px;">
+      </div>
+    </uib-tab>
+
+  </uib-tabset>
+
+</div>

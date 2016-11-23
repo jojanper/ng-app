@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>App collections</title>
+{% endblock %}
+
+{% load jsonify %}
+
+{% block requirejs-tag %}
+<script>
+  backendConfig = {{ apps_config|jsonify|safe }};
+</script>
+
+<!-- replace-tag -->
+{% endblock %}
+
+{% block content %}
+
+<div id="tabContainer" class="">
+  <app-main-menu></app-main-menu>
+
+  <div class="tabscontent">
+    <breadcrumb></breadcrumb>
+    <app-messages></app-messages>
+    <visibility-viewer></visibility-viewer>
+    <div ui-view></div>
+  </div>
+</div>
+{% endblock %}

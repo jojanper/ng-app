@@ -1,0 +1,75 @@
+# Unit tests
+unittest:
+  description: 'run unit tests'
+  tasks:
+    - 'karma:runner'
+
+# Code style and static analysis
+code-checker:
+  description: 'Code style and static analysis.'
+  tasks:
+    - 'jshint:jshint'
+    - 'jscs:jscs'
+
+# Code documentation
+docs:
+  description: 'Generate code documentation.'
+  tasks:
+    - 'ngdocs:dist'
+    - 'jsdoc:dist'
+
+# Code quality; style + analysis + tests
+code-quality:
+  description: 'Code quality gating.'
+  tasks:
+    - code-checker
+    - unittest
+
+# Clean distribution code
+dist-clean:
+  description: 'Clean distribution code.'
+  tasks:
+    - 'bgShell:app_clean'
+
+# Clean build
+build-clean:
+  description: 'Clean CI build data.'
+  tasks:
+    - dist-clean
+    - 'clean:build_clean'
+
+# Build production code
+dist:
+  description: 'Build release package'
+  tasks:
+    - build-clean
+    - 'requirejs:js_dist'
+    - 'replace:dist_template'
+    - 'bgShell:copy_app_template'
+
+# Build development code
+dev:
+  description: 'Build development package'
+  tasks:
+    - build-clean
+    - 'replace:dev_template'
+    - 'bgShell:copy_app_template'
+
+# Push local changes to master
+push-master:
+  description: 'Push local changes to origin.'
+  tasks:
+    - 'bgShell:push_2_master'
+
+# Continuous CI build
+cibuild:
+  description: 'Continuous Integration (CI) build.'
+  tasks:
+    - 'clean:build_clean'
+    - code-quality
+    - 'shell:jshint_path_fix'
+
+shell-test:
+  description: 'Run shell test script.'
+  tasks:
+    - 'shell:shelljs_test:4 5'

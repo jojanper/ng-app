@@ -1,0 +1,37 @@
+<div id="alert-messages-internal-wrapper">
+  <% if (msgType === "error") { %>
+  <div class="apps-alert-box apps-error">
+    <div class="apps-alert-close-wrapper">
+      <div class="apps-alert-close" id="<%= viewId %>" title="Close message"></div>
+    </div>
+    <div class="alert-message-body"><p><span>error: </span><%= msgBody %></p></div>
+  </div>
+  <% } %>
+
+  <% if (msgType === "success") { %>
+  <div class="apps-alert-box apps-success">
+    <div class="apps-alert-close-wrapper">
+      <div class="apps-alert-close" id="<%= viewId %>" title="Close message"></div>
+    </div>
+    <div class="alert-message-body"><p><span>success: </span><%= msgBody %></p></div>
+  </div>
+  <% } %>
+
+  <% if (msgType === "warning") { %>
+  <div class="apps-alert-box apps-warning">
+    <div class="apps-alert-close-wrapper">
+      <div class="apps-alert-close" id="<%= viewId %>" title="Close message"></div>
+    </div>
+    <div class="alert-message-body"><p><span>warning: </span><%= msgBody %></p></div>
+  </div>
+  <% } %>
+
+  <% if (msgType === "notice") { %>
+  <div class="apps-alert-box apps-notice">
+    <div class="apps-alert-close-wrapper">
+      <div class="apps-alert-close" id="<%= viewId %>" title="Close message"></div>
+    </div>
+    <div class="alert-message-body"><p><span>notice: </span><%= msgBody %></p></div>
+  </div>
+  <% } %>
+</div>

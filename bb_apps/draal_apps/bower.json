@@ -1,0 +1,10 @@
+{
+  "name": "media",
+  "version": "0.0.1",
+  "dependencies": {
+    "requirejs": "latest",
+    "jquery": "latest",
+    "media": "../media",
+    "framework": "../framework"
+  }
+}

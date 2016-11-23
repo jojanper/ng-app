@@ -1,0 +1,32 @@
+    //Register in the values from the outer closure for common dependencies
+    //as local almond modules
+    define('jquery', function () {
+        return $;
+    });
+    define('underscore', function () {
+        return _;
+    });
+    define('backbone', function () {
+        return Backbone;
+    });
+    define('backbone.localStorage', function () {
+        return Backbone.LocalStorage;
+    });
+    define('backbone.subroute', function () {
+        return Backbone.Subroute;
+    });
+    define('tpl', function () {
+        return function () {};
+    });
+    define('text', function () {
+        return function () {};
+    });
+    define('framework', function () {
+        return Framework;
+    });
+
+    //Use almond's special top-level, synchronous require to trigger factory
+    //functions, get the final module value, and export it as the public
+    //value.
+    return require('main');
+}));

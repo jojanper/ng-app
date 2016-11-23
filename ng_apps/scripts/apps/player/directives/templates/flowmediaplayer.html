@@ -1,0 +1,10 @@
+<div class="col-md-8">
+  <video-player model="{{ model }}" options="options"></video-player>
+</div>
+<div class="col-md-4">
+  <app-table class="media-player-list" dt-server-side="true" no-column-hide no-visibility model="{{ model }}"
+             options="options3" theme="bootstrap" dt-length-menu="[5,10,15]" dt-paging-type="simple"
+             dt-language="{info: '_START_ to _END_ of _TOTAL_ entries', infoFiltered: ''}">
+    <app-column title="Video" render="mediaDetails"></app-column>
+  </app-table>
+</div>
