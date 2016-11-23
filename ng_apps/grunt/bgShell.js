@@ -33,9 +33,7 @@ module.exports = function() {
             },
             cmd: [
                 'git push origin master',
-                'git subtree push -P www/angular angular master',
                 'git push bitbucket master',
-                'git subtree push -P www/angular bitbucket_angular master;'
             ].join(';')
         }
     };
