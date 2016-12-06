@@ -353,7 +353,7 @@
 
 
                 // WHEN restoring table visibility
-                AppTestUtils.click(this.$element.find('a')[0], this.$scope);
+                AppTestUtils.click(this.$element.find('.visibility-restore')[0], this.$scope);
 
                 // THEN table should be visible
                 expect($(this.$element[1]).hasClass('hidden')).toBeFalsy();

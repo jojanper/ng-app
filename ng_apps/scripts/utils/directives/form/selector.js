@@ -263,7 +263,7 @@ define([
                 $scope.onChange = function($item, $model) {
                     self.options.onChange($item);
                 };
-            };
+            }
         },
 
         _customErrors: function($scope) {

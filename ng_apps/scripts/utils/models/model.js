@@ -145,9 +145,9 @@ define([
          *
          * @param {String} fieldName Field name
          * @param {Object} $scope Scope object
-         * @param {Class} fieldResetCls Field reset implementation in case model does not support the field reset.
+         * @param {Class} FieldResetCls Field reset implementation in case model does not support the field reset.
          */
-        formReset: function(fieldName, $scope, fieldResetCls) {
+        formReset: function(fieldName, $scope, FieldResetCls) {
             var data = ng.extend({
                 name: fieldName,
                 formName: $scope.name
@@ -156,7 +156,7 @@ define([
             if (data.editable !== false) {
                 // If model does not support input field reset, then use the form specific reset
                 if (!this.reset(data.name)) {
-                    new fieldResetCls($scope, data).resetValue(this, data.name);
+                    new FieldResetCls($scope, data).resetValue(this, data.name);
                 }
             }
         }

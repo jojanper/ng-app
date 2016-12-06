@@ -77,9 +77,9 @@ define([
                 // Submit button
                 if (!tAttrs.hasOwnProperty('noSubmit')) {
                     html += htmlLib.button(tAttrs.submitLabel || 'Submit', {
-                        class: 'btn btn-primary',
+                        class: 'draal-button-md',
                         'ng-click': 'submit(' + name + ')',
-                        'ng-show': "!readOnly",
+                        'ng-show': "!readOnly && canSubmit()",
                         'uib-tooltip': "Save changed items",
 
                         // Submit not allowed when invalid form
@@ -90,7 +90,7 @@ define([
                 // Form clear/reset button
                 if (tAttrs.clearLabel) {
                     html += ' ' + htmlLib.button(tAttrs.clearLabel, {
-                        class: 'btn btn-primary',
+                        class: 'draal-button-md',
                         'ng-click': 'clear()',
                         'ng-disabled': "readOnly",
                         'ng-show': "!readOnly",
@@ -101,7 +101,7 @@ define([
                 // Turn form into editable mode
                 if (!tAttrs.hasOwnProperty('noEdit') && !tAttrs.hasOwnProperty('viewOnly')) {
                     html += ' ' + htmlLib.button('Edit', {
-                        class: 'btn btn-primary',
+                        class: 'draal-button-md',
                         'ng-click': 'edit()',
                         'ng-show': "readOnly",
                         'uib-tooltip': "Edit the items"
@@ -111,7 +111,7 @@ define([
                 // Cancel any changes made to form and go back to non-editable mode
                 if (!tAttrs.hasOwnProperty('noCancel')) {
                     html += ' ' + htmlLib.button('Cancel', {
-                        class: 'btn btn-primary',
+                        class: 'draal-button-md',
                         'ng-click': 'cancel()',
                         'ng-show': "!readOnly",
                         'uib-tooltip': "Back to non-editable view"
@@ -222,7 +222,7 @@ define([
                     var status = $scope.readOnly;
                     if (!status) {
                         // Check the input status regarding editability
-                        status = (inputObj.options.editable == false) ? true : false;
+                        status = (inputObj.options.editable === false) ? true : false;
                     }
                     return status;
                 };
