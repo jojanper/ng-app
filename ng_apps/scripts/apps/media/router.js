@@ -9,7 +9,8 @@ define([
     return [
         // Main view, no listing available
         {
-            link: 'media',
+            link: 'admin',
+            linkMap: 'media',
             display: 'Admin',
             default: true,
             template: function() { return baseListTemplateFn(''); }
@@ -20,7 +21,7 @@ define([
         {
             link: 'upload',
             breadcrumb: 'Uploaded media',
-            parent: 'media',
+            parent: 'admin',
             template: function() { return baseListTemplateFn(UploadListTemplate); }
         },
         // Upload editing view
@@ -36,7 +37,7 @@ define([
         {
             link: 'mediafolder',
             breadcrumb: 'Media folder',
-            parent: 'media',
+            parent: 'admin',
             template: function() { return baseListTemplateFn(MediaListTemplate); }
         },
 

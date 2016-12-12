@@ -171,6 +171,16 @@ define([
         return this.charAt(0).toLowerCase() + this.slice(1);
     };
 
+    /**
+     * Polyfill in case startsWith() implementation within String.prototype is not available.
+     */
+    if (!String.prototype.startsWith) {
+        String.prototype.startsWith = function(searchString, position){
+            position = position || 0;
+            return this.substr(position, searchString.length) === searchString;
+        };
+    }
+
 
     /**
      * Set model's input field value.

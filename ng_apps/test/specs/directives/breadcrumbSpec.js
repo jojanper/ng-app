@@ -43,7 +43,7 @@
 
                 // WHEN switching to mediafolder model item details page
                 var id = '4';
-                this.$location.path('media/mediafolder/' + id);
+                this.$location.path('admin/mediafolder/' + id);
                 this.$scope.$root.$broadcast('$stateChangeSuccess');
                 this.$scope.$root.$digest();
 

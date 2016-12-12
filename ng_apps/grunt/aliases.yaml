@@ -67,7 +67,6 @@ cibuild:
   tasks:
     - 'clean:build_clean'
     - code-quality
-    - 'shell:jshint_path_fix'
 
 shell-test:
   description: 'Run shell test script.'

@@ -2,6 +2,15 @@ define([
 ], function () {
     "use strict";
 
+    function getAppLabel(state) {
+        var appLabel = state.linkMap;
+        if (!appLabel) {
+            appLabel = state.link;
+        }
+
+        return appLabel;
+    }
+
     var name = 'utilsfactory';
 
     /**
@@ -52,10 +61,13 @@ define([
                 }
 
                 /*
-                 * Determine the available application models that fall under the root configuration page
+                 * Determine the available application models that fall under the root configuration page.
+                 * The label used for this analysis is either the link or linkMap property within the
+                 * currect page state object. This allows to use different display name in UI (link) compared
+                 * to name used in backend (linkMap).
                  */
                 var routeConfigs = $state.get();
-                appUrlResolver.appSubModels(appState.link, function(subModels) {
+                appUrlResolver.appSubModels(getAppLabel(appState), function(subModels) {
 
                     // Include all available application models
                     for (var i = 0; i < subModels.length; i++) {
@@ -63,7 +75,7 @@ define([
                         // Display name of the application model
                         var text = '';
                         for (var j = 0; j < routeConfigs.length; j++) {
-                            if (routeConfigs[j].link === subModels[i]) {
+                            if (getAppLabel(routeConfigs[j]) === subModels[i]) {
                                 text = routeConfigs[j].display || routeConfigs[j].breadcrumb;
                                 break;
                             }
@@ -73,7 +85,7 @@ define([
                          * If the current page has the same prefix as the application model in question,
                          * then save the display name of the model that is valid for current page.
                          */
-                        if ($state.$current.link.startsWith(subModels[i])) {
+                        if (getAppLabel($state.$current).startsWith(subModels[i])) {
                             selectedModelDisplayName = text;
                         }
 

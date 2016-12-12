@@ -2,10 +2,11 @@
     "use strict";
 
     var dependencies = [
-        'bootstrap'
+        'bootstrap',
+        'common/utils'
     ];
 
-    define(dependencies, function(AppBootstrap) {
+    define(dependencies, function(AppBootstrap, UtilsLib) {
 
         var appName = 'app';
 
@@ -33,10 +34,13 @@
 
                 setTimeout(function() {
                     // THEN element should have background image
-                    var url = 'url("' + img + '")';
-                    expect($element.prop('style')['backgroundImage']).toEqual(url);
+                    var target = $element.prop('style')['backgroundImage'];
+                    target = UtilsLib.Strings.replaceAll(target, 'url(', '');
+                    target = UtilsLib.Strings.replaceAll(target, ')', '');
+                    target = UtilsLib.Strings.replaceAll(target, '"', '');
+                    expect(target).toContain(img);
                     done();
-                }, 600);
+                }, 800);
             });
         });
     });
