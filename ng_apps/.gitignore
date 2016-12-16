@@ -1,0 +1,8 @@
+components
+test_reports
+jshint.xml
+ng-templates/ng-apps.html
+node_modules
+.vscode
+docs
+dist
