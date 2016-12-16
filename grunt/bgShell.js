@@ -22,19 +22,6 @@ module.exports = function() {
                 cwd: '.'
             },
             cmd: 'cp <%= appMainTemplate %> <%= distPath %>'
-        },
-
-        /*
-         * Push local (master) branch to remote master. Push to subtree remotes also.
-         */
-        push_2_master: {
-            execOpts: {
-                cwd: '../../'
-            },
-            cmd: [
-                'git push origin master',
-                'git push bitbucket master',
-            ].join(';')
         }
     };
 };

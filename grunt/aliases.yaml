@@ -55,12 +55,6 @@ dev:
     - 'replace:dev_template'
     - 'bgShell:copy_app_template'
 
-# Push local changes to master
-push-master:
-  description: 'Push local changes to origin.'
-  tasks:
-    - 'bgShell:push_2_master'
-
 # Continuous CI build
 cibuild:
   description: 'Continuous Integration (CI) build.'
