@@ -32,7 +32,7 @@ module.exports = function(config) {
             // Load these files in this order...
             'components/jquery/dist/jquery.js',
             'components/angular/angular.js',
-            '../node_modules/angular-mocks/angular-mocks.js',
+            'node_modules/angular-mocks/angular-mocks.js',
 
             // Templates for loading via templateUrl
             "ng-templates/**/*.html",
