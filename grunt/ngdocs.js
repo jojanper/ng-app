@@ -4,7 +4,7 @@
 module.exports = function() {
     return {
         options: {
-            dest: 'docs/ng-docs',
+            dest: '<%= docsPath %>/ng-docs',
             deferLoad: false,
             html5Mode: false,
             scripts: [
@@ -14,7 +14,7 @@ module.exports = function() {
         },
         dist: {
             src: ['scripts/utils/**/*.js'],
-            title: 'Draal UI components documentation'
+            title: 'Draal Angular components documentation'
         }
     };
 };

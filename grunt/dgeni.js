@@ -6,7 +6,7 @@ module.exports = function() {
         options: {
             basePath: '<%= appPath %>'
         },
-        dest: 'docs/dgeni-docs',
+        dest: '<%= docsPath %>/dgeni-docs',
         src: ['scripts/utils/**/*.js']
     };
 };

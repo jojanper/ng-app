@@ -8,7 +8,10 @@
  *  1 ) configures NodeJS Karma server with frameworks: Jasmine and RequireJS
  *  2 ) auto-loads the jQuery, AngularJS, and AngularJS Mock libs
  *  3 ) configures paths that should be included in the browser using <script> tag? or loaded them manually, eg. using Require.js.
-*/
+ */
+
+var path = require('path');
+var appConfig = require('../env.js');
 
 module.exports = function(config) {
     config.set({
@@ -116,13 +119,13 @@ module.exports = function(config) {
         // By adding this reporter to your karma configuration, unit test results will be
         // exported as a styled HTML file. For each test browser, a separate table is generated.
         htmlReporter: {
-            outputFile: 'test_reports/units.html'
+            outputFile: path.join(appConfig.testReportsFolder, 'units.html')
         },
 
 
         coverageReporter: {
             // specify a common output directory
-            dir: 'test_reports/coverage',
+            dir: path.join(appConfig.testReportsFolder, 'coverage'),
             reporters: [
                 // reporters not supporting the `file` property
                 { type: 'html', subdir: 'report-html' },

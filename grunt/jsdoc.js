@@ -3,7 +3,7 @@ module.exports = function() {
         dist : {
             src: ['scripts/**/*.js', '!scripts/**/directives/*.js'],
             options: {
-                destination: 'docs/js-docs'
+                destination: '<%= docsPath %>/js-docs'
             }
         }
     };

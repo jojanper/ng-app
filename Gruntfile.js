@@ -1,10 +1,10 @@
 require('shelljs/global');
+var path = require('path');
+var config = require('./env.js');
 
-var testReportsFolder = 'test_reports';
-mkdir('-p', testReportsFolder);
+mkdir('-p', config.testReportsFolder);
 
 module.exports = function(grunt) {
-    var path = require('path');
 
     if (grunt.option('jenkins')) {
         process.env.IS_JENKINS = true;
@@ -39,9 +39,10 @@ module.exports = function(grunt) {
             distJsName: 'draal-ng-<%= buildDate %>.min.js',
             distJsFile: '<%= distScriptsPath %>/<%= distJsName %>',
 
-            testReportsPath: '<%= appPath %>/' + testReportsFolder,
+            testReportsPath: '<%= appPath %>/' + config.testReportsFolder,
             jsHintXml: '<%= testReportsPath %>/jshint.xml',
-            jsCSXml: '<%= testReportsPath %>/jshint_jscs.xml'
+            jsCSXml: '<%= testReportsPath %>/jshint_jscs.xml',
+            docsPath: '<%= appPath %>/' + config.docsFolder,
         }
     });
 };
