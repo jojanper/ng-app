@@ -29,7 +29,7 @@ module.exports = function() {
          */
         push_2_master: {
             execOpts: {
-                cwd: '../../../'
+                cwd: '../../'
             },
             cmd: [
                 'git push origin master',
