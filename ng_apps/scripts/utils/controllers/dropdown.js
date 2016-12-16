@@ -50,6 +50,18 @@ define([
             this.$scope.closeMenu = function() {
                 self.$scope.status.isopen = false;
             };
+
+            this.$scope.getMenuClass = function() {
+                // Default opening
+                var cls = 'dropdown-menu';
+
+                // Add right aligned opening
+                if (self.$scope.menuOpen === 'right') {
+                    cls += ' dropdown-menu-right';
+                }
+
+                return cls;
+            };
         }
     });
 

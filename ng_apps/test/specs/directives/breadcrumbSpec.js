@@ -22,7 +22,7 @@
             it('should display page links and application models', function() {
 
                 // GIVEN URL path
-                var path = 'media';
+                var path = 'admin';
 
                 // WHEN switching to media application page
                 this.$location.path(path);

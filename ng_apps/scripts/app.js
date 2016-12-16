@@ -15,12 +15,11 @@ define([
     'ui.select',
     'ngSanitize',
     './apps/test/module',
-    './apps/playlist/module',
     './apps/media/module',
     './apps/player/module',
     './utils/module'
 ], function ($, datatables, readmore, angular, angularRoute, angularResource, angularLoadingBar, AngularBootstrap,
-             angularUiRouter, AngularUiSelect, ngSanitize, TestModule, PlaylistModule, MediaModule, PlayerModule,
+             angularUiRouter, AngularUiSelect, ngSanitize, TestModule, MediaModule, PlayerModule,
              UtilsModule) {
     'use strict';
 
@@ -34,7 +33,6 @@ define([
         'ui.bootstrap',
         UtilsModule,
         TestModule,
-        PlaylistModule,
         MediaModule,
         PlayerModule
     ]);

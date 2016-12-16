@@ -7,7 +7,7 @@ define([
 ], function (angular, $, BaseCtrl, DtOptionsBuilder, DtColumnBuilder) {
     'use strict';
 
-    var PlaylistsController = BaseCtrl.extend({
+    var TestTablesController = BaseCtrl.extend({
         initialize: function() {
             this._buildDtOptions();
             this.options.baseUrl = '/apiv2/generic/media/mediafolder';
@@ -65,7 +65,7 @@ define([
 
     return {
         feature: 'controller',
-        name: 'PlaylistsController',
-        cls: ['$scope', PlaylistsController]
+        name: 'TestTablesController',
+        cls: ['$scope', TestTablesController]
     };
 });

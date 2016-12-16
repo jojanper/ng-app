@@ -4,7 +4,6 @@
 define([
     'apps/player/router',
     'apps/media/router',
-    'apps/playlist/router',
     'apps/test/router'
 ], function() {
 

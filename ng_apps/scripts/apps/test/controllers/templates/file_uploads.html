@@ -1,0 +1,16 @@
+<div ng-controller="TestFileUploadController">
+
+  <uib-tabset style="margin-top: 10px;">
+    <uib-tab heading="File upload (dropbox layout)">
+      <div style="margin-top: 10px;">
+        <file-upload layout="dropbox" upload-api="{{ uploadApi }}" file-form-data-name="file"></file-upload>
+      </div>
+    </uib-tab>
+    <uib-tab heading="File upload (form layout)">
+      <div style="margin-top: 10px;">
+        <file-upload layout="form" upload-api="{{ uploadApi }}" file-form-data-name="file"></file-upload>
+      </div>
+    </uib-tab>
+  </uib-tabset>
+
+</div>

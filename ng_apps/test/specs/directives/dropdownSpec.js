@@ -11,7 +11,7 @@
             var item1Called, title = 'Dropdown menu';
 
             // Instantiate directive.
-            var element = '<menu-dropdown title="' + title + '" menu-items="menuItems"></menu-dropdown>';
+            var element = '<menu-dropdown menu-open="right" title="' + title + '" menu-items="menuItems"></menu-dropdown>';
             AppTestUtils.appTestSetup.call(this, element, function(scope) {
                 scope.menuItems = [
                     {
@@ -48,7 +48,7 @@
                 var actionElement = this.$element.find('ul > li > a');
                 var scope = $(actionElement[0]).scope();
 
-                // Menu is not open when created
+                // Menu is not open after element has been creation
                 expect(element[0].outerHTML).toContain('aria-expanded="false"');
 
                 // Menu is open when clicked
@@ -56,6 +56,9 @@
                 this.$scope.$digest();
                 expect(element[0].outerHTML).toContain('aria-expanded="true"');
                 expect(scope.status.isopen).toBeTruthy();
+
+                // Menu is aligned on the right side
+                expect(this.$element.find('.dropdown-menu').attr('class')).toContain('dropdown-menu-right');
 
                 // Action is called when clicked
                 $(actionElement[0]).click();

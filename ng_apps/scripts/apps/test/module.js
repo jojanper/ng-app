@@ -1,6 +1,9 @@
 define([
     'utils/loader',
-    './controllers/test_controller'
+    './controllers/dropdown_controller',
+    './controllers/fileupload_controller',
+    './controllers/forms_controller',
+    './controllers/tables_controller'
 ], function (ModuleLoader) {
 
     return new ModuleLoader({

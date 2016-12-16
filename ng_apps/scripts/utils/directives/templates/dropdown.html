@@ -17,7 +17,7 @@
     </div>
   </div>
 
-  <ul ng-if="type === 'default'" class="dropdown-menu">
+  <ul ng-if="type === 'default'" ng-class="::getMenuClass()">
     <li ng-repeat="item in menuItems" ng-class="{'divider': item.divider}">
       <a ng-if="!item.link && (!item.$$checked || noCheckStatus === true)" ng-click="callback(item)">{{ item.text }}</a>
       <a ng-if="!item.link && (item.$$checked && noCheckStatus !== true)" ng-click="callback(item)">&#10004; {{ item.text }}</a>
@@ -25,7 +25,7 @@
     </li>
   </ul>
 
-  <ul ng-if="type === 'checkbox'" class="dropdown-menu" ng-click="$event.stopPropagation()">
+  <ul ng-if="type === 'checkbox'" ng-class="::getMenuClass()" ng-click="$event.stopPropagation()">
     <li ng-repeat="item in menuItems">
       <div class="checkbox dropdown-checkbox">
         <label><input type="checkbox" checkbox-change="callback(item, checked)"> {{ item.text }}</label>

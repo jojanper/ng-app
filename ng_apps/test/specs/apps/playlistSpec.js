@@ -9,7 +9,7 @@
 
         var appName = 'app';
 
-        describe('PlaylistsController', function() {
+        describe('TestTablesController', function() {
 
             var $scope, ctrl;
 
@@ -19,7 +19,7 @@
 
                 inject(function($rootScope, $controller) {
                     $scope = $rootScope.$new();
-                    ctrl = $controller('PlaylistsController', {$scope: $scope});
+                    ctrl = $controller('TestTablesController', {$scope: $scope});
                     $rootScope.$apply();
                 });
             });
@@ -47,30 +47,6 @@
 
                 var response = '<a ui_sref="playlists.edit({id:0})">test</a>';
                 expect($scope.options.columns[1].render(null, null, {id: '0', name: 'test'})).toEqual(response);
-            });
-        });
-
-        describe('PlaylisteditController', function() {
-
-            var $scope, ctrl;
-
-            beforeEach(module(appName));
-
-            beforeEach(function() {
-
-                inject(function($rootScope, $controller) {
-                    $scope = $rootScope.$new();
-                    ctrl = $controller('PlaylistEditController', {$scope: $scope});
-                    $rootScope.$apply();
-                });
-            });
-
-            afterEach(function() {
-                $scope.$destroy();
-            });
-
-            it('initializes correctly', function() {
-                expect($scope.dogs.length).toEqual(3);
             });
         });
     });

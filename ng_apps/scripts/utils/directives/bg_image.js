@@ -26,8 +26,8 @@ define([
             link: function($scope, $element, $attrs) {
                 var url = $attrs.draalBgImage;
 
-                // Load speficied background image
-                imagelib.loadImage(url, $scope).then(function(img) {
+                // Load specified background image
+                imagelib.loadImage(url, $scope).then(function(/*image*/) {
                     var scale = "cover"; // 100% auto, contain, cover
 
                     // On success, attach the image as background image to element

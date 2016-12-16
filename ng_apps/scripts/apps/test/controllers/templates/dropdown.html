@@ -1,0 +1,17 @@
+<div ng-controller="TestDropdownController">
+
+  <button class="btn" ng-click="addError()">Show error message</button>
+
+  <menu-dropdown title="Dropdown menu" auto-close="always" menu-items="menuItems"></menu-dropdown>
+
+  <checkbox-menu-dropdown dropdown-element="transparent"
+                          title="Show columns"
+                          on-change="checkboxOnChange"
+                          checkbox-items="checkboxMenuItems"></checkbox-menu-dropdown>
+
+  <button class="btn" ng-click="openDialog()">Launch dialog</button>
+
+  <app-dialog launch-title="Launch dialog with text">
+    Hello
+  </app-dialog>
+</div>

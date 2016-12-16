@@ -34,6 +34,11 @@ define(['text!./templates/dropdown.html'], function (DropdownTemplate) {
      *   * button: Show menu element as button.
      *   * transparent: Show menu as transparent component.
      *
+     * @param {string=} [menuOpen=left] Menu opening behaviour. Supported types:
+     *
+     *   * left (Menu open will be aligned on the left side)
+     *   * right (Menu open will be aligned on the right side)
+     *
      * @param {string=} [autoClose=disabled] Menu closing behaviour. Supported types:
      *
      *   * always
@@ -70,6 +75,7 @@ define(['text!./templates/dropdown.html'], function (DropdownTemplate) {
                     $scope.tooltipText = $attrs.tooltipText || '';
                     $scope.noTitle = $attrs.hasOwnProperty('noTitle') ? true : false;
                     $scope.noCheckStatus = $attrs.hasOwnProperty('noCheckStatus') ? true : false;
+                    $scope.menuOpen = $attrs.menuOpen || 'left';
                 });
             }
         };

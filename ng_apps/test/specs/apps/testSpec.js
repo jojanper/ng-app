@@ -17,7 +17,7 @@
 
             beforeEach(inject(function($rootScope, $controller) {
                 $scope = $rootScope.$new();
-                var ctrl = $controller('TestController', {
+                var ctrl = $controller('TestFormController', {
                     $scope: $scope
                 });
                 $scope.$digest();

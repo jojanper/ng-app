@@ -1,13 +1,45 @@
 define([
-    'text!./controllers/templates/test.html'
-], function (TestTemplate) {
+    '../common/model_list',
+    'text!./controllers/templates/dropdown.html',
+    'text!./controllers/templates/file_uploads.html',
+    'text!./controllers/templates/forms.html',
+    'text!./controllers/templates/tables.html'
+], function (baseListTemplateFn, DropdownTemplate, FileUploadTemplate, FormsTemplate, TablesTemplate) {
     "use strict";
 
     return [
         {
             link: 'test',
             display: 'Test page',
-            template: TestTemplate
+            template: function() { return baseListTemplateFn(''); }
+        },
+
+        {
+            link: 'dropdowns',
+            parent: 'test',
+            breadcrumb: 'Dropdowns and dialogs',
+            template: DropdownTemplate
+        },
+
+        {
+            link: 'file-upload',
+            parent: 'test',
+            breadcrumb: 'File upload',
+            template: FileUploadTemplate
+        },
+
+        {
+            link: 'forms',
+            parent: 'test',
+            breadcrumb: 'Forms',
+            template: FormsTemplate
+        },
+
+        {
+            link: 'datatables',
+            parent: 'test',
+            breadcrumb: 'Datatables',
+            template: TablesTemplate
         },
 
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================

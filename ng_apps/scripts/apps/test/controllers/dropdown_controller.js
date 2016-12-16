@@ -1,9 +1,6 @@
 /* global console: false */
 define([
-    './test_model',
-    'utils/models/upload',
-    'utils/models/model'
-], function (TestModel, FileModel, BaseModel) {
+], function () {
     "use strict";
 
     var errorMsg = 'Test message from controller. I am quite new to AngularJs. I am working on a ' +
@@ -19,9 +16,7 @@ define([
         'rendered with HTML checkbox, and if question type is NUM its answers should be rendered with ' +
         'radio buttons. i tried this and use if conditions in AngularJs Template. my code is';
 
-    var TestController = function($scope, dialog, appLogger, appMessagesService) {
-
-        $scope.uploadApi = backendConfig.urls.upload;
+    var TestDropdownController = function($scope, dialog, appLogger, appMessagesService) {
 
         $scope.addError = function() {
             appMessagesService.addMessage({
@@ -31,63 +26,6 @@ define([
         };
 
         appLogger.info($scope);
-
-        var adminModels = [
-            {
-                id: 'region',
-                description: "Region",
-                hide: true
-            },
-            {
-                id: 'country',
-                description: "Country"
-            },
-            {
-                id: 'corporate',
-                description: "Global corporates"
-            },
-            {
-                id: 'moid',
-                description: "Mobile Operator ID"
-            },
-            {
-                id: 'mcc',
-                description: "Mobile Country Code"
-            },
-            {
-                id: 'mnc',
-                description: "Mobile Network Code"
-            },
-            {
-                id: 'countrygroup',
-                description: "Country group"
-            },
-            {
-                id: 'simlock',
-                description: "SIM Lock"
-            },
-            {
-                id: 'operator',
-                description: "Operator"
-            },
-            {
-                id: 'tradecustomer',
-                description: "Trade customer"
-            },
-            {
-                id: 'customer',
-                description: "Customer"
-            }
-        ];
-
-        $scope.selections = {
-            data: adminModels
-        };
-
-        $scope.testSubmit = function (data) {
-            console.log(data);
-        };
-
 
         /*
          * Dropdown menu example.
@@ -151,35 +89,12 @@ define([
                 console.log('Customer should not be deleted');
             });
         };
-
-
-        /*
-         * Launch dialog with template example.
-         */
-
-        $scope.openTemplateDialog = function () {
-            dialog.showTemplateDialog($scope, 'ng-templates/test.html');
-        };
-
-
-        /*
-         * Launch dialog with form example.
-         */
-
-        $scope.modelData = new TestModel();
-        $scope.objectData = new TestModel();
-
-
-        /*
-         * Partial form example.
-         */
-        $scope.partialData = new TestModel();
     };
 
     return {
         feature: 'controller',
-        name: 'TestController',
-        cls: ['$scope', 'dialog', 'appLogger', 'appMessagesService', TestController]
+        name: 'TestDropdownController',
+        cls: ['$scope', 'dialog', 'appLogger', 'appMessagesService', TestDropdownController]
     };
 });
 /* global console: true */
