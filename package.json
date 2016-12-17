@@ -1,6 +1,14 @@
 {
     "name": "angular-apps",
-    "version": "0.1.0",
+    "version": "0.0.1",
+    "description": "AngularJS 1.x prototyping",
+    "repository" : {
+        "type" : "git",
+        "url" : "https://github.com/jojanper/ng-app.git"
+    },
+    "bugs": {
+        "url": "https://github.com/jojanper/ng-app/issues"
+    },
     "scripts": {
         "prepare": "npm install && npm run prepare_bower",
         "prepare_bower": "bower install",
@@ -11,6 +19,8 @@
         "cibuild": "grunt cibuild",
         "dev-test": "npm run codestyle && npm test"
     },
+    "author": "Juha Ojanpera juha.ojanpera@gmail.com",
+    "license": "MIT",
     "devDependencies": {
         "bower": "^1.8.0",
         "grunt": "^1.0.1",
