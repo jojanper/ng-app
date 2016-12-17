@@ -18,4 +18,4 @@ before_install:
 script:
   - npm run prepare-bower
   - npm run cibuild-travis
-  - npm run dist
+  - npm run build

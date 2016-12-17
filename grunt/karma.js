@@ -35,7 +35,7 @@ else {
     else {
         runner.browsers = ['PhantomJS'];
     }
-    runner.reporters = ['dots', 'junit', 'coverage'];
+    runner.reporters = ['mocha', 'junit', 'coverage'];
     runner.junitReporter = {
         outputFile: '<%= testReportsPath %>/test-results.xml'
     };
