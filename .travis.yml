@@ -1,0 +1,12 @@
+language: node_js
+os:
+  - linux
+node_js:
+  - "6"
+before_install:
+  - node --version
+  - npm --version
+script:
+  - npm run prepare-bower
+  - npm run cibuild-travis
+  - npm run dist

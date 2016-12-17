@@ -4,7 +4,9 @@ var runner = {
     configFile: '<%= appTestsPath %>/karma.conf.js'
 };
 
-if (!utils.isJenkins()) {
+var continuousIntegration = utils.isJenkins();
+
+if (!continuousIntegration) {
     runner.coverageReporter = {
         // specify a common output directory
         dir: '<%= testReportsPath %>/coverage-unit',

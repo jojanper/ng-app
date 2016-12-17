@@ -10,13 +10,14 @@
         "url": "https://github.com/jojanper/ng-app/issues"
     },
     "scripts": {
-        "prepare": "npm install && npm run prepare_bower",
-        "prepare_bower": "bower install",
+        "prepare": "npm install && npm run prepare-bower",
+        "prepare-bower": "bower install",
         "build": "grunt dist",
         "test": "grunt unittest",
         "codestyle": "grunt code-checker",
         "docs": "grunt docs",
-        "cibuild": "grunt cibuild",
+        "cibuild": "grunt cibuild --jenkins",
+        "cibuild-travis": "grunt cibuild",
         "dev-test": "npm run codestyle && npm test"
     },
     "author": "Juha Ojanpera juha.ojanpera@gmail.com",
