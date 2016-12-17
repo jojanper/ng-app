@@ -10,6 +10,10 @@ module.exports = function(grunt) {
         process.env.IS_JENKINS = true;
     }
 
+    if (grunt.option('travis')) {
+        process.env.IS_TRAVIS = true;
+    }
+
     require('time-grunt')(grunt);
 
     require('load-grunt-config')(grunt, {

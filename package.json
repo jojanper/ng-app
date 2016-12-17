@@ -17,7 +17,7 @@
         "codestyle": "grunt code-checker",
         "docs": "grunt docs",
         "cibuild": "grunt cibuild --jenkins",
-        "cibuild-travis": "grunt cibuild",
+        "cibuild-travis": "grunt cibuild --travis",
         "dev-test": "npm run codestyle && npm test"
     },
     "author": "Juha Ojanpera juha.ojanpera@gmail.com",

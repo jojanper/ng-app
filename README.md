@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jojanper/ng-app.svg?branch=master)](https://travis-ci.org/jojanper/ng-app)
+
 # ng-app
 > AngularJS 1.x application prototyping.
 
@@ -61,3 +63,8 @@ Application code uses Bower + RequireJS + AngularJS.
 Unit testing is based on Karma + Jasmine + Istanbul configuration.
 
 Build code uses Grunt.
+
+### Continuous Integration (CI)
+
+#### Travis CI
+https://travis-ci.org/jojanper/ng-app

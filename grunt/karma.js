@@ -5,6 +5,9 @@ var runner = {
 };
 
 var continuousIntegration = utils.isJenkins();
+if (!continuousIntegration) {
+    continuousIntegration = process.env.IS_TRAVIS;
+}
 
 if (!continuousIntegration) {
     runner.coverageReporter = {
@@ -26,7 +29,12 @@ if (!continuousIntegration) {
 }
 else {
     runner.singleRun = true;
-    runner.browsers = ['PhantomJS'];
+    if (process.env.IS_TRAVIS) {
+        runner.browsers = ['Chrome_travis_ci'];
+    }
+    else {
+        runner.browsers = ['PhantomJS'];
+    }
     runner.reporters = ['dots', 'junit', 'coverage'];
     runner.junitReporter = {
         outputFile: '<%= testReportsPath %>/test-results.xml'
