@@ -40,6 +40,11 @@ npm run build
 npm run docs
 ```
 
+### Create release
+```
+npm run release -- --version=<major.minor.patch> --remotes=<remote1,remote2,...>
+```
+
 Documentation is located in `build/docs`.
 
 ## Project structure
