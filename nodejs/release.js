@@ -23,6 +23,7 @@ var cmds = [
     format('npm version --no-git-tag-version %s', options.version),
 
     // Commit the new release
+    'git add package.json',
     format('git commit -m "Release %s"', options.version),
     format('git tag -a v%s -m "Release %s"', options.version, options.version)
 ];
