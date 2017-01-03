@@ -18,7 +18,8 @@
         "docs": "grunt docs",
         "cibuild": "grunt cibuild --jenkins",
         "cibuild-travis": "grunt cibuild --travis",
-        "dev-test": "npm run codestyle && npm test"
+        "dev-test": "npm run codestyle && npm test",
+        "push-remote": "for r in $(git remote); do git push $r master; done"
     },
     "author": "Juha Ojanpera juha.ojanpera@gmail.com",
     "license": "MIT",
