@@ -78,7 +78,7 @@ define([
                 });
             },
             scope: {
-                options: "="
+                options: "=?"
             },
             transclude: true,
             template: TablesTemplate

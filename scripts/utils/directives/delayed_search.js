@@ -29,7 +29,7 @@ define([
             restrict: 'E',
             scope: {
                 delayedMethod: '&',
-                show: '='
+                show: '=?'
             },
             template: '<input ng-show="show" ng-model="search" ng-attr-placeholder="{{ placeholder }}" ' +
                 'ng-change="modelChanged()" ng-model-options="modelOptions">',

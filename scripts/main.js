@@ -27,6 +27,7 @@ require.config({
         'angular': '../components/angular/angular',
         'angular-route': '../components/angular-route/angular-route',
         'angular-resource': '../components/angular-resource/angular-resource',
+        'angular-animate': '../components/angular-animate/angular-animate',
         'ui.router' : "../components/angular-ui-router/release/angular-ui-router",
         'angular-loading-bar': '../components/angular-loading-bar/build/loading-bar',
         'ui.select': "../components/angular-ui-select/dist/select",
@@ -89,6 +90,10 @@ require.config({
         'angular-resource': {
             deps : ['angular'],
             exports : 'ngResource'
+        },
+        'angular-animate': {
+            deps : ['angular'],
+            exports : 'ngAnimate'
         },
         'ui.select': {
             deps: ['angular']

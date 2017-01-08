@@ -9,6 +9,7 @@ define([
     'angular',
     'angular-route',
     'angular-resource',
+    'angular-animate',
     'angular-loading-bar',
     'ui.bootstrap',
     'ui.router',
@@ -18,16 +19,17 @@ define([
     './apps/media/module',
     './apps/player/module',
     './utils/module'
-], function ($, datatables, readmore, angular, angularRoute, angularResource, angularLoadingBar, AngularBootstrap,
-             angularUiRouter, AngularUiSelect, ngSanitize, TestModule, MediaModule, PlayerModule,
-             UtilsModule) {
+], function ($, datatables, readmore, angular, angularRoute, angularResource, angularAnimate,
+             angularLoadingBar, AngularBootstrap, angularUiRouter, AngularUiSelect, ngSanitize,
+             TestModule, MediaModule, PlayerModule, UtilsModule) {
     'use strict';
 
     return angular.module('app', [
         'ngRoute',
         'ngResource',
-        'ui.router',
         'angular-loading-bar',
+        'ngAnimate',
+        'ui.router',
         'ui.select',
         'ngSanitize',
         'ui.bootstrap',
