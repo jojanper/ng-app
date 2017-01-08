@@ -40,12 +40,12 @@ npm run build
 npm run docs
 ```
 
+Documentation is located in `build/docs`.
+
 ### Create release
 ```
 npm run release -- --version=<major.minor.patch> --remotes=<remote1,remote2,...>
 ```
-
-Documentation is located in `build/docs`.
 
 ## Project structure
 This distribution contains the following project structure :
