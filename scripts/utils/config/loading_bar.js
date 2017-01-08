@@ -16,5 +16,5 @@ define([
 
     return function(app) {
         app.config(['$stateProvider', '$urlRouterProvider', 'cfpLoadingBarProvider', LoadingBarConfig]);
-    }
+    };
 });
