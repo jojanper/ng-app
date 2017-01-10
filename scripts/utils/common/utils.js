@@ -188,15 +188,26 @@ define([
      * @param {Object} Input object.
      * @param {String} Property name within object.
      * @param {Object} value Property value.
+     * @param {boolean} append If true, value is appended to model's field.
      */
-    Object.setModelFieldValue = function(model, field, value) {
+    Object.setModelFieldValue = function(model, field, value, append) {
         if (!field.isObjectInput()) {
-            model[field] = value;
+            if (append) {
+                model[field].push(value);
+            }
+            else {
+                model[field] = value;
+            }
         }
         else {
             var ref = field.split('.');
             var obj = Object.resolveKey(model, ref.slice(0, ref.length - 1).join('.'));
-            obj[ref[ref.length - 1]] = value;
+            if (append) {
+                obj[ref[ref.length - 1]].push(value);
+            }
+            else {
+                obj[ref[ref.length - 1]] = value;
+            }
         }
     };
 

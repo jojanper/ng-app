@@ -128,6 +128,20 @@ define([
             $scope.getSelections = function() {
                 return $scope.$selections;
             };
+
+            /*
+             * The selected item is set using the on-select event. This is to make sure that
+             * selected item is accepted when user types first search keyword and then selects
+             * the item either using mouse or pressing enter.
+             */
+            $scope.onChange = function($item, $model) {
+                self.setModelValue($scope, $item, self.type === 'multiSelector');
+
+                // Callback exists in options for changes in selection(s)
+                if (self.options.onChange) {
+                    self.options.onChange($item);
+                }
+            };
         }
     });
 
@@ -153,20 +167,6 @@ define([
                 }
 
                 return value;
-            };
-
-            /*
-             * For single selection the selected item is set using the on-select event.
-             * This is to make sure that selected item is accepted when user types first
-             * search keyword and then selects the item either using mouse or pressing enter.
-             */
-            $scope.onChange = function($item, $model) {
-                self.setModelValue($scope, $item);
-
-                // Callback exists in options for changes in selection(s)
-                if (self.options.onChange) {
-                    self.options.onChange($item);
-                }
             };
         }
     });
@@ -257,13 +257,6 @@ define([
 
                 return (item) ? item[self.displayKey] : [];
             };
-
-            // Callback exists in options for changes in selection(s)
-            if (self.options.onChange) {
-                $scope.onChange = function($item, $model) {
-                    self.options.onChange($item);
-                };
-            }
         },
 
         _customErrors: function($scope) {

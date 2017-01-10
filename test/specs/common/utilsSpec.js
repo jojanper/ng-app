@@ -96,13 +96,23 @@ define([
         });
 
         it('setModelFieldValue', function() {
-            var obj = {b: 'test', c: {a: 'testa'}};
+            var obj = {b: 'test', c: {a: 'testa'}, d: [], e: {a: []}};
 
             Object.setModelFieldValue(obj, 'b', 'abcd');
             expect(obj.b).toEqual('abcd');
 
             Object.setModelFieldValue(obj, 'c.a', 'abcd');
             expect(obj.c.a).toEqual('abcd');
+
+            Object.setModelFieldValue(obj, 'd', 'abcd', true);
+            expect(obj.d).toEqual(['abcd']);
+            Object.setModelFieldValue(obj, 'd', 'abc', true);
+            expect(obj.d).toEqual(['abcd', 'abc']);
+
+            Object.setModelFieldValue(obj, 'e.a', 'abcd', true);
+            expect(obj.e.a).toEqual(['abcd']);
+            Object.setModelFieldValue(obj, 'e.a', 'abc', true);
+            expect(obj.e.a).toEqual(['abcd', 'abc']);
         });
     });
 

@@ -1,8 +1,8 @@
-<ui-select multiple name="[[nameRef]]" ng-model="[[modelRef]]" theme="select2" ng-disabled="$form.readOnlyInput(this)"
-           sortable="true" close-on-select="false" style="min-width: 300px; display: block; clear: both;" [[directiveRef]]
+<ui-select multiple name="[[nameRef]]" ng-model="[[modelRef]]" theme="bootstrap" ng-disabled="$form.readOnlyInput(this)"
+           sortable="true" style="min-width: 300px; display: block; clear: both;" [[directiveRef]]
            on-select="onChange($item, $model)" ng-model-options="ngModelOptions">
-  <ui-select-match placeholder="{{ placeholder }}">{{ getViewValue($item) }}</ui-select-match>
-  <ui-select-choices repeat="item in getSelections() | filter: $select.search">
+  <ui-select-match class="ui-select-match" placeholder="{{ placeholder }}">{{ getViewValue($item) }}</ui-select-match>
+  <ui-select-choices class="ui-select-choices" repeat="item in getSelections() | filter: $select.search">
     <div ng-bind-html="getViewValue(item) | highlight: $select.search"></div>
   </ui-select-choices>
 </ui-select>

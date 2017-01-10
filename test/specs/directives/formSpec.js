@@ -330,7 +330,7 @@
                 $timeout.flush();
 
                 // THEN error should be present
-                expect($(obj.$element.find('span')[3]).html()).toEqual('Max 2 items can be selected');
+                expect($(obj.$element.find('span')[2]).html()).toEqual('Max 2 items can be selected');
             });
         });
 
@@ -744,9 +744,9 @@
 
                     scope.model = new BaseModel({
                         data: {
-                            data: adminModels[0]
+                            data: adminModels[0],
+                            multiData: []
                         },
-                        multiData: [],
                         inputDefs: [
                             {
                                 name: 'data',
@@ -784,7 +784,7 @@
                 $scope.$destroy();
             });
 
-            it('invokes select callback on select', function() {
+            it('invokes onChange callback on select', function() {
 
                 // GIVEN onChange callback for selector input
 
@@ -1009,7 +1009,7 @@
                 expect($scope.model.multiData.length).toEqual(1);
 
                 // AND model values are visible in UI
-                expect($element.find('.ui-select-container span.ng-scope').text()).toEqual(selectorList[0].description);
+                expect($($element.find('.ui-select-container span.ng-scope')[1]).text()).toEqual(selectorList[0].description);
             });
 
             it('fetches list from server', function() {
@@ -1021,7 +1021,7 @@
                 AppTestUtils.selector.openDropdown(el, $scope);
 
                 // THEN only one URL item should be present (as the other one has been already selected)
-                var items = $(el).find('.ui-select-choices-row > div');
+                var items = $(el).find('.ui-select-choices-row-inner > div');
                 expect(items.length).toEqual(1);
                 expect($(items[0]).text().trim()).toEqual('MCC');
             });

@@ -61,8 +61,8 @@ define([
             return 'model.' + this.options.name;
         },
 
-        setModelValue: function($scope, value) {
-            Object.setModelFieldValue($scope.model, this.options.name, value);
+        setModelValue: function($scope, value, append) {
+            Object.setModelFieldValue($scope.model, this.options.name, value, append);
         },
 
         getModelValue: function($scope) {
