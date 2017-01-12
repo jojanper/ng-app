@@ -46,7 +46,8 @@ define([
     './services/appmessages',
     './services/network',
     './services/logger',
-    './services/urlresolver'
+    './services/urlresolver',
+    './services/user'
 ], function (ModuleLoader) {
 
     return new ModuleLoader({

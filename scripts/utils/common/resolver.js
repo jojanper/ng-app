@@ -52,6 +52,21 @@ define([], function () {
             url = [baseUrl, data.appLabel, data.model, data.modelId, 'actions', data.action];
         }
 
+        // URL to application action
+        else if (name === 'rest-api-app-actions') {
+            url = [baseUrl, data.appLabel, 'actions', data.action];
+        }
+
+        // Login URL
+        else if (name === 'login') {
+            url = [baseUrl, 'login'];
+        }
+
+        // Logout URL
+        else if (name === 'logout') {
+            url = [baseUrl, 'logout'];
+        }
+
         return url.join('/');
     };
 

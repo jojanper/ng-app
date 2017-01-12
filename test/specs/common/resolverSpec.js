@@ -93,5 +93,37 @@ define([
             // THEN it should succeed
             expect(url).toEqual('/api/generic/test/test2/1/history');
         });
+
+        it('supports rest-api-app-actions', function() {
+
+            // GIVEN URL path
+            var data = {appLabel: 'test', action: 'something'};
+
+            // WHEN resolving path
+            var url = Resolver('rest-api-app-actions', data);
+
+            // THEN it should succeed
+            expect(url).toEqual('/api/generic/test/actions/' + data.action);
+        });
+
+        it('supports login', function() {
+
+            // GIVEN login URL
+            // WHEN resolving path
+            var url = Resolver('login');
+
+            // THEN it should succeed
+            expect(url).toEqual('/api/generic/login');
+        });
+
+        it('supports logout', function() {
+
+            // GIVEN logout URL
+            // WHEN resolving path
+            var url = Resolver('logout');
+
+            // THEN it should succeed
+            expect(url).toEqual('/api/generic/logout');
+        });
     });
 });
