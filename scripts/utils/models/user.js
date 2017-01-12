@@ -9,8 +9,8 @@ define([
     var User = Toolbox.BaseClass.extend({
         constructor: function(details) {
             this.username = '';
-            this.first_name = '';
-            this.last_name = '';
+            this.firstName = '';
+            this.lastName = '';
             this.email = '';
             this.authenticated = false;
             this.token = '';
