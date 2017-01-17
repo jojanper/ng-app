@@ -16,11 +16,9 @@ define([
             this.$order = [];
             this.$inputDefs = [];
             this.$model = null;
-
-            this.setInitData();
-
             this.options = options || {};
 
+            this.setInitData();
             this.initialize();
             this._setOptionsInputDefs();
             this._setInputDefs();

@@ -2,9 +2,8 @@
  * File model.
  */
 define([
-    'angular',
     'utils/models/model'
-], function (ng, BaseModel) {
+], function (BaseModel) {
     "use strict";
 
     var FileModel = BaseModel.extend({

@@ -10,6 +10,7 @@ define([
     'angular-route',
     'angular-resource',
     'angular-animate',
+    'angular-cookies',
     'angular-loading-bar',
     'ui.bootstrap',
     'ui.router',
@@ -18,10 +19,11 @@ define([
     './apps/test/module',
     './apps/media/module',
     './apps/player/module',
-    './utils/module'
+    './utils/module',
+    './apps/auth/module'
 ], function ($, datatables, readmore, angular, angularRoute, angularResource, angularAnimate,
-             angularLoadingBar, AngularBootstrap, angularUiRouter, AngularUiSelect, ngSanitize,
-             TestModule, MediaModule, PlayerModule, UtilsModule) {
+             angularCookies, angularLoadingBar, AngularBootstrap, angularUiRouter, AngularUiSelect, ngSanitize,
+             TestModule, MediaModule, PlayerModule, UtilsModule, AuthModule) {
     'use strict';
 
     return angular.module('app', [
@@ -29,6 +31,7 @@ define([
         'ngResource',
         'angular-loading-bar',
         'ngAnimate',
+        'ngCookies',
         'ui.router',
         'ui.select',
         'ngSanitize',
@@ -36,6 +39,7 @@ define([
         UtilsModule,
         TestModule,
         MediaModule,
-        PlayerModule
+        PlayerModule,
+        AuthModule
     ]);
 });

@@ -12,11 +12,8 @@
 
             // Instantiate tab element
             var element = '<app-main-menu></app-main-menu>';
-
-            AppTestUtils.appTestSetup.call(this, element);
-
-            afterEach(function() {
-                this.$scope.$destroy();
+            AppTestUtils.appTestSetup.call(this, element, null, null, null, function() {
+                AppTestUtils.login();
             });
 
             it('default menu initializes correctly', function() {
@@ -44,11 +41,8 @@
 
             // Instantiate tab element
             var element = '<app-main-menu menu-items="' + menuItems + '"></app-main-menu>';
-
-            AppTestUtils.appTestSetup.call(this, element);
-
-            afterEach(function() {
-                this.$scope.$destroy();
+            AppTestUtils.appTestSetup.call(this, element, null, null, null, function() {
+                AppTestUtils.login();
             });
 
             it('initializes correctly', function() {

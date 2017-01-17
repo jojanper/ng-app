@@ -13,10 +13,8 @@
 
             AppTestUtils.appTestSetup.call(this, element, null, function($httpBackend) {
                 $httpBackend.whenGET('/api/generic').respond(200, AppTestResponses.metaApiResponse);
-            });
-
-            afterEach(function() {
-                this.$scope.$destroy();
+            }, null, function() {
+                AppTestUtils.login();
             });
 
             it('should display page links and application models', function() {

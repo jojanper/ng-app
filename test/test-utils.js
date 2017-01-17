@@ -112,7 +112,8 @@ AppTestUtils.appTestSetup = function(html, scopeCallback, httpBackendCallback, p
 
         inject(function($compile, $rootScope, $httpBackend, $location, $templateCache,
                         $controller, $stateParams, appMessagesService, network, appLogger,
-                        rest, $timeout, $q) {
+                        rest, $timeout, $q, $cookies) {
+            var self = this;
 
             this.$location = $location;
             this.$httpBackend = $httpBackend;
@@ -124,6 +125,7 @@ AppTestUtils.appTestSetup = function(html, scopeCallback, httpBackendCallback, p
             this.rest = rest;
             this.$timeout = $timeout;
             this.$q = $q;
+            this.$cookies = $cookies;
 
             if (httpBackendCallback) {
                 httpBackendCallback($httpBackend, $templateCache);
@@ -133,7 +135,7 @@ AppTestUtils.appTestSetup = function(html, scopeCallback, httpBackendCallback, p
                 // Instantiate element
                 var obj = AppTestUtils.ngCompileElement($rootScope, $compile, html, function(scope) {
                     if (scopeCallback) {
-                        scopeCallback(scope, $stateParams);
+                        scopeCallback.call(self, scope, $stateParams);
                     }
                 });
                 this.$scope = obj.$scope;
@@ -145,6 +147,12 @@ AppTestUtils.appTestSetup = function(html, scopeCallback, httpBackendCallback, p
                 $httpBackend.flush();
             }
         });
+    });
+
+    afterEach(function() {
+        if (this.$scope) {
+            this.$scope.$destroy();
+        }
     });
 
     return this;
@@ -189,3 +197,24 @@ AppTestUtils.selector = {
         return $element.find('.ui-select-container');
     }
 };
+
+// Provide authenticated user
+AppTestUtils.login = function() {
+    var cookieExp = new Date();
+    cookieExp.setDate(cookieExp.getDate() + 7);
+
+    var userData = {
+        username: 'test',
+        authenticated: true
+    };
+
+    var $cookies = {
+        getObject: function() {
+            return userData;
+        }
+    };
+
+    module(function($provide) {
+        $provide.value('$cookies', $cookies);
+    });
+}

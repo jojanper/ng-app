@@ -118,7 +118,8 @@ define([
                     });
                 }
 
-                innerHtml += htmlLib.div(html);
+                // Embed the buttons inside the main template
+                innerHtml = innerHtml.replace('[[FORM_BOTTOM]]', html);
 
                 return htmlLib.form(innerHtml, {
                     name: name,
@@ -139,6 +140,7 @@ define([
                 $scope.modelAllFields = [];
 
                 $scope.name = $attrs.name || defaultName;
+                $scope.formTitle = $attrs.formTitle;
                 $scope.noStatus = $attrs.hasOwnProperty('noStatus') ? true : false;
                 $scope.noLabel = $attrs.hasOwnProperty('noLabel') ? true : false;
                 $scope.readOnly = $attrs.readOnly || false;

@@ -1,4 +1,4 @@
-<div class="breadcrumb">
+<div ng-if="isAuthenticated() &&  breadcrumbs.length" class="breadcrumb">
   <div ng-repeat="breadcrumb in breadcrumbs.slice().reverse()">
     <div class="btn btn-link">
       <a ng-if="!$last" class2="btn btn-link" ui-sref="{{ breadcrumb.link }}">{{ breadcrumb.name }}</a>

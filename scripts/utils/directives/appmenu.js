@@ -15,16 +15,18 @@
  */
 define([
     'text!./templates/appmenu.html',
-    'apps/menuConfig'
-], function (AppMenuTemplate, DefaultMenuItems) {
+    'apps/menuConfig',
+    'utils/controllers/basecontroller'
+], function (AppMenuTemplate, DefaultMenuItems, BaseCtrl) {
     "use strict";
+
+    var AppMenuController = BaseCtrl.extend({});
 
     var AppMainMenu = function () {
         return {
             restrict: 'E',
             template: AppMenuTemplate,
-            controller: ['$scope', '$element', '$attrs', function($scope, $element, $attrs) {
-            }],
+            controller: ['$scope', '$element', '$attrs', AppMenuController],
             link: function($scope, $element, $attrs) {
                 $scope.$evalAsync(function() {
                     $scope.menuItems = ($attrs.menuItems) ? $scope.$eval($attrs.menuItems) : DefaultMenuItems;

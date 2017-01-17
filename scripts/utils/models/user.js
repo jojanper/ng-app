@@ -2,18 +2,39 @@
  * User model definition.
  */
 define([
-    'common/toolbox'
-], function (Toolbox) {
+    'utils/models/model'
+], function (BaseModel) {
     "use strict";
 
-    var User = Toolbox.BaseClass.extend({
-        constructor: function(details) {
-            this.username = '';
+    var User = BaseModel.extend({
+        setInitData: function() {
+            this.username = this.options.username || '';
             this.firstName = '';
             this.lastName = '';
             this.email = '';
-            this.authenticated = false;
+            this.password = '';
+            this.password2 = '';
+            this.authenticated = this.options.authenticated || '';
             this.token = '';
+
+            this.$types = {
+                username: {
+                    type: "text",
+                    label: "Username",
+                    directives: ['required']
+                },
+                password: {
+                    type: "password",
+                    label: "Password",
+                    directives: ['required']
+                }
+            };
+
+            this.$order = ['username', 'password'];
+        },
+
+        setLoginData: function(data) {
+            this.authenticated = true;
         },
 
         isAuthenticated: function() {
