@@ -1,19 +1,17 @@
 define([
-    'text!./templates/login.html',
-    'text!./templates/logout.html'
-], function (LoginTemplate, LogoutTemplate) {
+], function () {
     "use strict";
 
     return [
         {
             link: 'login',
             breadcrumb: false,
-            template: LoginTemplate
+            template: '<dng-login></dng-login>'
         },
         {
             link: 'logout',
             breadcrumb: false,
-            template: LogoutTemplate
+            template: '<dng-logout></dng-logout>'
         }
     ];
 });

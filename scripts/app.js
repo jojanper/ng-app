@@ -19,11 +19,10 @@ define([
     './apps/test/module',
     './apps/media/module',
     './apps/player/module',
-    './utils/module',
-    './apps/auth/module'
+    './utils/module'
 ], function ($, datatables, readmore, angular, angularRoute, angularResource, angularAnimate,
              angularCookies, angularLoadingBar, AngularBootstrap, angularUiRouter, AngularUiSelect, ngSanitize,
-             TestModule, MediaModule, PlayerModule, UtilsModule, AuthModule) {
+             TestModule, MediaModule, PlayerModule, UtilsModule) {
     'use strict';
 
     return angular.module('app', [
@@ -39,7 +38,6 @@ define([
         UtilsModule,
         TestModule,
         MediaModule,
-        PlayerModule,
-        AuthModule
+        PlayerModule
     ]);
 });

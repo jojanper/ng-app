@@ -27,6 +27,7 @@ define([
     './directives/delayed_search',
     './directives/bg_image',
     './directives/spinner',
+    './directives/auth',
     './factories/dialog',
     './factories/rest',
     './factories/image',
