@@ -23,7 +23,7 @@ define([
 
     var LogoutController = BaseCtrl.extend({
         initialize: function($scope) {
-            var $cookies = this.arguments[0]
+            var $cookies = this.arguments[0];
             var $location = this.arguments[1];
 
             $scope.setToLoadingState();
