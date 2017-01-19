@@ -107,7 +107,7 @@ AppTestUtils.appTestSetup = function(html, scopeCallback, httpBackendCallback, p
     beforeEach(function() {
 
         if (preInjectCallback) {
-            preInjectCallback();
+            preInjectCallback.call(this);
         }
 
         inject(function($compile, $rootScope, $httpBackend, $location, $templateCache,
@@ -211,7 +211,8 @@ AppTestUtils.login = function() {
     var $cookies = {
         getObject: function() {
             return userData;
-        }
+        },
+        remove: function() {}
     };
 
     module(function($provide) {

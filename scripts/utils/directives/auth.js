@@ -23,7 +23,13 @@ define([
 
     var LogoutController = BaseCtrl.extend({
         initialize: function($scope) {
+            var $cookies = this.arguments[0]
+            var $location = this.arguments[1];
+
             $scope.setToLoadingState();
+            $cookies.remove('user');
+            $scope.$root.user = null;
+            $location.path('/login');
         }
     });
 
@@ -41,7 +47,7 @@ define([
             scope: {},
             restrict: 'E',
             template: LogoutTemplate,
-            controller: ['$scope', '$element', '$attrs', LogoutController]
+            controller: ['$scope', '$element', '$attrs', '$cookies', '$location', LogoutController]
         };
     };
 
