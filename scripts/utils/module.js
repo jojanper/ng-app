@@ -27,6 +27,7 @@ define([
     './directives/delayed_search',
     './directives/bg_image',
     './directives/spinner',
+    './directives/auth',
     './factories/dialog',
     './factories/rest',
     './factories/image',
@@ -46,7 +47,8 @@ define([
     './services/appmessages',
     './services/network',
     './services/logger',
-    './services/urlresolver'
+    './services/urlresolver',
+    './services/user'
 ], function (ModuleLoader) {
 
     return new ModuleLoader({

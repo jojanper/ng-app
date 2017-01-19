@@ -29,6 +29,7 @@ define([
         return {
             scope: {},
             restrict: 'E',
+            transclude: true,
             template: SpinnerTemplate,
             link: function($scope, $element, $attrs) {
                 $scope.$evalAsync(function() {

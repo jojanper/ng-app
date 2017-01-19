@@ -38,6 +38,10 @@ define([
         }
     });
 
+    var PasswordInput = TextInput.extend({
+        type: 'password'
+    });
+
     var EmailInput = TextInput.extend({
         type: 'email',
 
@@ -67,5 +71,7 @@ define([
         return types;
     };
 
-    return resolveInputs([TextInput, EmailInput, FileInput, SelectorInput, ObjectInput]);
+    return resolveInputs([
+        TextInput, EmailInput, PasswordInput, FileInput, SelectorInput, ObjectInput
+    ]);
 });

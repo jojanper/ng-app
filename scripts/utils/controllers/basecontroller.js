@@ -86,6 +86,10 @@ define([
             this.$scope.$on(Signals.loader.name, function(event, data) {
                 self.$scope.setToNormalState();
             });
+
+            this.$scope.isAuthenticated = function() {
+                return self.$scope.$root.user.isAuthenticated();
+            };
         }
     });
 

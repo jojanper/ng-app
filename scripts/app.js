@@ -10,6 +10,7 @@ define([
     'angular-route',
     'angular-resource',
     'angular-animate',
+    'angular-cookies',
     'angular-loading-bar',
     'ui.bootstrap',
     'ui.router',
@@ -20,7 +21,7 @@ define([
     './apps/player/module',
     './utils/module'
 ], function ($, datatables, readmore, angular, angularRoute, angularResource, angularAnimate,
-             angularLoadingBar, AngularBootstrap, angularUiRouter, AngularUiSelect, ngSanitize,
+             angularCookies, angularLoadingBar, AngularBootstrap, angularUiRouter, AngularUiSelect, ngSanitize,
              TestModule, MediaModule, PlayerModule, UtilsModule) {
     'use strict';
 
@@ -29,6 +30,7 @@ define([
         'ngResource',
         'angular-loading-bar',
         'ngAnimate',
+        'ngCookies',
         'ui.router',
         'ui.select',
         'ngSanitize',

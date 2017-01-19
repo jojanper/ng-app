@@ -1,9 +1,13 @@
-<div ng-if="!noStatus && !readOnly" class="app-form-header">
-  <span class="label label-success" ng-if="canSubmit()">Ok</span>
-  <span class="label label-info" ng-if="isModified()">Modified</span>
-  <span class="label label-danger" ng-if="isInvalid()">Invalid</span>
-</div>
-<!-- Placeholder for actual form inputs -->
-<div class="form-inputs">
-</div>
-<div ng-transclude></div>
+<h3 ng-if="formTitle"><span>{{ formTitle }}</span></h3>
+<fieldset>
+  <div ng-if="!noStatus && !readOnly" class="app-form-header">
+    <span class="label label-success" ng-if="canSubmit()">Ok</span>
+    <span class="label label-info" ng-if="isModified()">Modified</span>
+    <span class="label label-danger" ng-if="isInvalid()">Invalid</span>
+  </div>
+  <!-- Placeholder for actual form inputs -->
+  <div class="form-inputs">
+  </div>
+  <div ng-transclude></div>
+  [[FORM_BOTTOM]]
+</fieldset>

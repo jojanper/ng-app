@@ -342,8 +342,10 @@
 
             beforeEach(inject(function($rootScope, $compile) {
                 // Instantiate directive.
-                var element = '<app-form submit-fn="testSubmit(data)" submit-label="Send" clear-label="Reset" ' +
-                    'no-label model="testData"></app-form>';
+                var element =
+                    '<app-form form-title="Form name" submit-fn="testSubmit(data)" ' +
+                        'submit-label="Send" clear-label="Reset" ' +
+                        'no-label model="testData"></app-form>';
 
                 var obj = AppTestUtils.ngCompileElement($rootScope, $compile, element, function(scope) {
                     scope.testData = new TestModel();
@@ -378,6 +380,16 @@
 
                 // THEN it should be the default name
                 expect(name).toEqual('appForm');
+            });
+
+            it('supports form-title', function() {
+
+                // GIVEN form has title set
+
+                // WHEN locating the title
+                // THEN it should be present
+                expect($($element.find('span')[0]).html()).toEqual('Form name');
+
             });
         });
 

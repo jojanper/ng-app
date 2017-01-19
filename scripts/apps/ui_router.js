@@ -2,6 +2,7 @@
  * Routing configuration for Angular UI Router.
  */
 define([
+    'apps/auth/router',
     'apps/player/router',
     'apps/media/router',
     'apps/test/router'
