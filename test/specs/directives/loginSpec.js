@@ -76,6 +76,9 @@
             });
 
             it('user clicks sign-in button', function() {
+                this.$httpBackend.whenPOST('/api/auth/login').respond(200, AppTestResponses.auth.loginResponse);
+                spyOn(this.$location, 'path').and.callThrough();
+
                 // GIVEN username and password are available in sign-in form
                 setInput.call(this, 0, 'test');
                 setInput.call(this, 1, 'password');
@@ -83,9 +86,13 @@
 
                 // WHEN user clicks sign-in button
                 AppTestUtils.ngClick(this.$element.find('button')[0], this.$scope);
+                this.$httpBackend.flush();
 
                 // THEN user has authenticated itself
                 expect(this.$elementScope.isAuthenticated()).toBeTruthy();
+
+                // AND user is redirected to home page
+                expect(this.$location.path).toHaveBeenCalledWith('/');
             });
         });
     });

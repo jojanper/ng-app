@@ -199,20 +199,22 @@ AppTestUtils.selector = {
 };
 
 // Provide authenticated user
-AppTestUtils.login = function() {
-    var cookieExp = new Date();
-    cookieExp.setDate(cookieExp.getDate() + 7);
-
+AppTestUtils.login = function(signoutCallback) {
     var userData = {
-        username: 'test',
-        authenticated: true
+        id: 1,
+        username: 'testuser',
+        display: 'Test User'
     };
 
     var $cookies = {
         getObject: function() {
             return userData;
         },
-        remove: function() {}
+        remove: function() {
+            if (signoutCallback) {
+                signoutCallback();
+            }
+        }
     };
 
     module(function($provide) {

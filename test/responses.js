@@ -292,5 +292,14 @@ var AppTestResponses = {
                 }
             },
         ]
+    },
+
+    auth: {
+        loginResponse: {
+            "id": 1,
+            "display": "test",
+            "email": "test.test@gmail.com",
+            "expires": "2017-01-22T12:53:21.649928"
+        }
     }
 };

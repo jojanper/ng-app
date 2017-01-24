@@ -113,7 +113,7 @@ define([
             var url = Resolver('login');
 
             // THEN it should succeed
-            expect(url).toEqual('/api/generic/login');
+            expect(url).toEqual('/api/auth/login');
         });
 
         it('supports logout', function() {
@@ -123,7 +123,7 @@ define([
             var url = Resolver('logout');
 
             // THEN it should succeed
-            expect(url).toEqual('/api/generic/logout');
+            expect(url).toEqual('/api/auth/logout');
         });
     });
 });

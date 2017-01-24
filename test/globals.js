@@ -9,5 +9,9 @@ backendConfig = {
 
     executeUrlResolverRunMethod: false,
 
-    baseUrl: '/api/generic'
+    baseUrl: '/api/generic',
+    authUrls: {
+        login: '/api/auth/login',
+        logout: '/api/auth/logout'
+    }
 };

@@ -1,7 +1,8 @@
 define([
     'utils/models/metamodel',
-    'utils/common/signals'
-], function (MetaModel, Signals) {
+    'utils/common/signals',
+    'utils/common/resolver'
+], function (MetaModel, Signals, urlResolverFn) {
     "use strict";
 
     function getModelMeta(model, url, appUrlResolver, network, success, error) {
@@ -34,6 +35,49 @@ define([
     var RestFactory = function(network, appUrlResolver) {
         return {
             $$name: 'rest',
+
+            /**
+             * @ngdoc
+             * @name rest#login
+             * @methodOf rest
+             *
+             * @description
+             * User sign-in.
+             *
+             * @param {Object} credentials Login credentials (username, password).
+             * @return {Object} Promise.
+             *
+             * @example
+               <pre>
+                 rest.login({username: 'user', password: 'password'}).then(function(userAuthData) {
+                     // Do something with userAuthData
+                 });
+               </pre>
+             */
+            login: function(credentials) {
+                return network.post(urlResolverFn('login'), credentials);
+            },
+
+            /**
+             * @ngdoc
+             * @name rest#logout
+             * @methodOf rest
+             *
+             * @description
+             * User sign-out.
+             *
+             * @return {Object} Promise.
+             *
+             * @example
+               <pre>
+                 rest.logout().then(function() {
+                     // Do something
+                 });
+               </pre>
+             */
+            logout: function() {
+                return network.post(urlResolverFn('logout'));
+            },
 
             /**
              * @ngdoc
