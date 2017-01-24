@@ -8,28 +8,28 @@ define([
 
     var LoginController = BaseCtrl.extend({
         initialize: function($scope) {
+            var dngUserManagement = this.arguments[0];
+
             $scope.user = new UserModel();
 
             $scope.login = function(data) {
-                $scope.$root.user.setLoginData(data);
+                dngUserManagement.login(data);
             };
         }
     });
 
-    function LoginRun($rootScope, $cookies) {
-        var userData = $cookies.getObject('user') || {};
-        $rootScope.user = new UserModel(userData);
+    function LoginRun($rootScope, $state, dngUserManagement) {
+        $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
+            // Authentication and route access control
+            dngUserManagement.canAccess($state, event, toState, toParams);
+        });
     }
 
     var LogoutController = BaseCtrl.extend({
         initialize: function($scope) {
-            var $cookies = this.arguments[0];
-            var $location = this.arguments[1];
-
+            var dngUserManagement = this.arguments[0];
             $scope.setToLoadingState();
-            $cookies.remove('user');
-            $scope.$root.user = null;
-            $location.path('/login');
+            dngUserManagement.logout();
         }
     });
 
@@ -38,7 +38,7 @@ define([
             scope: {},
             restrict: 'E',
             template: LoginTemplate,
-            controller: ['$scope', '$element', '$attrs', LoginController]
+            controller: ['$scope', '$element', '$attrs', 'dngUserManagement', LoginController]
         };
     };
 
@@ -47,7 +47,7 @@ define([
             scope: {},
             restrict: 'E',
             template: LogoutTemplate,
-            controller: ['$scope', '$element', '$attrs', '$cookies', '$location', LogoutController]
+            controller: ['$scope', '$element', '$attrs', 'dngUserManagement', LogoutController]
         };
     };
 
@@ -58,7 +58,7 @@ define([
             feature: 'directive',
             name: 'dngLogin',
             cls: Login,
-            run: ['$rootScope', '$cookies', LoginRun]
+            run: ['$rootScope', '$state', 'dngUserManagement', LoginRun]
         },
         {
             feature: 'directive',

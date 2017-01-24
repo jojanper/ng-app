@@ -6,6 +6,7 @@ define([], function () {
     "use strict";
 
     var baseUrl = backendConfig.baseUrl;
+    var authUrls = backendConfig.authUrls;
 
     /**
      * Resolve URL path to actual HTTP callable URL.
@@ -59,12 +60,12 @@ define([], function () {
 
         // Login URL
         else if (name === 'login') {
-            url = [baseUrl, 'login'];
+            url = [authUrls.login];
         }
 
         // Logout URL
         else if (name === 'logout') {
-            url = [baseUrl, 'logout'];
+            url = [authUrls.logout];
         }
 
         return url.join('/');

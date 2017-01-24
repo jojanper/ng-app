@@ -8,14 +8,7 @@ define([
 
     var User = BaseModel.extend({
         setInitData: function() {
-            this.username = this.options.username || '';
-            this.firstName = '';
-            this.lastName = '';
-            this.email = '';
-            this.password = '';
-            this.password2 = '';
-            this.authenticated = this.options.authenticated || '';
-            this.token = '';
+            this.reset();
 
             this.$types = {
                 username: {
@@ -33,12 +26,36 @@ define([
             this.$order = ['username', 'password'];
         },
 
+        reset: function() {
+            this.id = null;
+            this.username = '';
+            this.firstName = '';
+            this.lastName = '';
+            this.email = '';
+            this.password = '';
+            this.password2 = '';
+            this.authenticated = false;
+            this.displayName = '';
+            this.expires = null;
+        },
+
         setLoginData: function(data) {
-            this.authenticated = true;
+            if (data && data.hasOwnProperty('id')) {
+                this.authenticated = true;
+                this.id = data.id;
+                this.displayName = data.display;
+                this.email = data.email;
+                this.expires = data.expires;
+            }
+            else {
+                this.reset();
+            }
+
+            return this;
         },
 
         isAuthenticated: function() {
-            return this.authenticated;
+            return this.authenticated === true;
         }
     });
 

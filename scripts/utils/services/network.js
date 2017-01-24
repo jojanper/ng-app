@@ -55,7 +55,12 @@ define([], function () {
                     }
                 }
                 else {
-                    errors = '<div>' + response.data + '</div>';
+                    if (response.data.detail) {
+                        errors = '<div>' + response.data.detail + '</div>';
+                    }
+                    else {
+                        errors = '<div>' + response.data + '</div>';
+                    }
                 }
 
                 appMessagesService.addMessage({type: "error", msgBody: errors});

@@ -149,6 +149,23 @@
                 expect(appMessagesService.getMessages().length).toEqual(3);
             });
 
+            it('should handle detail error message', function() {
+                var success = false, api = '/api/post/test';
+
+                $httpBackend.whenPOST(api).respond(400, {'detail': 'Detail error message'});
+
+                networkService.post(api).then(function() {
+                    success = true;
+                });
+
+                $httpBackend.flush();
+
+                expect(success).toBeFalsy();
+                var messages = appMessagesService.getMessages();
+                expect(messages.length).toEqual(1);
+                expect(messages[0].msgBody).toContain('<div>Detail error message</div>');
+            });
+
             it('should handle multiple error messages', function() {
                 var success = false, api = '/api/post/test';
 

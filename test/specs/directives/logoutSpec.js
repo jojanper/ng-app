@@ -10,24 +10,29 @@
 
         describe('Logout directive', function() {
 
+            var signout = false;
             var element = '<dng-logout></dng-logout>';
 
             AppTestUtils.appTestSetup.call(this, element, function() {
                 spyOn(this.$location, 'path').and.callThrough();
+                this.$httpBackend.whenPOST('/api/auth/logout').respond(200);
             }, null, null, function() {
-                AppTestUtils.login();
+                AppTestUtils.login(function() {
+                    signout = true;
+                });
             });
 
             it('user performs sign-out', function() {
 
                 // GIVEN logout page
                 // WHEN user performs sign-out
+                this.$httpBackend.flush();
 
                 // THEN user is redirected to login page
                 expect(this.$location.path).toHaveBeenCalledWith('/login');
 
                 // AND user is no longer authenticated
-                expect(this.$rootScope.user).toEqual(null);
+                expect(signout).toBeTruthy();
             });
         });
     });
