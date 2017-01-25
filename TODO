@@ -1,0 +1,6 @@
+Some thoughts for further development:
+--------------------------------------
+
+- Run without backend support
+- Angular 1.6 upgrade
+- Refactor scripts/main.js and test/test-main.js, too much duplicate code

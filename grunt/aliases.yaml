@@ -61,8 +61,3 @@ cibuild:
   tasks:
     - 'clean:build_clean'
     - code-quality
-
-shell-test:
-  description: 'Run shell test script.'
-  tasks:
-    - 'shell:shelljs_test:4 5'

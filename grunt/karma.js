@@ -1,4 +1,4 @@
-var utils = require('./scripts/utils.js');
+var utils = require('../nodejs/utils');
 
 var runner = {
     configFile: '<%= appTestsPath %>/karma.conf.js'

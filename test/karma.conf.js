@@ -11,7 +11,7 @@
  */
 
 var path = require('path');
-var appConfig = require('../env.js');
+var appConfig = require('../nodejs/env');
 
 module.exports = function(config) {
     config.set({

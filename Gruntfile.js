@@ -1,6 +1,6 @@
 require('shelljs/global');
 var path = require('path');
-var config = require('./env.js');
+var config = require('./nodejs/env');
 
 mkdir('-p', config.testReportsFolder);
 
