@@ -81,6 +81,7 @@ define([
                         'ng-click': 'submit(' + name + ')',
                         'ng-show': "!readOnly && canSubmit()",
                         'uib-tooltip': "Save changed items",
+                        'tooltip-animation': "false",
 
                         // Submit not allowed when invalid form
                         'ng-disabled': "!canSubmit()"
@@ -94,7 +95,8 @@ define([
                         'ng-click': 'clear()',
                         'ng-disabled': "readOnly",
                         'ng-show': "!readOnly",
-                        'uib-tooltip': "Clear all items"
+                        'uib-tooltip': "Clear all items",
+                        'tooltip-animation': "false"
                     });
                 }
 
@@ -104,7 +106,8 @@ define([
                         class: 'draal-button-md',
                         'ng-click': 'edit()',
                         'ng-show': "readOnly",
-                        'uib-tooltip': "Edit the items"
+                        'uib-tooltip': "Edit the items",
+                        'tooltip-animation': "false"
                     });
                 }
 
@@ -114,7 +117,8 @@ define([
                         class: 'draal-button-md',
                         'ng-click': 'cancel()',
                         'ng-show': "!readOnly",
-                        'uib-tooltip': "Back to non-editable view"
+                        'uib-tooltip': "Back to non-editable view",
+                        'tooltip-animation': "false"
                     });
                 }
 

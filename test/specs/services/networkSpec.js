@@ -117,7 +117,7 @@
 
                 networkService.post(api).then(function() {
                     success = true;
-                });
+                }).catch(function() {});
 
                 $httpBackend.flush();
 
@@ -156,7 +156,7 @@
 
                 networkService.post(api).then(function() {
                     success = true;
-                });
+                }).catch(function() {});
 
                 $httpBackend.flush();
 
@@ -173,7 +173,7 @@
 
                 networkService.post(api).then(function() {
                     success = true;
-                });
+                }).catch(function() {});
 
                 $httpBackend.flush();
 
@@ -190,7 +190,7 @@
                 $httpBackend.whenGET(api).respond(418, 'Application code has changed. Please reload.');
 
                 // WHEN fetching some data from server
-                networkService.get(api);
+                networkService.get(api).catch(function() {});
                 $httpBackend.flush();
 
                 // THEN full reload is performed at client side

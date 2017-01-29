@@ -91,12 +91,7 @@ define([
                     ret = Upload.upload({
                         url: this.$scope.uploadApi,
                         data: data
-                    }).progress(function (evt) {
-                        // Update progress
-                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                        item.uploadProgress = progressPercentage;
-
-                    }).success(function (data, status, headers, config) {
+                    }).then(function () {
                         // Upload done
                         item.uploading = false;
                         item.uploaded = true;
@@ -107,10 +102,16 @@ define([
                             self.$scope.$root.$emit(Signals.tableReload.name, signal);
                         }
 
-                    }).error(function(data, status) {
+                    }, function(response) {
+                        var data = response.data;
+
                         // Upload error
                         item.uploading = false;
                         item.statusText = (data && data.errors) ? data.errors[0] : '';
+                    }, function (evt) {
+                        // Update progress
+                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                        item.uploadProgress = progressPercentage;
                     });
                 }
 

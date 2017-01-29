@@ -129,7 +129,7 @@
 
                 // THEN selector value should match that of the model
                 var el = obj.$element.find('.ui-select-container');
-                expect($(obj.$element.find('.ng-scope')[3]).html()).toEqual(model.data.description);
+                expect($(obj.$element.find('.ng-scope')[4]).html()).toEqual(model.data.description);
 
                 // ---
 
@@ -1021,7 +1021,7 @@
                 expect($scope.model.multiData.length).toEqual(1);
 
                 // AND model values are visible in UI
-                expect($($element.find('.ui-select-container span.ng-scope')[1]).text()).toEqual(selectorList[0].description);
+                expect($($element.find('.ui-select-container span')[4]).text()).toEqual(selectorList[0].description);
             });
 
             it('fetches list from server', function() {

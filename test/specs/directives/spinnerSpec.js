@@ -17,7 +17,7 @@
             AppTestUtils.appTestSetup.call(this, html, function(scope) {
                 scope.menuItems = [
                     {
-                        link: '#/home',
+                        link: '#!/home',
                         text: 'This is a link'
                     }
                 ];

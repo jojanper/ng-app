@@ -10,25 +10,32 @@
 
         var $scope, $element, Upload, $httpBackend, $elementScope;
 
-        function uploadSetup(html, callback) {
-            beforeEach(inject(function($rootScope, $compile, _Upload_, _$httpBackend_) {
-                Upload = _Upload_;
-                $httpBackend = _$httpBackend_;
+        function uploadSetup(html, callback, precallback) {
+            beforeEach(function() {
 
-                if (callback) {
-                    callback($httpBackend);
+                if (precallback) {
+                    precallback();
                 }
 
-                // Instantiate directive.
-                var obj = AppTestUtils.ngCreateElement($rootScope, $compile, html);
-                $scope = obj.$scope;
-                $element = obj.$element;
-                $elementScope = obj.$element.isolateScope() || obj.$element.scope();
+                inject(function($rootScope, $compile, _Upload_, _$httpBackend_) {
+                    Upload = _Upload_;
+                    $httpBackend = _$httpBackend_;
 
-                if (callback) {
-                    $httpBackend.flush();
-                }
-            }));
+                    if (callback) {
+                      callback($httpBackend);
+                    }
+
+                    // Instantiate directive.
+                    var obj = AppTestUtils.ngCreateElement($rootScope, $compile, html);
+                    $scope = obj.$scope;
+                    $element = obj.$element;
+                    $elementScope = obj.$element.isolateScope() || obj.$element.scope();
+
+                    if (callback) {
+                        $httpBackend.flush();
+                    }
+                })
+            });
         }
 
         var uploadApi = '/upload';
@@ -72,7 +79,13 @@
 
         describe('Upload directive', function() {
 
-            AppTestUtils.appTestSetup.call(this);
+            AppTestUtils.appTestSetup.call(this, null, null, null, null, function() {
+
+                // Disable "Possibly unhandled rejection" related to promises
+                module(function($qProvider) {
+                    $qProvider.errorOnUnhandledRejections(false);
+                });
+            });
             uploadSetup(formUploadHtml);
 
             it('renders upload files correctly', function() {
@@ -237,24 +250,6 @@
                 expect($scope.uploadFiles.length).toEqual(0);
             });
 
-            it('upload progress update', function() {
-
-                // GIVEN on-going file upload
-                var data = [new Blob(['test', {type: 'image/jpeg'}])];
-                $scope.fileChanged(data);
-                $httpBackend.whenPOST(uploadApi).respond(200);
-                $scope.upload(data);
-
-                // WHEN upload progress is updated
-                var promise = $scope.uploadFiles[0].uploadHandle;
-                promise.progressFunc({loaded: 60, total: 100});
-                $httpBackend.flush();
-                $scope.$digest();
-
-                // THEN progress should be present
-                expect($scope.uploadFiles[0].uploadProgress).toEqual(60);
-            });
-
             it('uploading file fails', function() {
 
                 var file = new Blob([''], {type: 'image/jpeg'});
@@ -330,6 +325,44 @@
                     expect($scope.uploadFiles[0].thumbSrc.length > 0).toBeTruthy();
                     done();
                 }, 400);
+            });
+        });
+
+        describe('Upload directive', function() {
+
+            var uploadMock = {
+                registerModelChangeValidator: function() {
+                },
+                attrGetter: function() {
+                },
+                upload: function() {
+                    return {
+                        then: function(success, error, progress) {
+                            progress({loaded: 60, total: 100});
+                        }
+                    }
+                }
+            };
+
+            AppTestUtils.appTestSetup.call(this, null, null, null, null, function() {
+
+                // Disable "Possibly unhandled rejection" related to promises
+                module(function($provide) {
+                    $provide.value('Upload', uploadMock);
+                });
+            });
+            uploadSetup(formUploadHtml);
+
+            it('upload progress update', function() {
+
+                // GIVEN on-going file upload
+                // WHEN upload progress is updated
+                var data = [new Blob(['test', {type: 'image/jpeg'}])];
+                $scope.fileChanged(data);
+                $scope.upload(data);
+
+                // THEN progress should be present
+                expect($scope.uploadFiles[0].uploadProgress).toEqual(60);
             });
         });
 
