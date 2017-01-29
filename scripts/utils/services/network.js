@@ -27,7 +27,7 @@ define([], function () {
         function httpExecute(method, url, data, ignoreDuplicateRequest, cache) {
             var deferred = $q.defer();
 
-            return $http({
+            $http({
                 method: method,
                 url: url,
                 data: data,
@@ -36,9 +36,7 @@ define([], function () {
             }).then(function(response) {
                 // Promise is fulfilled
                 deferred.resolve(response.data);
-                return deferred.promise;
-            }, function(response) {
-
+            }).catch(function(response) {
                 // Application code at server side has changed, make full reload to fetch the new js etc files.
                 if (response.status === 418) {
                     $window.location.reload(true);
@@ -67,9 +65,9 @@ define([], function () {
 
                 // Promise is rejected
                 deferred.reject(response);
-
-                return deferred.promise;
             });
+
+            return deferred.promise;
         }
 
         /**

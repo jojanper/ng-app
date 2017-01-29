@@ -88,20 +88,16 @@ define([
             this.loadData().then(function(data) {
                 var modelData = findModelDataMatch(data, modelName, 'model');
                 if (modelData) {
-                    try {
-                        var actionData = (resolverDataFn) ? resolverDataFn(modelData) : {};
+                    var actionData = (resolverDataFn) ? resolverDataFn(modelData) : {};
 
-                        var url = resolverFn(resolverName, $.extend({
-                            /*jshint camelcase: false */
-                            appLabel: modelData.app_label,
-                            /*jshint camelcase: true */
-                            model: modelData.model
-                        }, actionData));
+                    var url = resolverFn(resolverName, $.extend({
+                        /*jshint camelcase: false */
+                        appLabel: modelData.app_label,
+                        /*jshint camelcase: true */
+                        model: modelData.model
+                    }, actionData));
 
-                        deferred.resolve({url: url, data: actionData.actionDetails});
-                    } catch (e) {
-                        deferred.reject(e.message);
-                    }
+                    deferred.resolve({url: url, data: actionData.actionDetails});
                 }
                 else {
                     var msg = 'Unable to resolve "' + resolverName + '" API for model ' + modelName;
@@ -110,6 +106,8 @@ define([
                 }
 
                 return deferred.promise;
+            }).catch(function(e) {
+                deferred.reject(e.message);
             });
 
             return deferred.promise;

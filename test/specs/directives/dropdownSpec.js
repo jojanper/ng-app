@@ -24,7 +24,7 @@
                         divider: true
                     },
                     {
-                        link: '#/home',
+                        link: '#!/home',
                         text: 'This is a link'
                         }
                 ];

@@ -53,7 +53,7 @@
                 // WHEN validating access to the view
                 var status = userService.canAccess({
                     href: function() {
-                        return '#/login';
+                        return '#!/login';
                     }
                 }, null, {name: ''}, null);
 
@@ -70,7 +70,7 @@
                 // WHEN validating access to the view
                 var status = userService.canAccess({
                     href: function() {
-                        return '#/main';
+                        return '#!/main';
                     },
                     go: function(_route) {
                         route = _route;

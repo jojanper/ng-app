@@ -28,7 +28,7 @@
                 this.$scope.$broadcast('$routeChangeSuccess');
                 this.$scope.$digest();
 
-                expect($(this.$element.find('.tabActiveHeader > a')[0]).prop('href')).toContain('#/test');
+                expect($(this.$element.find('.tabActiveHeader > a')[0]).prop('href')).toContain('#!/test');
 
                 // About page is selected
                 this.$location.path('about');

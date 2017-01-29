@@ -85,7 +85,7 @@ define([
 
             dialog.showTextDialog(modalOptions).then(function (result) {
                 console.log('Delete customer');
-            }, function() {
+            }).catch(function() {
                 console.log('Customer should not be deleted');
             });
         };
