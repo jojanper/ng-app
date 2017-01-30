@@ -1,32 +1,30 @@
 <div ng-controller="TestTablesController">
 
   <app-table class="media-player-list" dt-server-side="true" no-column-hide no-visibility
-             base-url="/apiv2/generic/media/upload" options="options3" theme="bootstrap"
-             dt-page-length="4" dt-length-change="false" dt-paging-type="simple"
-             dt-language="{info: '_START_ to _END_ of _TOTAL_ entries'}">
+             model="upload" theme="bootstrap" dt-page-length="4" dt-length-change="false"
+             dt-paging-type="simple" dt-language="{info: '_START_ to _END_ of _TOTAL_ entries'}">
     <app-column title="Video" render-last-modified="true"></app-column>
   </app-table>
 
-  <app-table dt-server-side="true" options="options" theme="fixed" dt-page-length="4">
+  <app-table dt-server-side="true" options="options" model="mediafolder" theme="fixed" dt-page-length="4">
     <app-column title="Type" render-media-type="mode" orderable="false"></app-column>
     <app-column title="Playlist" data="name" render-app-link="name" link-name="playlists.edit" link-id="id"></app-column>
     <app-column title="Last Modified" render-last-modified="true"></app-column>
   </app-table>
 
-  <app-table dt-server-side="true" options="options" theme="bootstrap" dt-length-menu="[5,10,15]" dt-order="[[3, 'asc']]">
+  <app-table dt-server-side="true" options="options" model="mediafolder" theme="bootstrap" dt-length-menu="[5,10,15]" dt-order="[[3, 'asc']]">
     <app-column title="Type" render-media-type="mode" orderable="false"></app-column>
     <app-column title="Playlist" data="name" render-app-link="name" link-name="playlists.edit" link-id="id"></app-column>
     <app-column title="Last Modified" render-last-modified="true"></app-column>
   </app-table>
 
-  <app-table dt-server-side="true" options="options2" theme="bootstrap" dt-length-menu="[5,10,15]" dt-order="[[2, 'asc']]">
+  <app-table dt-server-side="true" model="mediafolder" theme="bootstrap" dt-length-menu="[5,10,15]" dt-order="[[2, 'asc']]">
     <app-column title="Type" render-media-type="mode" orderable="false"></app-column>
     <app-column title="Playlist" data="name" render-app-link="name" link-name="playlists.edit" link-id="id"></app-column>
     <row-details title="Row details" render="render"></row-details>
   </app-table>
 
-  <app-table dt-server-side="true" theme="bootstrap" base-url="/apiv2/generic/media/upload"
-             dt-length-menu="[5,10,15]" dt-order="[[1, 'asc']]">
+  <app-table dt-server-side="true" theme="bootstrap" model="upload" dt-length-menu="[5,10,15]" dt-order="[[1, 'asc']]">
     <app-column title="Playlist" data="name" render-app-link="name" link-name="playlists.edit" link-id="id"></app-column>
     <row-details title="Row details" render="render"></row-details>
   </app-table>

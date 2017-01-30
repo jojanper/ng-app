@@ -10,20 +10,12 @@ define([
     var TestTablesController = BaseCtrl.extend({
         initialize: function() {
             this._buildDtOptions();
-            this.options.baseUrl = '/apiv2/generic/media/mediafolder';
-            this.$scope.options = this.options;
 
-            this.options2 = {};
-            this.options2.baseUrl = '/apiv2/generic/media/mediafolder';
-            this.$scope.options2 = this.options2;
+            this.$scope.options = this.options;
 
             this.$scope.render = function(rowData) {
                 return 'This is row-details HTML for ' + rowData.name;
             };
-
-            this.$scope.baseUrl = backendConfig.urls.playlists;
-
-            this.$scope.options3 = {};
         },
 
         _buildDtOptions: function() {

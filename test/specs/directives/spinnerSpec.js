@@ -23,10 +23,6 @@
                 ];
             });
 
-            afterEach(function() {
-                this.$scope.$destroy();
-            });
-
             it('loading state changes', function() {
 
                 // GIVEN UI view that includes loading spinner
