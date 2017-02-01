@@ -8,6 +8,14 @@ define([
 ], function ($, ng, FormInput, htmlLib, UtilsLib, FormTemplate) {
     "use strict";
 
+    function getAttrValue(attrs, name, default_value) {
+        if (attrs.hasOwnProperty(name)) {
+            return attrs[name];
+        }
+
+        return default_value;
+    }
+
     var defaultName = 'appForm';
 
     /**
@@ -45,6 +53,11 @@ define([
      * @param {string=} [submitLabel=Submit] Name of submit button.
      * @param {string=} clearLabel Name of clear button (which clears form data). If not present, no clear button is rendered.
      *
+     * @param {string=} submitTitle Tooltip text for submit button.
+     * @param {string=} clearTitle Tooltip text for clear button.
+     * @param {string=} editTitle Tooltip text for edit button.
+     * @param {string=} cancelTitle Tooltip text for cancellation button.
+     *
      * @param {string=} inDialog Form is rendered inside dialog.
      *
      * @param {string=} noStatus Do not show form status (invalid, modified, etc).
@@ -80,7 +93,7 @@ define([
                         class: 'draal-button-md',
                         'ng-click': 'submit(' + name + ')',
                         'ng-show': "!readOnly && canSubmit()",
-                        'uib-tooltip': "Save changed items",
+                        'uib-tooltip': getAttrValue(tAttrs, 'submitTitle', 'Save changed items'),
                         'tooltip-animation': "false",
 
                         // Submit not allowed when invalid form
@@ -95,7 +108,7 @@ define([
                         'ng-click': 'clear()',
                         'ng-disabled': "readOnly",
                         'ng-show': "!readOnly",
-                        'uib-tooltip': "Clear all items",
+                        'uib-tooltip': getAttrValue(tAttrs, 'clearTitle', 'Clear all items'),
                         'tooltip-animation': "false"
                     });
                 }
@@ -106,7 +119,7 @@ define([
                         class: 'draal-button-md',
                         'ng-click': 'edit()',
                         'ng-show': "readOnly",
-                        'uib-tooltip': "Edit the items",
+                        'uib-tooltip': getAttrValue(tAttrs, 'editTitle', 'Edit the items'),
                         'tooltip-animation': "false"
                     });
                 }
@@ -117,7 +130,7 @@ define([
                         class: 'draal-button-md',
                         'ng-click': 'cancel()',
                         'ng-show': "!readOnly",
-                        'uib-tooltip': "Back to non-editable view",
+                        'uib-tooltip': getAttrValue(tAttrs, 'cancelTitle', 'Back to non-editable view'),
                         'tooltip-animation': "false"
                     });
                 }

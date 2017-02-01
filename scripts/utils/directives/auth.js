@@ -6,6 +6,14 @@ define([
 ], function (BaseCtrl, UserModel, LoginTemplate, LogoutTemplate) {
     'use strict';
 
+    var extUrl = backendConfig.authUrls.extlogin;
+    var extSites = {
+        google: extUrl + 'google?next=/',
+        twitter: extUrl + 'twitter?next=/',
+        facebook: extUrl + 'facebook?next=/',
+        onedrive: extUrl + 'onedrive?next=/'
+    };
+
     var LoginController = BaseCtrl.extend({
         initialize: function($scope) {
             var dngUserManagement = this.arguments[0];
@@ -15,6 +23,8 @@ define([
             $scope.login = function(data) {
                 dngUserManagement.login(data);
             };
+
+            $scope.extSites = extSites;
         }
     });
 

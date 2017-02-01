@@ -12,6 +12,7 @@ backendConfig = {
     baseUrl: '/api/generic',
     authUrls: {
         login: '/api/auth/login',
-        logout: '/api/auth/logout'
+        logout: '/api/auth/logout',
+        extlogin: '/api/auth/ext-auth'
     }
 };
