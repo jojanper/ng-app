@@ -8,14 +8,6 @@ define([
 ], function ($, ng, FormInput, htmlLib, UtilsLib, FormTemplate) {
     "use strict";
 
-    function getAttrValue(attrs, name, defaultValue) {
-        if (attrs.hasOwnProperty(name)) {
-            return attrs[name];
-        }
-
-        return defaultValue;
-    }
-
     var defaultName = 'appForm';
 
     /**
@@ -77,6 +69,8 @@ define([
        </example>
      */
     var AppForm = function ($compile) {
+
+        var getAttrValue = UtilsLib.Common.getAttrValue;
 
         return {
             /**

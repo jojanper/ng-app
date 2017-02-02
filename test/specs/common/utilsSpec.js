@@ -33,9 +33,15 @@ define([
             expect(UtilsLib.Common.isObject(obj)).toBeTruthy();
             expect(UtilsLib.Common.isObject('')).toBeFalsy();
         });
+
+        it('supports getAttrValue', function() {
+            var obj = {a: 'b'};
+            expect(UtilsLib.Common.getAttrValue(obj, 'a')).toEqual('b');
+            expect(UtilsLib.Common.getAttrValue(obj, 'b', 'c')).toEqual('c');
+        });
     });
 
-    describe('ngDraal.Common', function() {
+    describe('ngDraal.File', function() {
 
         it('supports fileSize', function() {
             var obj = {size: 1024 * 1024 * 2};
