@@ -12,6 +12,7 @@
   "scripts": {
     "prepare": "npm install && npm run prepare-bower",
     "prepare-bower": "bower install",
+    "update-bower": "bower update",
     "build": "grunt dist",
     "test": "grunt unittest",
     "codestyle": "grunt code-checker",

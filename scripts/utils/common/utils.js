@@ -24,6 +24,14 @@ define([
     ngDraal.Common = {
         isObject: function(obj) {
             return ((typeof obj === "object") && (obj !== null)) ? true : false;
+        },
+
+        getAttrValue: function(attrs, name, defaultValue) {
+            if (attrs.hasOwnProperty(name)) {
+                return attrs[name];
+            }
+
+            return defaultValue;
         }
     };
 

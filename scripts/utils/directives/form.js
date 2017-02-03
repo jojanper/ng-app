@@ -78,6 +78,8 @@ define([
      */
     var AppForm = function ($compile) {
 
+        var getAttrValue = UtilsLib.Common.getAttrValue;
+
         return {
             /**
              * Generate the form template (without inputs).
