@@ -5,7 +5,7 @@ define([
     "use strict";
 
     var AppHeaderController = BaseCtrl.extend({
-        initialize: function($scope) {
+        initialize: function($scope) {
             var $state = this.arguments[0];
 
             $scope.headerItems = [
