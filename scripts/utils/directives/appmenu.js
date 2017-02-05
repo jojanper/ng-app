@@ -1,18 +1,3 @@
-/**
- * @description
- * AppMenu directive for drawing application UI main menu.
- *
- * @example
-   <app-main-menu></app-main-menu>
- *
- * # Scope:
- *
- * # Attributes:
- *
- *   * `'menuItems'`: Menu items with following properties:
- *      - 'link': Link name
- *      - 'display': Display name for link
- */
 define([
     'text!./templates/appmenu.html',
     'apps/menuConfig',
@@ -22,6 +7,25 @@ define([
 
     var AppMenuController = BaseCtrl.extend({});
 
+    /**
+     * @ngdoc directive
+     * @name appMainMenu
+     * @restrict E
+     *
+     * @description
+     * Application main menu.
+     *
+     * @param {Array=} menuItems Menu items as assignable angular expression.
+     * @param {string} menuItems.display Display name for the item.
+     * @param {string} menuItems.link URL link for the item.
+     *
+     * @example
+       <example>
+         <file name="index.html">
+           <app-main-menu></app-main-menu>
+         </file>
+       </example>
+     */
     var AppMainMenu = function () {
         return {
             restrict: 'E',

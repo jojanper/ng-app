@@ -28,6 +28,7 @@ define([
     './directives/bg_image',
     './directives/spinner',
     './directives/auth',
+    './directives/appheader',
     './factories/dialog',
     './factories/rest',
     './factories/image',

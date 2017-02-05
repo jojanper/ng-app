@@ -1,18 +1,18 @@
 <div class="btn-group" uib-dropdown is-open="status.isopen" auto-close="{{ autoClose }}" on-toggle="toggled(open)">
 
   <div ng-if="!noTitle">
-    <button uib-tooltip="{{ tooltipText }}" ng-if="dropdownElement === 'button'" type="button" class="btn btn-primary dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled">
+    <button class="dropdown-text" uib-tooltip="{{ tooltipText }}" ng-if="dropdownElement === 'button'" type="button" class="btn btn-primary dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled">
       {{ dynTitle || title }} <span class="caret"></span>
     </button>
-    <div uib-tooltip="{{ tooltipText }}" ng-if="dropdownElement === 'transparent'" class="dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled">
+    <div class="dropdown-text" uib-tooltip="{{ tooltipText }}" ng-if="dropdownElement === 'transparent'" class="dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled">
       {{ dynTitle || title }} <span class="caret"></span>
     </div>
   </div>
   <div ng-if="noTitle">
-    <button uib-tooltip="{{ tooltipText }}" ng-if="dropdownElement === 'button'" type="button" class="btn btn-primary dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled">
+    <button class="dropdown-text" uib-tooltip="{{ tooltipText }}" ng-if="dropdownElement === 'button'" type="button" class="btn btn-primary dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled">
       <span class="caret"></span>
     </button>
-    <div uib-tooltip="{{ tooltipText }}" ng-if="dropdownElement === 'transparent'" class="dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled">
+    <div class="dropdown-text" uib-tooltip="{{ tooltipText }}" ng-if="dropdownElement === 'transparent'" class="dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled">
       <span class="caret"></span>
     </div>
   </div>

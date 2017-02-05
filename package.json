@@ -77,7 +77,7 @@
     "jit-grunt": "latest",
     "minimist": "latest",
     "log-symbols": "latest",
-    "grunt-ngdocs": "latest",
+    "grunt-ngdocs": "0.2.10",
     "jsdoc": "^3.4.0",
     "grunt-jsdoc": "latest",
     "grunt-dgeni": "^0.0.3",
