@@ -8,8 +8,8 @@ module.exports = function() {
             deferLoad: false,
             html5Mode: false,
             scripts: [
-                'components/angular/angular.js',
-                'vendor/angular-animate.min.js'
+                'vendor/angular-1.3.1.js',
+                'vendor/angular-animate-1.3.1.js'
             ]
         },
         dist: {

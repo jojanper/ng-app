@@ -1,0 +1,28 @@
+<header>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="logo">
+                <a href="/">
+                    <img ng-if="isAuthenticated()" src="/static/img/logos/online.png" />
+                    <img ng-if="!isAuthenticated()" src="/static/img/logos/asleep.png" />Draal Media
+	            </a>
+            </div>
+        </div>
+        <div class="col-sm-4 header-actions">
+            <div class="header-quick-link" ng-if="isAuthenticated()">
+                <a href="/">Upload media</a>
+                <a href="/">Search</a>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="header-actions auth-buttons">
+                <button ng-if="canShowAuth()" ui-sref="login" type="button" class="btn btn-primary">Sign in</button>
+                <button ng-if="canShowAuth()" ui-sref="register" type="button" class="btn btn-success">Sign up</button>
+                <menu-dropdown ng-if="isAuthenticated()" uib-tooltip="View profile and more" auto-close="always" menu-open="right"
+                    title="Actions" dropdown-element="transparent" menu-items="headerItems"></menu-dropdown>
+            </div>
+        </div>
+    </div>
+</header>
+
+<app-main-menu></app-main-menu>

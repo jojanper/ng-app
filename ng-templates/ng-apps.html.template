@@ -17,8 +17,6 @@
 {% block content %}
 
 <div id="tabContainer" class="">
-  <app-main-menu></app-main-menu>
-
   <div class="tabscontent">
     <breadcrumb></breadcrumb>
     <app-messages></app-messages>
