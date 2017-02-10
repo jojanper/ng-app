@@ -11,9 +11,7 @@
 
             var element = '<breadcrumb></breadcrumb>';
 
-            AppTestUtils.appTestSetup.call(this, element, null, function($httpBackend) {
-                $httpBackend.whenGET('/api/generic').respond(200, AppTestResponses.metaApiResponse);
-            }, null, function() {
+            AppTestUtils.appTestSetup.call(this, element, null, null, null, function() {
                 AppTestUtils.login();
             });
 
@@ -25,6 +23,8 @@
                 // WHEN switching to media application page
                 this.$location.path(path);
                 this.$scope.$broadcast('$stateChangeSuccess');
+                this.$httpBackend.whenGET('/api/generic').respond(200, AppTestResponses.metaApiResponse);
+                this.$httpBackend.flush();
                 this.$scope.$root.$digest();
 
                 // THEN breadcrumb should be visible

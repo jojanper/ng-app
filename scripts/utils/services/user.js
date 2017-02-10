@@ -5,7 +5,7 @@ define([
     "use strict";
 
     // Routes that don't require authentication
-    var noAuthRoutes = ['#!/login'];
+    var noAuthRoutes = ['#!/home', '#!/login'];
 
     function validateRoute(route) {
         return _.find(noAuthRoutes, function (noAuthRoute) {

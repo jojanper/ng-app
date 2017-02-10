@@ -13,21 +13,27 @@ define([
         },
 
         {
-            link: 'music',
+            link: 'player.music',
+            url: 'music',
+            model: 'music',
             breadcrumb: 'Music',
             parent: 'player',
             template: AudioPlayerTemplate
         },
 
         {
-            link: 'video',
+            link: 'player.video',
+            url: 'video',
+            model: 'video',
             breadcrumb: 'Video',
             parent: 'player',
             template: VideoPlayerTemplate
         },
 
         {
-            link: 'image',
+            link: 'player.image',
+            url: 'image',
+            model: 'image',
             breadcrumb: 'Image',
             parent: 'player',
             template: ''

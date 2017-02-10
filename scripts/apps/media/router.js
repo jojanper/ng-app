@@ -12,30 +12,34 @@ define([
             link: 'admin',
             linkMap: 'media',
             display: 'Admin',
-            default: true,
             template: function() { return baseListTemplateFn(''); }
         },
 
 
         // Upload listing view
         {
-            link: 'upload',
+            link: 'admin.upload',
+            url: 'upload',
+            model: 'upload',
             breadcrumb: 'Uploaded media',
             parent: 'admin',
             template: function() { return baseListTemplateFn(UploadListTemplate); }
         },
         // Upload editing view
         {
-            link: 'upload.edit',
+            link: 'admin.upload.edit',
             url: ':id',
-            parent: 'upload',
+            model: 'upload',
+            parent: 'admin.upload',
             template: function() { return baseEditTemplateFn('upload'); }
         },
 
 
         // Media folder listing view
         {
-            link: 'mediafolder',
+            link: 'admin.mediafolder',
+            url: 'mediafolder',
+            model: 'mediafolder',
             breadcrumb: 'Media folder',
             parent: 'admin',
             template: function() { return baseListTemplateFn(MediaListTemplate); }
@@ -43,9 +47,10 @@ define([
 
         // Media folder editing view
         {
-            link: 'mediafolder.edit',
+            link: 'admin.mediafolder.edit',
             url: ':id',
-            parent: 'mediafolder',
+            model: 'mediafolder',
+            parent: 'admin.mediafolder',
             template: function() { return baseEditTemplateFn('mediafolder'); }
         }
     ];

@@ -1,11 +1,12 @@
 define([
-], function () {
+    'common/utils'
+], function (UtilsLib) {
     "use strict";
 
     function getAppLabel(state) {
         var appLabel = state.linkMap;
         if (!appLabel) {
-            appLabel = state.link;
+            appLabel = state.model || state.link;
         }
 
         return appLabel;
@@ -74,8 +75,10 @@ define([
 
                         // Display name of the application model
                         var text = '';
+                        var routeConfig;
                         for (var j = 0; j < routeConfigs.length; j++) {
                             if (getAppLabel(routeConfigs[j]) === subModels[i]) {
+                                routeConfig = routeConfigs[j];
                                 text = routeConfigs[j].display || routeConfigs[j].breadcrumb;
                                 break;
                             }
@@ -91,7 +94,7 @@ define([
 
                         if (text) {
                             appModels.push({
-                                link: $state.href(subModels[i]),
+                                link: $state.href(routeConfig.link),
                                 text: text
                             });
                         }
