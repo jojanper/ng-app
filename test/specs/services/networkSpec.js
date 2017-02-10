@@ -40,7 +40,7 @@
                 }
             });
 
-            it('works with GET', function() {
+            fit('works with GET', function() {
                 var success, api = '/api/get';
 
                 $httpBackend.whenGET(api).respond(200);
