@@ -41,6 +41,8 @@
             });
 
             fit('works with GET', function() {
+                console.log('HEP');
+                /*
                 var success, api = '/api/get';
 
                 $httpBackend.whenGET(api).respond(200);
@@ -52,6 +54,7 @@
                 $httpBackend.flush();
 
                 expect(success).toBeTruthy();
+                */
             });
 
             it('works with POST', function() {
