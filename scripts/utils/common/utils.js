@@ -107,6 +107,10 @@ define([
 
         replaceAll: function (string, find, replace) {
             return string.replace(new RegExp(this.escapeRegExp(find), 'g'), replace);
+        },
+
+        isString: function (str) {
+            return (typeof str === 'string' || str instanceof String);
         }
     };
 

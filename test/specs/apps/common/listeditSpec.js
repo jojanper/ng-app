@@ -40,15 +40,13 @@
                     .respond(200, AppTestResponses.metaDataResponse.simple);
             });
 
-            afterEach(function() {
-                this.$scope.$destroy();
-            });
-
             it('should display page links', function() {
-                expect($(this.$element.find('table')[0]).find('tbody tr').length)
+                var table = this.$element.find('table')[1];
+
+                expect($(table).find('tbody tr').length)
                     .toEqual(AppTestResponses.modelListingsResponse.mediafolder.aaData.length);
 
-                expect($(this.$element.find('table')[0]).find('tbody td').length)
+                expect($(table).find('tbody td').length)
                     .toEqual(AppTestResponses.modelListingsResponse.mediafolder.aaData.length * 2);
             });
         });
@@ -72,10 +70,6 @@
                     .respond(200, AppTestResponses.modelDetailsResponse.simple);
 
                 $httpBackend.whenGET(historyUrl).respond(200, AppTestResponses.modelItemHistoryResponse.simple);
-            });
-
-            afterEach(function() {
-                this.$scope.$destroy();
             });
 
             it('should display page links', function() {

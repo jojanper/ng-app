@@ -34,7 +34,9 @@
 
                 href: function(state) {
                     return '/#!/' + state;
-                }
+                },
+
+                current: {}
             }
 
             // GIVEN current page is login page
