@@ -2,10 +2,11 @@
     "use strict";
 
     var dependencies = [
-        'bootstrap'
+        'bootstrap',
+        'angular'
     ];
 
-    define(dependencies, function(AppBootstrap) {
+    define(dependencies, function(AppBootstrap, angular) {
 
         var appName = 'app';
 
@@ -20,8 +21,7 @@
                     location: {
                         reload: jasmine.createSpy()
                     },
-                    callbacks: {
-                    }
+                    angular: angular
                 };
 
                 module(function($provide) {
