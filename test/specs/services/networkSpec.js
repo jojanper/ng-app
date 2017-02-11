@@ -19,6 +19,8 @@
                 $window = {
                     location: {
                         reload: jasmine.createSpy()
+                    },
+                    callbacks: {
                     }
                 };
 
@@ -40,9 +42,7 @@
                 }
             });
 
-            fit('works with GET', function() {
-                console.log('HEP');
-                /*
+            it('works with GET', function() {
                 var success, api = '/api/get';
 
                 $httpBackend.whenGET(api).respond(200);
@@ -54,7 +54,6 @@
                 $httpBackend.flush();
 
                 expect(success).toBeTruthy();
-                */
             });
 
             it('works with POST', function() {
@@ -186,7 +185,9 @@
                 expect(messages[0].msgBody).toContain('<br/>');
             });
 
-            it('makes full reload if application code at server has changed', function() {
+            fit('makes full reload if application code at server has changed', function() {
+
+                //spyOn($window.location, 'reload').and.callFake(function(){});
 
                 // GIVEN application code has changed at server side
                 var api = '/api/get';
