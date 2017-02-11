@@ -185,9 +185,7 @@
                 expect(messages[0].msgBody).toContain('<br/>');
             });
 
-            fit('makes full reload if application code at server has changed', function() {
-
-                //spyOn($window.location, 'reload').and.callFake(function(){});
+            it('makes full reload if application code at server has changed', function() {
 
                 // GIVEN application code has changed at server side
                 var api = '/api/get';
