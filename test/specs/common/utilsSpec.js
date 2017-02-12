@@ -41,6 +41,14 @@ define([
         });
     });
 
+    describe('ngDraal.Strings', function() {
+
+        it('supports isString', function() {
+            expect(UtilsLib.Strings.isString({})).toBeFalsy();
+            expect(UtilsLib.Strings.isString('test')).toBeTruthy();
+        });
+    });
+
     describe('ngDraal.File', function() {
 
         it('supports fileSize', function() {
