@@ -5,7 +5,7 @@ define([
     "use strict";
 
     // Routes that don't require authentication
-    var noAuthRoutes = ['#!/home', '#!/login'];
+    var noAuthRoutes = ['#!/home', '#!/auth/login'];
 
     function validateRoute(route) {
         return _.find(noAuthRoutes, function (noAuthRoute) {
@@ -68,6 +68,8 @@ define([
          */
         this.canAccess = function($state, event, toState, toParams) {
 
+            console.log(toState);
+
             // Set authentication status
             this.user.setLoginData(cookieObj.get());
 
@@ -83,7 +85,7 @@ define([
             // Route requires authentication
             if (!routeStatus) {
                 event.preventDefault();
-                $state.go('login', {
+                $state.go('auth.login', {
                     redirect: route
                 });
             }
@@ -116,10 +118,10 @@ define([
          * @description
          * Logout user from remote system.
          */
-        this.logout = function() {
+        this.logout = function($state) {
             rest.logout().then(function() {
                 cookieObj.remove();
-                $location.path('/login');
+                $state.go('auth.login');
             });
         };
     };

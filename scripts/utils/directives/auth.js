@@ -39,7 +39,7 @@ define([
         initialize: function($scope) {
             var dngUserManagement = this.arguments[0];
             $scope.setToLoadingState();
-            dngUserManagement.logout();
+            dngUserManagement.logout(this.arguments[1]);
         }
     });
 
@@ -57,7 +57,7 @@ define([
             scope: {},
             restrict: 'E',
             template: LogoutTemplate,
-            controller: ['$scope', '$element', '$attrs', 'dngUserManagement', LogoutController]
+            controller: ['$scope', '$element', '$attrs', 'dngUserManagement', '$state', LogoutController]
         };
     };
 

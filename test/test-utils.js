@@ -112,7 +112,7 @@ AppTestUtils.appTestSetup = function(html, scopeCallback, httpBackendCallback, p
 
         inject(function($compile, $rootScope, $httpBackend, $location, $templateCache,
                         $controller, $stateParams, appMessagesService, network, appLogger,
-                        rest, $timeout, $q, $cookies) {
+                        rest, $timeout, $q, $cookies, $state) {
             var self = this;
 
             this.$location = $location;
@@ -126,6 +126,7 @@ AppTestUtils.appTestSetup = function(html, scopeCallback, httpBackendCallback, p
             this.$timeout = $timeout;
             this.$q = $q;
             this.$cookies = $cookies;
+            this.$state = $state;
 
             if (httpBackendCallback) {
                 httpBackendCallback($httpBackend, $templateCache);

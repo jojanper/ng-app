@@ -14,13 +14,13 @@ define([
                     text: 'My profile'
                 },
                 {
-                    link: $state.href('logout'),
+                    link: $state.href('auth.logout'),
                     text: 'Sign out'
                 }
             ];
 
             $scope.canShowAuth = function() {
-                return (!$state.includes('login')) ? !$scope.isAuthenticated() : false;
+                return (!$state.includes('auth.login')) ? !$scope.isAuthenticated() : false;
             };
         }
     });
