@@ -12,6 +12,7 @@ define([
             link: 'auth.login',
             url: 'login',
             breadcrumb: false,
+            public: true,
             template: '<dng-login></dng-login>'
         },
         {
@@ -19,6 +20,13 @@ define([
             url: 'logout',
             breadcrumb: false,
             template: '<dng-logout></dng-logout>'
+        },
+        {
+            link: 'auth.register',
+            url: 'register',
+            breadcrumb: false,
+            public: true,
+            template: '<dng-register></dng-register>'
         }
     ];
 });

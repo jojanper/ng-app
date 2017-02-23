@@ -55,7 +55,7 @@
                     href: function() {
                         return '#!/auth/login';
                     }
-                }, null, {name: ''}, null);
+                }, null, {name: '', public: true}, null);
 
                 // THEN it should return expected return code
                 expect(status).toBeFalsy();
@@ -77,7 +77,7 @@
                     }
                 }, {
                     preventDefault: function() {}
-                }, {name: ''}, null);
+                }, {name: '', public: false}, null);
 
                 // THEN access is denied and redirect to login page occurs
                 expect(status).toBeFalsy();

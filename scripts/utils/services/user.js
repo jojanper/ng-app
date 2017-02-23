@@ -4,15 +4,6 @@ define([
 ], function (_, User) {
     "use strict";
 
-    // Routes that don't require authentication
-    var noAuthRoutes = ['#!/home', '#!/auth/login'];
-
-    function validateRoute(route) {
-        return _.find(noAuthRoutes, function (noAuthRoute) {
-            return route.startsWith(noAuthRoute);
-        });
-    }
-
     // Name of cookie key that contains authorization data
     var userCookieName = 'authUser';
 
@@ -68,8 +59,6 @@ define([
          */
         this.canAccess = function($state, event, toState, toParams) {
 
-            console.log(toState);
-
             // Set authentication status
             this.user.setLoginData(cookieObj.get());
 
@@ -79,14 +68,11 @@ define([
             }
 
             // Make sure unauthenticated user is able to see public views only
-            var route = $state.href(toState.name, toParams);
-            var routeStatus = validateRoute(route);
-
             // Route requires authentication
-            if (!routeStatus) {
+            if (!toState.public) {
                 event.preventDefault();
                 $state.go('auth.login', {
-                    redirect: route
+                    redirect: $state.href(toState.name, toParams)
                 });
             }
 
@@ -123,6 +109,18 @@ define([
                 cookieObj.remove();
                 $state.go('auth.login');
             });
+        };
+
+        /**
+         * @ngdoc
+         * @name register
+         * @methodOf dngUserManagement
+         *
+         * @description
+         * Create new user.
+         */
+        this.register = function(data, $state) {
+            $state.go('home');
         };
     };
 

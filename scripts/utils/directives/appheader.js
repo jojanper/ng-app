@@ -20,7 +20,7 @@ define([
             ];
 
             $scope.canShowAuth = function() {
-                return (!$state.includes('auth.login')) ? !$scope.isAuthenticated() : false;
+                return (!$state.includes('auth')) ? !$scope.isAuthenticated() : false;
             };
         }
     });

@@ -16,6 +16,11 @@ define([
                     label: "Username",
                     directives: ['required']
                 },
+                email: {
+                    type: "email",
+                    label: "Email",
+                    directives: ['required']
+                },
                 password: {
                     type: "password",
                     label: "Password",
