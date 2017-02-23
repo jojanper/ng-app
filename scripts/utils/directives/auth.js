@@ -2,8 +2,9 @@ define([
     'utils/controllers/basecontroller',
     'utils/models/user',
     'text!./templates/login.html',
-    'text!./templates/logout.html'
-], function (BaseCtrl, UserModel, LoginTemplate, LogoutTemplate) {
+    'text!./templates/logout.html',
+    'text!./templates/register.html'
+], function (BaseCtrl, UserModel, LoginTemplate, LogoutTemplate, RegisterTemplate) {
     'use strict';
 
     var extUrl = backendConfig.authUrls.extlogin;
@@ -39,7 +40,20 @@ define([
         initialize: function($scope) {
             var dngUserManagement = this.arguments[0];
             $scope.setToLoadingState();
-            dngUserManagement.logout();
+            dngUserManagement.logout(this.arguments[1]);
+        }
+    });
+
+    var RegisterController = BaseCtrl.extend({
+        initialize: function($scope) {
+            var dngUserManagement = this.arguments[0];
+            var state = this.arguments[1];
+
+            $scope.user = new UserModel();
+
+            $scope.register = function(data) {
+                dngUserManagement.register(data, state);
+            };
         }
     });
 
@@ -57,7 +71,16 @@ define([
             scope: {},
             restrict: 'E',
             template: LogoutTemplate,
-            controller: ['$scope', '$element', '$attrs', 'dngUserManagement', LogoutController]
+            controller: ['$scope', '$element', '$attrs', 'dngUserManagement', '$state', LogoutController]
+        };
+    };
+
+    var Register = function () {
+        return {
+            scope: {},
+            restrict: 'E',
+            template: RegisterTemplate,
+            controller: ['$scope', '$element', '$attrs', 'dngUserManagement', '$state', RegisterController]
         };
     };
 
@@ -74,6 +97,11 @@ define([
             feature: 'directive',
             name: 'dngLogout',
             cls: Logout
+        },
+        {
+            feature: 'directive',
+            name: 'dngRegister',
+            cls: Register
         }
     ];
 });

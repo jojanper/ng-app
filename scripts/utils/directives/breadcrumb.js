@@ -53,7 +53,7 @@ define([
 
                         // Go from current page towards root page
                         while (state) {
-                            if (state.name && state.breadcrumb !== false) {
+                            if (!state.abstract && state.name && state.breadcrumb !== false) {
                                 var name = state.display || state.breadcrumb || state.locals.globals.$stateParams.id;
                                 var link = state.name + '(' + JSON.stringify(state.locals.globals.$stateParams) + ')';
 

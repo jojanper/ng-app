@@ -9,6 +9,7 @@ define([
             display: 'Home',
             breadcrumb: false,
             default: true,
+            public: true,
             template: IndexTemplate
         }
     ];

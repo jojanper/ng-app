@@ -16,8 +16,8 @@
         </div>
         <div class="col-sm-4">
             <div class="header-actions auth-buttons">
-                <button ng-if="canShowAuth()" ui-sref="login" type="button" class="btn btn-primary">Sign in</button>
-                <button ng-if="canShowAuth()" ui-sref="register" type="button" class="btn btn-success">Sign up</button>
+                <button ng-if="canShowAuth()" ui-sref="auth.login" type="button" class="btn btn-primary">Sign in</button>
+                <button ng-if="canShowAuth()" ui-sref="auth.register" type="button" class="btn btn-success">Sign up</button>
                 <menu-dropdown ng-if="isAuthenticated()" uib-tooltip="View profile and more" auto-close="always" menu-open="right"
                     title="Actions" dropdown-element="transparent" menu-items="headerItems"></menu-dropdown>
             </div>

@@ -53,9 +53,9 @@
                 // WHEN validating access to the view
                 var status = userService.canAccess({
                     href: function() {
-                        return '#!/login';
+                        return '#!/auth/login';
                     }
-                }, null, {name: ''}, null);
+                }, null, {name: '', public: true}, null);
 
                 // THEN it should return expected return code
                 expect(status).toBeFalsy();
@@ -77,11 +77,11 @@
                     }
                 }, {
                     preventDefault: function() {}
-                }, {name: ''}, null);
+                }, {name: '', public: false}, null);
 
                 // THEN access is denied and redirect to login page occurs
                 expect(status).toBeFalsy();
-                expect(route).toEqual('login');
+                expect(route).toEqual('auth.login');
             });
         });
     });
