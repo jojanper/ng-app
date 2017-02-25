@@ -74,7 +74,7 @@ define([
                                  * correctly.
                                  */
                                 options = ng.extend({}, $scope.model.getFieldOptions($attrs.ref));
-                                $scope.options = ng.extend($attrs, options, {
+                                $scope.options = ng.extend({}, options, $attrs, {
                                     name: $attrs.ref,
                                     manualInput: true,
                                     formName: $scope.$parent.$parent.name || $scope.$parent.$parent.$parent.name

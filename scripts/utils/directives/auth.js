@@ -4,9 +4,11 @@ define([
     'text!./templates/login.html',
     'text!./templates/logout.html',
     'text!./templates/register.html',
-    'text!./templates/passwordreset.html'
+    'text!./templates/passwordreset.html',
+    'text!./templates/passwordchange.html',
+    'text!./templates/passwordresetchange.html'
 ], function (BaseCtrl, UserModel, LoginTemplate, LogoutTemplate, RegisterTemplate,
-    PasswordResetTemplate) {
+    PasswordResetTemplate, PasswordChangeTemplate, PasswordResetChangeTemplate) {
     'use strict';
 
     var extUrl = backendConfig.authUrls.extlogin;
@@ -70,6 +72,28 @@ define([
         }
     });
 
+    var ChangeController = BaseCtrl.extend({
+        initialize: function($scope) {
+            var dngUserManagement = this.arguments[0];
+
+            $scope.user = new UserModel();
+
+            $scope.change = function(data) {
+            };
+        }
+    });
+
+    var ResetChangeController = BaseCtrl.extend({
+        initialize: function($scope) {
+            var dngUserManagement = this.arguments[0];
+
+            $scope.user = new UserModel();
+
+            $scope.change = function(data) {
+            };
+        }
+    });
+
     var Login = function () {
         return {
             scope: {},
@@ -106,6 +130,24 @@ define([
         };
     };
 
+    var PasswordChange = function () {
+        return {
+            scope: {},
+            restrict: 'E',
+            template: PasswordChangeTemplate,
+            controller: ['$scope', '$element', '$attrs', 'dngUserManagement', ChangeController]
+        };
+    };
+
+    var PasswordResetChange = function () {
+        return {
+            scope: {},
+            restrict: 'E',
+            template: PasswordResetChangeTemplate,
+            controller: ['$scope', '$element', '$attrs', 'dngUserManagement', ResetChangeController]
+        };
+    };
+
     return [
         {
             componentName: 'auth',
@@ -125,11 +167,20 @@ define([
             name: 'dngRegister',
             cls: Register
         },
-
         {
             feature: 'directive',
             name: 'dngPasswordReset',
             cls: PasswordReset
+        },
+        {
+            feature: 'directive',
+            name: 'dngPasswordChange',
+            cls: PasswordChange
+        },
+        {
+            feature: 'directive',
+            name: 'dngPasswordResetChange',
+            cls: PasswordResetChange
         }
     ];
 });

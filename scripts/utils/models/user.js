@@ -25,6 +25,16 @@ define([
                     type: "password",
                     label: "Password",
                     directives: ['required']
+                },
+                password2: {
+                    type: "password",
+                    label: "Confirm password",
+                    directives: ['required']
+                },
+                password3: {
+                    type: "password",
+                    label: "Old password",
+                    directives: ['required']
                 }
             };
 
@@ -39,6 +49,7 @@ define([
             this.email = '';
             this.password = '';
             this.password2 = '';
+            this.password3 = '';
             this.authenticated = false;
             this.displayName = '';
             this.expires = null;

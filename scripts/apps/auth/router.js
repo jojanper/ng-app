@@ -28,13 +28,25 @@ define([
             public: true,
             template: '<dng-register></dng-register>'
         },
-
         {
             link: 'auth.passwordreset',
             url: 'password-reset',
             breadcrumb: false,
             public: true,
             template: '<dng-password-reset></dng-password-reset>'
+        },
+        {
+            link: 'auth.passwordresetchange',
+            url: 'password-reset-change',
+            breadcrumb: false,
+            public: true,
+            template: '<dng-password-reset-change></dng-password-reset-change>'
+        },
+        {
+            link: 'auth.passwordchange',
+            url: 'password-change',
+            breadcrumb: false,
+            template: '<dng-password-change></dng-password-change>'
         }
     ];
 });
