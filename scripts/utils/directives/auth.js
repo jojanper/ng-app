@@ -3,8 +3,10 @@ define([
     'utils/models/user',
     'text!./templates/login.html',
     'text!./templates/logout.html',
-    'text!./templates/register.html'
-], function (BaseCtrl, UserModel, LoginTemplate, LogoutTemplate, RegisterTemplate) {
+    'text!./templates/register.html',
+    'text!./templates/passwordreset.html'
+], function (BaseCtrl, UserModel, LoginTemplate, LogoutTemplate, RegisterTemplate,
+    PasswordResetTemplate) {
     'use strict';
 
     var extUrl = backendConfig.authUrls.extlogin;
@@ -57,6 +59,17 @@ define([
         }
     });
 
+    var ResetController = BaseCtrl.extend({
+        initialize: function($scope) {
+            var dngUserManagement = this.arguments[0];
+
+            $scope.user = new UserModel();
+
+            $scope.reset = function(data) {
+            };
+        }
+    });
+
     var Login = function () {
         return {
             scope: {},
@@ -84,6 +97,15 @@ define([
         };
     };
 
+    var PasswordReset = function () {
+        return {
+            scope: {},
+            restrict: 'E',
+            template: PasswordResetTemplate,
+            controller: ['$scope', '$element', '$attrs', 'dngUserManagement', ResetController]
+        };
+    };
+
     return [
         {
             componentName: 'auth',
@@ -102,6 +124,12 @@ define([
             feature: 'directive',
             name: 'dngRegister',
             cls: Register
+        },
+
+        {
+            feature: 'directive',
+            name: 'dngPasswordReset',
+            cls: PasswordReset
         }
     ];
 });

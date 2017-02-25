@@ -3,6 +3,8 @@
       form-title="Log in" name="loginForm" model="user" submit-fn="login(data)">
     <app-input ref="username"></app-input>
     <app-input ref="password"></app-input>
+
+    <p><a class="password-reset" ui_sref="auth.passwordreset">Forgot password?</a></p>
   </app-form>
 
   <div class="login-site-links">
@@ -23,6 +25,6 @@
   </div>
 
   <p>
-    If you don't have an account, you can <a ui_sref="register">sign up</a> for one.
+    If you don't have an account, you can <a ui_sref="auth.register">sign up</a> for one.
   </p>
 </div>

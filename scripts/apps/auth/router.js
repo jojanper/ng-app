@@ -27,6 +27,14 @@ define([
             breadcrumb: false,
             public: true,
             template: '<dng-register></dng-register>'
+        },
+
+        {
+            link: 'auth.passwordreset',
+            url: 'password-reset',
+            breadcrumb: false,
+            public: true,
+            template: '<dng-password-reset></dng-password-reset>'
         }
     ];
 });
