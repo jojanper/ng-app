@@ -141,6 +141,8 @@ define([
                 if (self.options.onChange) {
                     self.options.onChange($item);
                 }
+
+                self.onChange($scope);
             };
         }
     });

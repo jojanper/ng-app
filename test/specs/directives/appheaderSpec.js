@@ -75,7 +75,8 @@
                 // AND dropdown items are correct
                 var elements = this.$element.find('menu-dropdown li');
                 expect(angular.element(elements[0]).text().trim()).toEqual('My profile');
-                expect(angular.element(elements[1]).text().trim()).toEqual('Sign out');
+                expect(angular.element(elements[1]).text().trim()).toEqual('Change password');
+                expect(angular.element(elements[2]).text().trim()).toEqual('Sign out');
             });
         });
     });

@@ -14,6 +14,10 @@ define([
                     text: 'My profile'
                 },
                 {
+                    link: $state.href('auth.passwordchange'),
+                    text: 'Change password'
+                },
+                {
                     link: $state.href('auth.logout'),
                     text: 'Sign out'
                 }

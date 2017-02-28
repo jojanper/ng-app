@@ -3,8 +3,12 @@ define([
     'utils/models/user',
     'text!./templates/login.html',
     'text!./templates/logout.html',
-    'text!./templates/register.html'
-], function (BaseCtrl, UserModel, LoginTemplate, LogoutTemplate, RegisterTemplate) {
+    'text!./templates/register.html',
+    'text!./templates/passwordreset.html',
+    'text!./templates/passwordchange.html',
+    'text!./templates/passwordresetchange.html'
+], function (BaseCtrl, UserModel, LoginTemplate, LogoutTemplate, RegisterTemplate,
+    PasswordResetTemplate, PasswordChangeTemplate, PasswordResetChangeTemplate) {
     'use strict';
 
     var extUrl = backendConfig.authUrls.extlogin;
@@ -57,6 +61,39 @@ define([
         }
     });
 
+    var ResetController = BaseCtrl.extend({
+        initialize: function($scope) {
+            var dngUserManagement = this.arguments[0];
+
+            $scope.user = new UserModel();
+
+            $scope.reset = function(data) {
+            };
+        }
+    });
+
+    var ChangeController = BaseCtrl.extend({
+        initialize: function($scope) {
+            var dngUserManagement = this.arguments[0];
+
+            $scope.user = new UserModel();
+
+            $scope.change = function(data) {
+            };
+        }
+    });
+
+    var ResetChangeController = BaseCtrl.extend({
+        initialize: function($scope) {
+            var dngUserManagement = this.arguments[0];
+
+            $scope.user = new UserModel();
+
+            $scope.change = function(data) {
+            };
+        }
+    });
+
     var Login = function () {
         return {
             scope: {},
@@ -84,6 +121,33 @@ define([
         };
     };
 
+    var PasswordReset = function () {
+        return {
+            scope: {},
+            restrict: 'E',
+            template: PasswordResetTemplate,
+            controller: ['$scope', '$element', '$attrs', 'dngUserManagement', ResetController]
+        };
+    };
+
+    var PasswordChange = function () {
+        return {
+            scope: {},
+            restrict: 'E',
+            template: PasswordChangeTemplate,
+            controller: ['$scope', '$element', '$attrs', 'dngUserManagement', ChangeController]
+        };
+    };
+
+    var PasswordResetChange = function () {
+        return {
+            scope: {},
+            restrict: 'E',
+            template: PasswordResetChangeTemplate,
+            controller: ['$scope', '$element', '$attrs', 'dngUserManagement', ResetChangeController]
+        };
+    };
+
     return [
         {
             componentName: 'auth',
@@ -102,6 +166,21 @@ define([
             feature: 'directive',
             name: 'dngRegister',
             cls: Register
+        },
+        {
+            feature: 'directive',
+            name: 'dngPasswordReset',
+            cls: PasswordReset
+        },
+        {
+            feature: 'directive',
+            name: 'dngPasswordChange',
+            cls: PasswordChange
+        },
+        {
+            feature: 'directive',
+            name: 'dngPasswordResetChange',
+            cls: PasswordResetChange
         }
     ];
 });

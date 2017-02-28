@@ -24,6 +24,20 @@ define([
                 password: {
                     type: "password",
                     label: "Password",
+                    directives: ['required'],
+                    validateRef: 'password2'
+                },
+                password2: {
+                    type: "password",
+                    label: "Confirm password",
+                    directives: [
+                        'required',
+                        {type: 'equal', items: ['password'], errorText: 'Password not same'}
+                    ]
+                },
+                password3: {
+                    type: "password",
+                    label: "Old password",
                     directives: ['required']
                 }
             };
@@ -39,6 +53,7 @@ define([
             this.email = '';
             this.password = '';
             this.password2 = '';
+            this.password3 = '';
             this.authenticated = false;
             this.displayName = '';
             this.expires = null;
