@@ -68,6 +68,16 @@ define(['common/html'], function (htmlLib) {
             errorTemplate: function($scope) {
                 return {text: 'Value is blacklisted!', errorRef: 'blacklist'};
             }
+        },
+
+        // Input must be same as another input
+        'equal': {
+            inputTemplate: function($scope, options) {
+                return 'equal="' + options.items.join(',') + '"';
+            },
+            errorTemplate: function($scope, options) {
+                return {text: options.errorText, errorRef: 'equal'};
+            }
         }
     };
 

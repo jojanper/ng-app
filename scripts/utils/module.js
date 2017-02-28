@@ -13,6 +13,7 @@ define([
     './directives/input',
     './directives/validators/blacklist',
     './directives/validators/filechecker',
+    './directives/validators/equal',
     './directives/dropdown',
     './directives/ng_esc',
     './directives/upload',

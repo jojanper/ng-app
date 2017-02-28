@@ -24,12 +24,16 @@ define([
                 password: {
                     type: "password",
                     label: "Password",
-                    directives: ['required']
+                    directives: ['required'],
+                    validateRef: 'password2'
                 },
                 password2: {
                     type: "password",
                     label: "Confirm password",
-                    directives: ['required']
+                    directives: [
+                        'required',
+                        {type: 'equal', items: ['password'], errorText: 'Password not same'}
+                    ]
                 },
                 password3: {
                     type: "password",

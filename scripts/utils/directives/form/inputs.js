@@ -24,7 +24,8 @@ define([
                 name: this.options.name,
                 class: this.inputClasses,
                 'ng-model': this.modelRef(),
-                'ng-disabled': '$form.readOnlyInput(this)'
+                'ng-disabled': '$form.readOnlyInput(this)',
+                'ng-change': 'onChange()'
             };
 
             var ngModelOptions = ng.toJson(this.getNgModelOptions());
@@ -35,6 +36,14 @@ define([
             options[this.directiveTag] = '';
 
             return htmlLib.input('', options);
+        },
+
+        controller: function($scope) {
+            var self = this;
+
+            $scope.onChange = function() {
+                self.onChange($scope);
+            };
         }
     });
 

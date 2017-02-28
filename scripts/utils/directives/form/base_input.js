@@ -189,6 +189,20 @@ define([
             formObj.$setDirty();
         },
 
+        onChange: function($scope) {
+            // Another input contains dependency to this input.
+            // Trigger the validation of the reference input.
+            if ($scope.options.validateRef) {
+                var form = $scope.$eval(this.form());
+                var formObj = form[$scope.options.validateRef];
+
+                // The reference input must be present also
+                if (formObj) {
+                    formObj.$validate();
+                }
+            }
+        },
+
         /**
          * Return the final HTML template for the input.
          */
