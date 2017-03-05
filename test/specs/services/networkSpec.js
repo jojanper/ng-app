@@ -14,7 +14,8 @@
 
             beforeEach(module(appName));
 
-            var networkService, $httpBackend, appMessagesService, $window;
+            var networkService, $httpBackend, appMessagesService, $window, $rootScope,
+                dngUserManagement, $state;
 
             beforeEach(function() {
                 $window = {
@@ -28,10 +29,16 @@
                     $provide.value('$window', $window);
                 });
 
-                inject(function(_network_, _$httpBackend_, _appMessagesService_) {
+                AppTestUtils.login();
+
+                inject(function(_network_, _$httpBackend_, _appMessagesService_, _$rootScope_,
+                    _dngUserManagement_, _$state_) {
                     networkService = _network_;
                     $httpBackend = _$httpBackend_;
                     appMessagesService = _appMessagesService_;
+                    $rootScope = _$rootScope_;
+                    dngUserManagement = _dngUserManagement_;
+                    $state = _$state_;
                 });
             });
 
@@ -197,6 +204,24 @@
 
                 // THEN full reload is performed at client side
                 expect($window.location.reload).toHaveBeenCalled();
+            });
+
+            it('redirects to login page on HTTP 401', function() {
+
+                // GIVEN 401 response code from server
+                var api = '/api/get';
+                spyOn(dngUserManagement, 'reset').and.callThrough();
+                spyOn($state, 'go').and.callThrough();
+                $httpBackend.whenGET(api).respond(401, '');
+
+                // WHEN fetching some data from server
+                networkService.get(api).catch(function() {});
+                $httpBackend.flush();
+
+                // THEN user status is reset and user redirected to login page
+                expect(dngUserManagement.reset).toHaveBeenCalled();
+                expect(dngUserManagement.user.isAuthenticated()).toBeFalsy();
+                expect($state.go).toHaveBeenCalledWith('auth.login');
             });
         });
     });

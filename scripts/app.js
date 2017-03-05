@@ -19,13 +19,15 @@ define([
     './apps/test/module',
     './apps/media/module',
     './apps/player/module',
-    './utils/module'
+    './utils/module',
+    './utils/config/configs',
+    './apps/ui_router'
 ], function ($, datatables, readmore, angular, angularRoute, angularResource, angularAnimate,
-             angularCookies, angularLoadingBar, AngularBootstrap, angularUiRouter, AngularUiSelect, ngSanitize,
-             TestModule, MediaModule, PlayerModule, UtilsModule) {
+             angularCookies, angularLoadingBar, AngularBootstrap, angularUiRouter, AngularUiSelect,
+             ngSanitize, TestModule, MediaModule, PlayerModule, UtilsModule, Configs, UIRouter) {
     'use strict';
 
-    return angular.module('app', [
+    var app = angular.module('app', [
         'ngRoute',
         'ngResource',
         'angular-loading-bar',
@@ -40,4 +42,13 @@ define([
         MediaModule,
         PlayerModule
     ]);
+
+    // Initialize various configs
+    for (var i = 0; i < Configs.length; i++) {
+        Configs[i](app);
+    }
+
+    app.config(UIRouter.manager);
+
+    return app;
 });

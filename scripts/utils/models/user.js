@@ -75,7 +75,7 @@ define([
         },
 
         isAuthenticated: function() {
-            return this.authenticated === true;
+            return this.id && this.authenticated === true;
         }
     });
 

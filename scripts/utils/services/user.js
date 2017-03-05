@@ -98,6 +98,19 @@ define([
 
         /**
          * @ngdoc
+         * @name reset
+         * @methodOf dngUserManagement
+         *
+         * @description
+         * Reset user authorization state.
+         */
+        this.reset = function($state) {
+            cookieObj.remove(this.user);
+            $state.go('auth.login');
+        };
+
+        /**
+         * @ngdoc
          * @name logout
          * @methodOf dngUserManagement
          *
@@ -105,9 +118,9 @@ define([
          * Logout user from remote system.
          */
         this.logout = function($state) {
+            var self = this;
             rest.logout().then(function() {
-                cookieObj.remove();
-                $state.go('auth.login');
+                self.reset($state);
             });
         };
 
