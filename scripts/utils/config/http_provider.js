@@ -1,15 +1,11 @@
 /**
  * Intercept HTTP requests.
- *
- * Configuration:
- *
- * angular.module('myApp').config(HttpProviderConfig);
  */
 define([
 ], function () {
     "use strict";
 
-    var _$location;
+    var _$location, _$state, _dngUserManagement;
 
     var HttpProviderConfig = function ($httpProvider) {
         var ngTemplatePrefix = 'ng-templates/';
@@ -35,6 +31,15 @@ define([
                     }
 
                     return request || $q.when(request);
+                },
+
+                'responseError': function(response) {
+                    // Reset user authentication status on authentication error
+                    if (response.status === 401) {
+                        _dngUserManagement.reset(_$state);
+                    }
+
+                    return $q.reject(response);
                 }
             };
         }]);
@@ -54,8 +59,10 @@ define([
      * during application run time.
      */
     function initConfig(app) {
-        app.run(['$location', function ($location) {
+        app.run(['$location', '$state', 'dngUserManagement', function ($location, $state, dngUserManagement) {
             _$location = $location;
+            _$state = $state;
+            _dngUserManagement = dngUserManagement;
         }]);
 
         app.config(['$httpProvider', HttpProviderConfig]);

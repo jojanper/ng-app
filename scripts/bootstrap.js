@@ -9,7 +9,6 @@ define([
     'require',
     'angular',
     'app',
-    'routes',
     'timeago',
     'readmore',
     'domReady!',

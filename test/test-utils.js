@@ -212,6 +212,7 @@ AppTestUtils.login = function(signoutCallback) {
             return userData;
         },
         remove: function() {
+            userData.id = null;
             if (signoutCallback) {
                 signoutCallback();
             }
