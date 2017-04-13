@@ -25,6 +25,14 @@ define([
             });
         };
 
+        $scope.addSuccess = function() {
+            appMessagesService.addMessage({
+                type: "success",
+                msgBody: 'Check your email! An activation link has been sent to the email address you supplied, ' +
+                    'along with instructions for activating your account.'
+            });
+        };
+
         appLogger.info($scope);
 
         /*

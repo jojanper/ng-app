@@ -60,6 +60,21 @@ define([
 
             /**
              * @ngdoc
+             * @name rest#register
+             * @methodOf rest
+             *
+             * @description
+             * User registration.
+             *
+             * @param {Object} userData User details (username, password, email, etc).
+             * @return {Object} Promise.
+             */
+            register: function(userData) {
+                return network.post(urlResolverFn('register'), userData);
+            },
+
+            /**
+             * @ngdoc
              * @name rest#logout
              * @methodOf rest
              *
