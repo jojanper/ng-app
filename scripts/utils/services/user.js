@@ -133,8 +133,10 @@ define([
          * Create new user.
          */
         this.register = function(data, $state) {
-            data['first_name'] = '';
-            data['last_name'] = '';
+            /* jshint camelcase: false */
+            data.first_name = '';
+            data.last_name = '';
+            /* jshint camelcase: true */
             rest.register(data).then(function(response) {
                 appMessagesService.addMessage({type: "success", msgBody: response});
                 $state.go('auth.login');
