@@ -47,6 +47,12 @@ define([
             url: 'password-change',
             breadcrumb: false,
             template: '<dng-password-change></dng-password-change>'
+        },
+        {
+            link: 'auth.userprofile',
+            url: 'userprofile',
+            breadcrumb: false,
+            template: '<dng-user-profile></dng-user-profile>'
         }
     ];
 });

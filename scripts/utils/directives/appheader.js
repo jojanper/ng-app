@@ -10,7 +10,7 @@ define([
 
             $scope.headerItems = [
                 {
-                    link: $state.href('profile'),
+                    link: $state.href('auth.userprofile'),
                     text: 'My profile'
                 },
                 {

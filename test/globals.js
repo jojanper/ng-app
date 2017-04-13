@@ -13,6 +13,7 @@ backendConfig = {
     authUrls: {
         login: '/api/auth/login',
         logout: '/api/auth/logout',
+        register: '/api/auth/register',
         extlogin: '/api/auth/ext-auth'
     }
 };

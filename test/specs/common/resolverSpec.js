@@ -125,5 +125,15 @@ define([
             // THEN it should succeed
             expect(url).toEqual('/api/auth/logout');
         });
+
+        it('supports register', function() {
+
+            // GIVEN registration URL
+            // WHEN resolving path
+            var url = Resolver('register');
+
+            // THEN it should succeed
+            expect(url).toEqual('/api/auth/register');
+        });
     });
 });

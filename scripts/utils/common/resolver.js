@@ -58,14 +58,9 @@ define([], function () {
             url = [baseUrl, data.appLabel, 'actions', data.action];
         }
 
-        // Login URL
-        else if (name === 'login') {
-            url = [authUrls.login];
-        }
-
-        // Logout URL
-        else if (name === 'logout') {
-            url = [authUrls.logout];
+        // Try authentication URLs
+        else if (authUrls[name]) {
+            url = [authUrls[name]];
         }
 
         return url.join('/');

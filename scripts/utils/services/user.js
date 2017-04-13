@@ -37,7 +37,7 @@ define([
      * @description
      * User management.
      */
-    var UserManagementService = function($rootScope, $location, $cookies, rest) {
+    var UserManagementService = function($rootScope, $location, $cookies, rest, appMessagesService) {
 
         this.$$name = name;
 
@@ -133,13 +133,20 @@ define([
          * Create new user.
          */
         this.register = function(data, $state) {
-            $state.go('home');
+            /* jshint camelcase: false */
+            data.first_name = '';
+            data.last_name = '';
+            /* jshint camelcase: true */
+            rest.register(data).then(function(response) {
+                appMessagesService.addMessage({type: "success", msgBody: response});
+                $state.go('auth.login');
+            });
         };
     };
 
     return {
         feature: 'service',
         name: name,
-        cls: ['$rootScope', '$location', '$cookies', 'rest', UserManagementService]
+        cls: ['$rootScope', '$location', '$cookies', 'rest', 'appMessagesService', UserManagementService]
     };
 });
