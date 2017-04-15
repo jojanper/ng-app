@@ -90,7 +90,7 @@ define([
          * @param {Object} credentials Sign-in credentials.
          */
         this.login = function(credentials) {
-            rest.login(credentials).then(function(response) {
+            rest.authAction('login', credentials).then(function(response) {
                 cookieObj.set(response);
                 $location.path('/');
             });
@@ -119,7 +119,7 @@ define([
          */
         this.logout = function($state) {
             var self = this;
-            rest.logout().then(function() {
+            rest.authAction('logout').then(function() {
                 self.reset($state);
             });
         };
@@ -137,10 +137,25 @@ define([
             data.first_name = '';
             data.last_name = '';
             /* jshint camelcase: true */
-            rest.register(data).then(function(response) {
+            rest.authAction('register', data).then(function(response) {
                 appMessagesService.addMessage({type: "success", msgBody: response});
                 $state.go('auth.login');
             });
+        };
+
+        /**
+         * @ngdoc
+         * @name activate
+         * @methodOf dngUserManagement
+         *
+         * @description
+         * Activate user account.
+         */
+        this.activate = function(activationKey, $state) {
+            rest.authAction('activate', {'activation_key': activationKey}).then(function() {
+                appMessagesService.addMessage({type: "success", msgBody: 'Your account is now activated'});
+                $state.go('auth.login');
+            }).catch(function() {});
         };
     };
 

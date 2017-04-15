@@ -25,13 +25,12 @@ define([
         initialize: function($scope) {
             var dngUserManagement = this.arguments[0];
 
+            $scope.extSites = extSites;
             $scope.user = new UserModel();
 
             $scope.login = function(data) {
                 dngUserManagement.login(data);
             };
-
-            $scope.extSites = extSites;
         }
     });
 
@@ -44,9 +43,8 @@ define([
 
     var LogoutController = BaseCtrl.extend({
         initialize: function($scope) {
-            var dngUserManagement = this.arguments[0];
             $scope.setToLoadingState();
-            dngUserManagement.logout(this.arguments[1]);
+            this.arguments[0].logout(this.arguments[1]);
         }
     });
 
@@ -60,6 +58,13 @@ define([
             $scope.register = function(data) {
                 dngUserManagement.register(data, state);
             };
+        }
+    });
+
+    var AccountActivateController = BaseCtrl.extend({
+        initialize: function($scope) {
+            var state = this.arguments[1];
+            this.arguments[0].activate(state.params.activationkey, state);
         }
     });
 
@@ -100,7 +105,7 @@ define([
         initialize: function($scope) {
             var dngUserManagement = this.arguments[0];
 
-            $scope.user = dngUserManagement.user; //new UserModel();
+            $scope.user = dngUserManagement.user;
 
             console.log($scope.user);
 
@@ -134,6 +139,15 @@ define([
             restrict: 'E',
             template: RegisterTemplate,
             controller: ['$scope', '$element', '$attrs', 'dngUserManagement', '$state', RegisterController]
+        };
+    };
+
+    var AccountActivate = function () {
+        return {
+            scope: {},
+            restrict: 'E',
+            template: '',
+            controller: ['$scope', '$element', '$attrs', 'dngUserManagement', '$state', AccountActivateController]
         };
     };
 
@@ -191,6 +205,11 @@ define([
             feature: 'directive',
             name: 'dngRegister',
             cls: Register
+        },
+        {
+            feature: 'directive',
+            name: 'dngAccountActivate',
+            cls: AccountActivate
         },
         {
             feature: 'directive',

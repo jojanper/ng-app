@@ -38,60 +38,17 @@ define([
 
             /**
              * @ngdoc
-             * @name rest#login
+             * @name rest#authAction
              * @methodOf rest
              *
              * @description
-             * User sign-in.
+             * Execute authentication action (login, logout, register, activate account, etc).
              *
-             * @param {Object} credentials Login credentials (username, password).
-             * @return {Object} Promise.
-             *
-             * @example
-               <pre>
-                 rest.login({username: 'user', password: 'password'}).then(function(userAuthData) {
-                     // Do something with userAuthData
-                 });
-               </pre>
-             */
-            login: function(credentials) {
-                return network.post(urlResolverFn('login'), credentials);
-            },
-
-            /**
-             * @ngdoc
-             * @name rest#register
-             * @methodOf rest
-             *
-             * @description
-             * User registration.
-             *
-             * @param {Object} userData User details (username, password, email, etc).
+             * @param {Object} data POST action data.
              * @return {Object} Promise.
              */
-            register: function(userData) {
-                return network.post(urlResolverFn('register'), userData);
-            },
-
-            /**
-             * @ngdoc
-             * @name rest#logout
-             * @methodOf rest
-             *
-             * @description
-             * User sign-out.
-             *
-             * @return {Object} Promise.
-             *
-             * @example
-               <pre>
-                 rest.logout().then(function() {
-                     // Do something
-                 });
-               </pre>
-             */
-            logout: function() {
-                return network.post(urlResolverFn('logout'));
+            authAction: function(action, data) {
+                return network.post(urlResolverFn(action), data);
             },
 
             /**
