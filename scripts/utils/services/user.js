@@ -142,6 +142,21 @@ define([
                 $state.go('auth.login');
             });
         };
+
+        /**
+         * @ngdoc
+         * @name activate
+         * @methodOf dngUserManagement
+         *
+         * @description
+         * Activate user account.
+         */
+        this.activate = function(activationKey, $state) {
+            rest.activate(activationKey).then(function() {
+                appMessagesService.addMessage({type: "success", msgBody: 'Your account is now activated'});
+                $state.go('auth.login');
+            }).catch(function() {});
+        };
     };
 
     return {

@@ -10,10 +10,7 @@
 
         describe('Register directive', function() {
 
-            var signout = false;
-            var element = '<dng-register></dng-register>';
-
-            AppTestUtils.appTestSetup.call(this, element, function() {
+            AppTestUtils.appTestSetup.call(this, '<dng-register></dng-register>', function() {
                 spyOn(this.$state, 'go').and.callThrough();
             }, null, null, null);
 
@@ -42,6 +39,30 @@
                 var messages = this.appMessagesService.getMessages();
                 expect(messages.length).toEqual(1);
                 expect(messages[0].msgBody).toEqual('Check your email');
+            });
+        });
+
+        describe('AccountActivate directive', function() {
+
+            AppTestUtils.appTestSetup.call(this, '<dng-account-activate></dng-account-activate>', function() {
+                this.$state.params.activationkey = '123abc';
+                spyOn(this.$state, 'go').and.callThrough();
+            }, function($httpBackend) {
+                $httpBackend.whenPOST('/api/auth/activate').respond(200, '');
+            }, null, null);
+
+            it('account is activated', function() {
+
+                // GIVEN account activation key
+                // WHEN account is activated
+
+                // THEN user is redirected to login page
+                expect(this.$state.go).toHaveBeenCalledWith('auth.login');
+
+                // AND success message is shown is user
+                var messages = this.appMessagesService.getMessages();
+                expect(messages.length).toEqual(1);
+                expect(messages[0].msgBody).toEqual('Your account is now activated');
             });
         });
     });

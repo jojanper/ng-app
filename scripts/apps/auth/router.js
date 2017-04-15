@@ -29,6 +29,13 @@ define([
             template: '<dng-register></dng-register>'
         },
         {
+            link: 'auth.activate',
+            url: 'activate/:activationkey',
+            breadcrumb: false,
+            public: true,
+            template: '<dng-account-activate></dng-account-activate>'
+        },
+        {
             link: 'auth.passwordreset',
             url: 'password-reset',
             breadcrumb: false,

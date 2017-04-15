@@ -75,6 +75,21 @@ define([
 
             /**
              * @ngdoc
+             * @name rest#activate
+             * @methodOf rest
+             *
+             * @description
+             * Activate user account.
+             *
+             * @param {Object} key Account activation key.
+             * @return {Object} Promise.
+             */
+            activate: function(key) {
+                return network.post(urlResolverFn('activate'), {'activation_key': key});
+            },
+
+            /**
+             * @ngdoc
              * @name rest#logout
              * @methodOf rest
              *
