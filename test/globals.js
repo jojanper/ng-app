@@ -15,6 +15,7 @@ backendConfig = {
         logout: '/api/auth/logout',
         register: '/api/auth/register',
         activate: '/api/auth/activate',
+        'password-change': '/api/auth/password-change',
         extlogin: '/api/auth/ext-auth'
     }
 };

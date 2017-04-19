@@ -68,6 +68,24 @@ define([
         }
     });
 
+    var ChangeController = BaseCtrl.extend({
+        initialize: function($scope) {
+            var dngUserManagement = this.arguments[0];
+            var state = this.arguments[1];
+
+            $scope.user = new UserModel();
+
+            $scope.changePw = function(data) {
+                var pwData = {
+                    'old_password': data.password3,
+                    'new_password1': data.password,
+                    'new_password2': data.password2
+                };
+                dngUserManagement.passwordChange(pwData, state);
+            };
+        }
+    });
+
     var ResetController = BaseCtrl.extend({
         initialize: function($scope) {
             var dngUserManagement = this.arguments[0];
@@ -75,17 +93,6 @@ define([
             $scope.user = new UserModel();
 
             $scope.reset = function(data) {
-            };
-        }
-    });
-
-    var ChangeController = BaseCtrl.extend({
-        initialize: function($scope) {
-            var dngUserManagement = this.arguments[0];
-
-            $scope.user = new UserModel();
-
-            $scope.change = function(data) {
             };
         }
     });
@@ -165,7 +172,7 @@ define([
             scope: {},
             restrict: 'E',
             template: PasswordChangeTemplate,
-            controller: ['$scope', '$element', '$attrs', 'dngUserManagement', ChangeController]
+            controller: ['$scope', '$element', '$attrs', 'dngUserManagement', '$state', ChangeController]
         };
     };
 

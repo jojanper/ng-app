@@ -157,6 +157,21 @@ define([
                 $state.go('auth.login');
             }).catch(function() {});
         };
+
+        /**
+         * @ngdoc
+         * @name passwordChange
+         * @methodOf dngUserManagement
+         *
+         * @description
+         * Change user password.
+         */
+        this.passwordChange = function(data, $state) {
+            rest.authAction('password-change', data).then(function() {
+                appMessagesService.addMessage({type: "success", msgBody: 'Your password has been changed'});
+                $state.go('home');
+            }).catch(function() {});
+        };
     };
 
     return {
