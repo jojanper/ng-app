@@ -172,6 +172,21 @@ define([
                 $state.go('home');
             }).catch(function() {});
         };
+
+        /**
+         * @ngdoc
+         * @name passwordReset
+         * @methodOf dngUserManagement
+         *
+         * @description
+         * Request password reset.
+         */
+        this.passwordReset = function(data) {
+            var msg = 'Please check your email how to proceed with the password reset';
+            rest.authAction('password-reset', data).then(function(response) {
+                appMessagesService.addMessage({type: "success", msgBody: msg});
+            });
+        };
     };
 
     return {

@@ -93,6 +93,7 @@ define([
             $scope.user = new UserModel();
 
             $scope.reset = function(data) {
+                dngUserManagement.passwordReset(data);
             };
         }
     });
