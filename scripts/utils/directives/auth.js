@@ -68,6 +68,23 @@ define([
         }
     });
 
+    var ChangeController = BaseCtrl.extend({
+        initialize: function($scope) {
+            var dngUserManagement = this.arguments[0];
+            var state = this.arguments[1];
+
+            $scope.user = new UserModel();
+
+            $scope.changePw = function(data) {
+                dngUserManagement.passwordChange({
+                    'old_password': data.password3,
+                    'new_password1': data.password,
+                    'new_password2': data.password2
+                }, state);
+            };
+        }
+    });
+
     var ResetController = BaseCtrl.extend({
         initialize: function($scope) {
             var dngUserManagement = this.arguments[0];
@@ -75,17 +92,7 @@ define([
             $scope.user = new UserModel();
 
             $scope.reset = function(data) {
-            };
-        }
-    });
-
-    var ChangeController = BaseCtrl.extend({
-        initialize: function($scope) {
-            var dngUserManagement = this.arguments[0];
-
-            $scope.user = new UserModel();
-
-            $scope.change = function(data) {
+                dngUserManagement.passwordReset(data);
             };
         }
     });
@@ -93,10 +100,16 @@ define([
     var ResetChangeController = BaseCtrl.extend({
         initialize: function($scope) {
             var dngUserManagement = this.arguments[0];
+            var state = this.arguments[1];
 
             $scope.user = new UserModel();
 
             $scope.change = function(data) {
+                dngUserManagement.passwordResetConfirm({
+                    uidb64: state.params.uidb,
+                    token: state.params.token,
+                    password: data.password
+                }, state);
             };
         }
     });
@@ -165,7 +178,7 @@ define([
             scope: {},
             restrict: 'E',
             template: PasswordChangeTemplate,
-            controller: ['$scope', '$element', '$attrs', 'dngUserManagement', ChangeController]
+            controller: ['$scope', '$element', '$attrs', 'dngUserManagement', '$state', ChangeController]
         };
     };
 
@@ -174,7 +187,7 @@ define([
             scope: {},
             restrict: 'E',
             template: PasswordResetChangeTemplate,
-            controller: ['$scope', '$element', '$attrs', 'dngUserManagement', ResetChangeController]
+            controller: ['$scope', '$element', '$attrs', 'dngUserManagement', '$state', ResetChangeController]
         };
     };
 

@@ -157,6 +157,52 @@ define([
                 $state.go('auth.login');
             }).catch(function() {});
         };
+
+        /**
+         * @ngdoc
+         * @name passwordChange
+         * @methodOf dngUserManagement
+         *
+         * @description
+         * Change user password.
+         */
+        this.passwordChange = function(data, $state) {
+            rest.authAction('password-change', data).then(function() {
+                appMessagesService.addMessage({type: "success", msgBody: 'Your password has been changed'});
+                $state.go('home');
+            }).catch(function() {});
+        };
+
+        /**
+         * @ngdoc
+         * @name passwordReset
+         * @methodOf dngUserManagement
+         *
+         * @description
+         * Request password reset.
+         */
+        this.passwordReset = function(data) {
+            var msg = 'Please check your email how to proceed with the password reset';
+            rest.authAction('password-reset', data).then(function(response) {
+                appMessagesService.addMessage({type: "success", msgBody: msg});
+            });
+        };
+
+        /**
+         * @ngdoc
+         * @name passwordResetConfirm
+         * @methodOf dngUserManagement
+         *
+         * @description
+         * Confirm password reset by changing new password (with authentication tokens).
+         */
+        this.passwordResetConfirm = function(data, $state) {
+            var msg = 'You can now sign-in with your new password';
+            rest.authAction('password-reset-confirm', data).then(function(response) {
+                appMessagesService.addMessage({type: "success", msgBody: msg});
+                $state.go('home');
+            }).catch(function() {});
+        };
     };
 
     return {
