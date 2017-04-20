@@ -35,7 +35,7 @@
                 // THEN user is redirected to login page
                 expect(this.$state.go).toHaveBeenCalledWith('auth.login');
 
-                // AND success message is shown is user
+                // AND success message is shown to user
                 var messages = this.appMessagesService.getMessages();
                 expect(messages.length).toEqual(1);
                 expect(messages[0].msgBody).toEqual('Check your email');
@@ -59,7 +59,7 @@
                 // THEN user is redirected to login page
                 expect(this.$state.go).toHaveBeenCalledWith('auth.login');
 
-                // AND success message is shown is user
+                // AND success message is shown to user
                 var messages = this.appMessagesService.getMessages();
                 expect(messages.length).toEqual(1);
                 expect(messages[0].msgBody).toEqual('Your account is now activated');

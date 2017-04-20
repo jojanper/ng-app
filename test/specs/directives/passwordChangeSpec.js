@@ -43,6 +43,53 @@
                 expect(this.$element.find('button').hasClass('ng-hide')).toBeTruthy();
             });
 
+            it('passwords are not the same', function() {
+                // GIVEN login form
+
+                // WHEN user types new password
+                setInput.call(this, 1, 'test');
+
+                // THEN new password input is ok
+                var el = this.$element.find('.form-input-error');
+                expect(ng.element(el[1]).hasClass('ng-hide')).toBeTruthy();
+                expect(this.$elementScope.user.password).toEqual('test');
+
+                // AND 2nd password indicates error
+                expect(ng.element(el[3]).text()).toEqual('Password not same');
+
+                // -----
+
+                // WHEN 2nd password is entered
+                setInput.call(this, 2, 'test');
+
+                // THEN it should succeed with no errors
+                el = this.$element.find('.form-input-error');
+                expect(ng.element(el[2]).hasClass('ng-hide')).toBeTruthy();
+                expect(this.$elementScope.user.password2).toEqual('test');
+
+                // -----
+
+                // WHEN changing 1st password
+                setInput.call(this, 1, 'password');
+
+                // THEN error is displayed for the 2nd password
+                el = this.$element.find('.form-input-error');
+                expect(ng.element(el[3]).hasClass('ng-hide')).toBeFalsy();
+                expect(ng.element(el[3]).text()).toEqual('Password not same');
+
+                // AND submit button is to available
+                expect(this.$element.find('app-form').scope().$$childTail.canSubmit()).toBeFalsy();
+
+                // -----
+
+                // WHEN all password fields are correctly set
+                setInput.call(this, 0, 'password');
+                setInput.call(this, 2, 'password');
+
+                // THEN submit button is available
+                expect(this.$element.find('app-form').scope().$$childTail.canSubmit()).toBeTruthy();
+            });
+
             it('user clicks sign-in button', function() {
                 this.$httpBackend.whenPOST('/api/auth/password-change').respond(200);
 
@@ -59,7 +106,7 @@
                 // THEN user is redirected to home page
                 expect(this.$state.go).toHaveBeenCalledWith('home');
 
-                // AND success message is shown is user
+                // AND success message is shown to user
                 var messages = this.appMessagesService.getMessages();
                 expect(messages.length).toEqual(1);
                 expect(messages[0].msgBody).toEqual('Your password has been changed');

@@ -187,6 +187,22 @@ define([
                 appMessagesService.addMessage({type: "success", msgBody: msg});
             });
         };
+
+        /**
+         * @ngdoc
+         * @name passwordResetConfirm
+         * @methodOf dngUserManagement
+         *
+         * @description
+         * Confirm password reset by changing new password (with authentication tokens).
+         */
+        this.passwordResetConfirm = function(data, $state) {
+            var msg = 'You can now sign-in with your new password';
+            rest.authAction('password-reset-confirm', data).then(function(response) {
+                appMessagesService.addMessage({type: "success", msgBody: msg});
+                $state.go('home');
+            }).catch(function() {});
+        };
     };
 
     return {

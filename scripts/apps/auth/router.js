@@ -44,7 +44,7 @@ define([
         },
         {
             link: 'auth.passwordresetchange',
-            url: 'password-reset-change/:id',
+            url: 'password-reset-change/:uidb/:token',
             breadcrumb: false,
             public: true,
             template: '<dng-password-reset-change></dng-password-reset-change>'
