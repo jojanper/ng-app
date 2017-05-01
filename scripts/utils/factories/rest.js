@@ -44,11 +44,15 @@ define([
              * @description
              * Execute authentication action (login, logout, register, activate account, etc).
              *
-             * @param {Object} data POST action data.
+             * @param {string} action Action name.
+             * @param {Object} data HTTP action data, if any.
+             * @param {string=post} method HTTP method.
+             * @param {string=''} postfix Postfix for target URL.
              * @return {Object} Promise.
              */
-            authAction: function(action, data) {
-                return network.post(urlResolverFn(action), data);
+            authAction: function(action, data, method, postfix) {
+                postfix = postfix || '';
+                return network[method || 'post'](urlResolverFn(action) + postfix, data);
             },
 
             /**

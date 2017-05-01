@@ -15,10 +15,10 @@ define([
 
     var extUrl = backendConfig.authUrls.extlogin;
     var extSites = {
-        google: extUrl + 'google?next=/',
-        twitter: extUrl + 'twitter?next=/',
-        facebook: extUrl + 'facebook?next=/',
-        onedrive: extUrl + 'onedrive?next=/'
+        google: extUrl + 'google',
+        twitter: extUrl + 'twitter',
+        facebook: extUrl + 'facebook',
+        onedrive: extUrl + 'onedrive'
     };
 
     var LoginController = BaseCtrl.extend({
@@ -114,6 +114,13 @@ define([
         }
     });
 
+    var ExtAuthActivateController = BaseCtrl.extend({
+        initialize: function($scope) {
+            var dngUserManagement = this.arguments[0];
+            dngUserManagement.extAuthActivation(this.arguments[1]);
+        }
+    });
+
     var UserProfileController = BaseCtrl.extend({
         initialize: function($scope) {
             var dngUserManagement = this.arguments[0];
@@ -191,6 +198,15 @@ define([
         };
     };
 
+    var ExtAuthActivation = function () {
+        return {
+            scope: {},
+            restrict: 'E',
+            template: '',
+            controller: ['$scope', '$element', '$attrs', 'dngUserManagement', '$state', ExtAuthActivateController]
+        };
+    };
+
     var UserProfile = function () {
         return {
             scope: {},
@@ -238,6 +254,11 @@ define([
             feature: 'directive',
             name: 'dngPasswordResetChange',
             cls: PasswordResetChange
+        },
+        {
+            feature: 'directive',
+            name: 'dngExtAuthActivation',
+            cls: ExtAuthActivation
         },
         {
             feature: 'directive',

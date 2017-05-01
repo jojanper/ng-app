@@ -28,6 +28,11 @@ define([
         };
     }
 
+    function login(loginData, cookieObj, $location) {
+        cookieObj.set(loginData);
+        $location.path('/');
+    }
+
     var name = 'dngUserManagement';
 
     /**
@@ -91,8 +96,7 @@ define([
          */
         this.login = function(credentials) {
             rest.authAction('login', credentials).then(function(response) {
-                cookieObj.set(response);
-                $location.path('/');
+                login(response, cookieObj, $location);
             });
         };
 
@@ -201,6 +205,21 @@ define([
             rest.authAction('password-reset-confirm', data).then(function(response) {
                 appMessagesService.addMessage({type: "success", msgBody: msg});
                 $state.go('home');
+            }).catch(function() {});
+        };
+
+        /**
+         * @ngdoc
+         * @name extAuthActivation
+         * @methodOf dngUserManagement
+         *
+         * @description
+         * 3rd party authentication completion.
+         */
+        this.extAuthActivation = function($state) {
+            rest.authAction('user-details', null, 'get').then(function(response) {
+                appMessagesService.addMessage({type: "success", msgBody: 'You are now signed-in'});
+                login(response, cookieObj, $location);
             }).catch(function() {});
         };
     };

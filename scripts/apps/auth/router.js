@@ -36,6 +36,13 @@ define([
             template: '<dng-account-activate></dng-account-activate>'
         },
         {
+            link: 'auth.extactivation',
+            url: 'ext-activate/:provider',
+            breadcrumb: false,
+            public: true,
+            template: '<dng-ext-auth-activation></dng-ext-auth-activation>'
+        },
+        {
             link: 'auth.passwordreset',
             url: 'password-reset',
             breadcrumb: false,

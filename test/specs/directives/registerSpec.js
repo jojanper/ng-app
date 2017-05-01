@@ -65,6 +65,31 @@
                 expect(messages[0].msgBody).toEqual('Your account is now activated');
             });
         });
+
+        describe('ExtAuthActivation directive', function() {
+
+            var html = '<dng-ext-auth-activation></dng-ext-auth-activation>';
+
+            AppTestUtils.appTestSetup.call(this, html, function() {
+                this.$state.params.provider = 'google';
+            }, function($httpBackend) {
+                $httpBackend.whenGET('/api/auth/user-details').respond(200, {id: 212});
+            }, null, null);
+
+            it('3rd party authentication is completed', function() {
+
+                // GIVEN 3rd party authentication has been initialized by user
+                // WHEN backend calls 3rd party authentication completion view
+
+                // THEN success message should be shown to user
+                var messages = this.appMessagesService.getMessages();
+                expect(messages.length).toEqual(1);
+                expect(messages[0].msgBody).toEqual('You are now signed-in');
+
+                // AND user is authenticated
+                expect(this.$rootScope.user.isAuthenticated()).toBeTruthy();
+            });
+        });
     });
 
 })(define, describe);
