@@ -18,6 +18,7 @@ backendConfig = {
         'password-reset': '/api/auth/password-reset',
         'password-reset-confirm': '/api/auth/password-reset-confirm',
         'password-change': '/api/auth/password-change',
-        extlogin: '/api/auth/ext-auth'
+        extlogin: '/api/auth/ext-auth',
+        'user-details': '/api/auth/user-details'
     }
 };
