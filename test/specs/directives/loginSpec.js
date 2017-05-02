@@ -76,6 +76,7 @@
             });
 
             it('user clicks sign-in button', function() {
+                this.$httpBackend.whenGET('/api/generic').respond(200, AppTestResponses.metaApiResponse);
                 this.$httpBackend.whenPOST('/api/auth/login').respond(200, AppTestResponses.auth.loginResponse);
                 spyOn(this.$location, 'path').and.callThrough();
 

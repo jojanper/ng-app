@@ -73,6 +73,7 @@
             AppTestUtils.appTestSetup.call(this, html, function() {
                 this.$state.params.provider = 'google';
             }, function($httpBackend) {
+                $httpBackend.whenGET('/api/generic').respond(200, AppTestResponses.metaApiResponse);
                 $httpBackend.whenGET('/api/auth/user-details').respond(200, {id: 212});
             }, null, null);
 

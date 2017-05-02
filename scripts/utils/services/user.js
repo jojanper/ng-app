@@ -28,8 +28,9 @@ define([
         };
     }
 
-    function login(loginData, cookieObj, $location) {
+    function login(loginData, cookieObj, $location, appUrlResolver) {
         cookieObj.set(loginData);
+        appUrlResolver.loadData();
         $location.path('/');
     }
 
@@ -42,7 +43,8 @@ define([
      * @description
      * User management.
      */
-    var UserManagementService = function($rootScope, $location, $cookies, rest, appMessagesService) {
+    var UserManagementService = function($rootScope, $location, $cookies, rest,
+        appMessagesService, appUrlResolver) {
 
         this.$$name = name;
 
@@ -96,7 +98,7 @@ define([
          */
         this.login = function(credentials) {
             rest.authAction('login', credentials).then(function(response) {
-                login(response, cookieObj, $location);
+                login(response, cookieObj, $location, appUrlResolver);
             });
         };
 
@@ -219,7 +221,7 @@ define([
         this.extAuthActivation = function($state) {
             rest.authAction('user-details', null, 'get').then(function(response) {
                 appMessagesService.addMessage({type: "success", msgBody: 'You are now signed-in'});
-                login(response, cookieObj, $location);
+                login(response, cookieObj, $location, appUrlResolver);
             }).catch(function() {});
         };
     };
@@ -227,6 +229,7 @@ define([
     return {
         feature: 'service',
         name: name,
-        cls: ['$rootScope', '$location', '$cookies', 'rest', 'appMessagesService', UserManagementService]
+        cls: ['$rootScope', '$location', '$cookies', 'rest', 'appMessagesService',
+            'appUrlResolver', UserManagementService]
     };
 });

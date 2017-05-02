@@ -30,6 +30,7 @@
             it('supports user login', function() {
 
                 spyOn($location, 'path').and.callThrough();
+                $httpBackend.whenGET('/api/generic').respond(200, AppTestResponses.metaApiResponse);
                 $httpBackend.whenPOST(loginApi).respond(200, AppTestResponses.auth.loginResponse);
 
                 // GIVEN user credentials

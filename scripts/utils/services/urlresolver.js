@@ -286,20 +286,13 @@ define([
          * most likely already loaded before there is any need from view controllers.
          */
         run: ['appUrlResolver', 'executeUrlResolverRunMethod', function(appUrlResolver, executeUrlResolverRunMethod) {
-            var status = true;
-
-            if (backendConfig.hasOwnProperty('executeUrlResolverRunMethod') &&
-                !backendConfig.executeUrlResolverRunMethod) {
-                status = false;
-            }
-
-            if (!status || !executeUrlResolverRunMethod) {
+            if (!executeUrlResolverRunMethod) {
                 return;
             }
 
             appUrlResolver.loadData();
         }],
 
-        constant: ['executeUrlResolverRunMethod', true]
+        constant: ['executeUrlResolverRunMethod', false]
     };
 });
