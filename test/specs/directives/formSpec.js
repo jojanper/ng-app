@@ -330,7 +330,7 @@
                 $timeout.flush();
 
                 // THEN error should be present
-                expect($(obj.$element.find('span')[2]).html()).toEqual('Max 2 items can be selected');
+                expect($(obj.$element.find('span')[3]).html()).toEqual('Max 2 items can be selected');
             });
         });
 
