@@ -7,8 +7,6 @@ backendConfig = {
 
     isTestRunner: true,
 
-    executeUrlResolverRunMethod: false,
-
     baseUrl: '/api/generic',
     authUrls: {
         login: '/api/auth/login',

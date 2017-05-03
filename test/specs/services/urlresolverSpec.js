@@ -14,14 +14,15 @@
 
         describe('URL resolver service', function() {
 
-            var urlResolver, network, $httpBackend, $rootScope, ngmodule;
-
-            beforeEach(function() {
-                backendConfig.executeUrlResolverRunMethod = true;
-                ngmodule = angular.module('utils.appUrlResolver');
-            });
+            var urlResolver, network, $httpBackend, $rootScope;
 
             beforeEach(module('app'));
+
+            beforeEach(function() {
+                module('utils.appUrlResolver', function($provide) {
+                    $provide.constant('executeUrlResolverRunMethod', true);
+                });
+            });
 
             beforeEach(inject(function(_$httpBackend_, _$rootScope_) {
 
@@ -32,10 +33,6 @@
                     urlResolver = _appUrlResolver_;
                 });
             }));
-
-            afterEach(function() {
-                backendConfig.executeUrlResolverRunMethod = false;
-            });
 
             it('should load app data when run block is called', function() {
 
