@@ -136,6 +136,7 @@ define([
              */
             $scope.onChange = function($item, $model) {
                 self.setModelValue($scope, $item, self.type === 'multiSelector');
+                self.setDirty($scope);
 
                 // Callback exists in options for changes in selection(s)
                 if (self.options.onChange) {
