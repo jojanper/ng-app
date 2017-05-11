@@ -12,9 +12,11 @@
             <app-main-menu></app-main-menu>
         </div>
         <div ng-if="!canShowAuth()" class="col-sm-2">
-            <div class="header-actions auth-buttons">
-                <menu-dropdown ng-if="isAuthenticated()" uib-tooltip="View profile and more" auto-close="always" menu-open="right"
-                    title="Actions" dropdown-element="transparent" menu-items="headerItems"></menu-dropdown>
+            <div ng-if="isAuthenticated()" class="header-actions auth-buttons">
+                <div class="actions-text" uib-tooltip="View profile and more" tooltip-placement="bottom">Actions</div>
+                <menu-dropdown auto-close="always"
+                    menu-open="right" no-title dropdown-element="transparent"
+                    menu-items="headerItems"></menu-dropdown>
             </div>
         </div>
         <div ng-if="canShowAuth()" class="col-sm-9">

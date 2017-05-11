@@ -1,7 +1,7 @@
 <div class="btn-group" uib-dropdown is-open="status.isopen" auto-close="{{ autoClose }}" on-toggle="toggled(open)">
 
   <div ng-if="!noTitle">
-    <button class="dropdown-text" uib-tooltip="{{ tooltipText }}" ng-if="dropdownElement === 'button'" type="button" class="btn btn-primary dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled">
+    <button class="btn btn-primary dropdown-text" uib-tooltip="{{ tooltipText }}" ng-if="dropdownElement === 'button'" type="button" class="btn btn-primary dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled">
       {{ dynTitle || title }} <span class="caret"></span>
     </button>
     <div class="dropdown-text" uib-tooltip="{{ tooltipText }}" ng-if="dropdownElement === 'transparent'" class="dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled">
@@ -9,7 +9,7 @@
     </div>
   </div>
   <div ng-if="noTitle">
-    <button class="dropdown-text" uib-tooltip="{{ tooltipText }}" ng-if="dropdownElement === 'button'" type="button" class="btn btn-primary dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled">
+    <button class="btn btn-primary dropdown-text" uib-tooltip="{{ tooltipText }}" ng-if="dropdownElement === 'button'" type="button" class="btn btn-primary dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled">
       <span class="caret"></span>
     </button>
     <div class="dropdown-text" uib-tooltip="{{ tooltipText }}" ng-if="dropdownElement === 'transparent'" class="dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled">
