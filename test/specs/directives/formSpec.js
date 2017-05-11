@@ -679,10 +679,10 @@
                 expect($($element.find('button')[0]).attr('disabled')).toEqual('disabled');
 
                 // AND edit button should be visible
-                expect($($element.find('button')[1]).attr('class')).toEqual('draal-button-md');
+                expect($($element.find('button')[1]).attr('class')).toEqual('btn btn-primary form-button');
 
                 // AND cancel button should be hidden
-                expect($($element.find('button')[2]).attr('class')).toEqual('draal-button-md ng-hide');
+                expect($($element.find('button')[2]).attr('class')).toEqual('btn btn-primary form-button ng-hide');
 
                 // -----
 
@@ -693,10 +693,10 @@
                 expect($($element.find('button')[0]).attr('disabled')).toEqual('disabled');
 
                 // AND edit button should be hidden
-                expect($($element.find('button')[1]).attr('class')).toEqual('draal-button-md ng-hide');
+                expect($($element.find('button')[1]).attr('class')).toEqual('btn btn-primary form-button ng-hide');
 
                 // AND cancel button should be visible
-                expect($($element.find('button')[2]).attr('class')).toEqual('draal-button-md');
+                expect($($element.find('button')[2]).attr('class')).toEqual('btn btn-primary form-button');
             });
 
             it('edited changes are cancelled', function() {
@@ -713,7 +713,7 @@
 
                 // THEN form submit should be possible
                 expect($formScope.canSubmit()).toBeTruthy();
-                expect($($element.find('button')[0]).attr('class')).toEqual('draal-button-md');
+                expect($($element.find('button')[0]).attr('class')).toEqual('btn btn-primary form-button');
 
                 // AND changed value is updated in model data
                 expect($scope.testData.name).toEqual(value);
@@ -727,13 +727,13 @@
                 expect($scope.testData.name).toEqual('jojan');
 
                 // AND submit button is hidden
-                expect($($element.find('button')[0]).attr('class')).toEqual('draal-button-md ng-hide');
+                expect($($element.find('button')[0]).attr('class')).toEqual('btn btn-primary form-button ng-hide');
 
                 // AND edit button is visible
-                expect($($element.find('button')[1]).attr('class')).toEqual('draal-button-md');
+                expect($($element.find('button')[1]).attr('class')).toEqual('btn btn-primary form-button');
 
                 // AND cancel button is hidden
-                expect($($element.find('button')[2]).attr('class')).toEqual('draal-button-md ng-hide');
+                expect($($element.find('button')[2]).attr('class')).toEqual('btn btn-primary form-button ng-hide');
             });
         });
 

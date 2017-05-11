@@ -84,7 +84,7 @@ define([
                 // Submit button
                 if (!tAttrs.hasOwnProperty('noSubmit')) {
                     html += htmlLib.button(tAttrs.submitLabel || 'Submit', {
-                        class: 'draal-button-md',
+                        class: 'btn btn-primary form-button',
                         'ng-click': 'submit(' + name + ')',
                         'ng-show': "!readOnly && canSubmit()",
                         'uib-tooltip': getAttrValue(tAttrs, 'submitTitle', 'Save changed items'),
@@ -98,7 +98,7 @@ define([
                 // Form clear/reset button
                 if (tAttrs.clearLabel) {
                     html += ' ' + htmlLib.button(tAttrs.clearLabel, {
-                        class: 'draal-button-md',
+                        class: 'btn btn-primary form-button',
                         'ng-click': 'clear()',
                         'ng-disabled': "readOnly",
                         'ng-show': "!readOnly",
@@ -110,7 +110,7 @@ define([
                 // Turn form into editable mode
                 if (!tAttrs.hasOwnProperty('noEdit') && !tAttrs.hasOwnProperty('viewOnly')) {
                     html += ' ' + htmlLib.button('Edit', {
-                        class: 'draal-button-md',
+                        class: 'btn btn-primary form-button',
                         'ng-click': 'edit()',
                         'ng-show': "readOnly",
                         'uib-tooltip': getAttrValue(tAttrs, 'editTitle', 'Edit the items'),
@@ -121,7 +121,7 @@ define([
                 // Cancel any changes made to form and go back to non-editable mode
                 if (!tAttrs.hasOwnProperty('noCancel')) {
                     html += ' ' + htmlLib.button('Cancel', {
-                        class: 'draal-button-md',
+                        class: 'btn btn-primary form-button',
                         'ng-click': 'cancel()',
                         'ng-show': "!readOnly",
                         'uib-tooltip': getAttrValue(tAttrs, 'cancelTitle', 'Back to non-editable view'),

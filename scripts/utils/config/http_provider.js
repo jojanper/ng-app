@@ -22,7 +22,7 @@ define([
 
         $httpProvider.interceptors.push(['$q', function($q) {
             return {
-                'request': function(request) {
+                request: function(request) {
                     // Load templates from different server url prefix
                     if (backendConfig.templatePrefix && request.url.indexOf(ngTemplatePrefix) > -1) {
                         var server = _$location.protocol() + '://' + _$location.host() + ':' + _$location.port();
@@ -33,7 +33,7 @@ define([
                     return request || $q.when(request);
                 },
 
-                'responseError': function(response) {
+                responseError: function(response) {
                     // Reset user authentication status on authentication error
                     if (response.status === 401) {
                         _dngUserManagement.reset(_$state);
