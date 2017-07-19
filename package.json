@@ -1,7 +1,7 @@
 {
-  "name": "angular-apps",
+  "name": "angularjs_app",
   "version": "0.0.2",
-  "description": "AngularJS 1.x prototyping",
+  "description": "AngularJS application prototyping",
   "repository": {
     "type": "git",
     "url": "https://github.com/jojanper/ng-app.git"

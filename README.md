@@ -1,7 +1,8 @@
 [![Build Status](https://travis-ci.org/jojanper/ng-app.svg?branch=master)](https://travis-ci.org/jojanper/ng-app)
 
 # ng-app
-> AngularJS 1.x application prototyping.
+> [AngularJS](https://angularjs.org/) application prototyping. The codebase is no longer actively developed since AngularJS is becoming
+outdated technology. Codebase using latest Angular can be found from [here](https://github.com/jojanper/angular-app).
 
 ## Usage
 

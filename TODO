@@ -3,5 +3,3 @@ Some thoughts for further development:
 
 - Run without backend support
 - Refactor scripts/main.js and test/test-main.js, too much duplicate code
-- Master API data is loaded only after user has logged in to system
-- Integrate 3rd party sign-in (separate route, pass parameters to backend)
