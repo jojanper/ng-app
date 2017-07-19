@@ -20,7 +20,7 @@ const remotes = (options.remotes) ? options.remotes.split(',') : ['origin'];
 
 var cmds = [
     // Update package.json version
-    format('npm version --no-git-tag-version %s', options.version),
+    format('npm --no-git-tag-version version %s', options.version),
 
     // Commit the new release
     'git add package.json',
